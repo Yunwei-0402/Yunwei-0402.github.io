@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Day3 - 运算符，流程控制语句 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. 逻辑运算符 单个&amp;的时候，两边都参与运算。两个&amp;的时候，如果左边为true，右边参与运算，如果左边为false，右边不参与运算。在不需要逻辑运算两边都参与运算的时候，尽量使用&amp;&amp;和|| 异或追求的是‘异’  2. 位运算符  右移除以2的n次方，左移乘以2的n次方。注意有符号右移和无符号右移的区别 ^同位运算时，两个数字相同则为false，不相同为true ~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day3 - 运算符，流程控制语句">
+<meta property="og:url" content="http://yoursite.com/2020/04/23/Day3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. 逻辑运算符 单个&amp;的时候，两边都参与运算。两个&amp;的时候，如果左边为true，右边参与运算，如果左边为false，右边不参与运算。在不需要逻辑运算两边都参与运算的时候，尽量使用&amp;&amp;和|| 异或追求的是‘异’  2. 位运算符  右移除以2的n次方，左移乘以2的n次方。注意有符号右移和无符号右移的区别 ^同位运算时，两个数字相同则为false，不相同为true ~">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/J0m3Pf.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/J0mJxg.png">
+<meta property="article:published_time" content="2020-04-23T17:54:01.000Z">
+<meta property="article:modified_time" content="2020-04-23T17:58:20.722Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/04/24/J0m3Pf.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Day3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/23/Day3/" class="article-date">
+  <time datetime="2020-04-23T17:54:01.000Z" itemprop="datePublished">2020-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java-SE/">Java SE</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Day3 - 运算符，流程控制语句
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-逻辑运算符"><a href="#1-逻辑运算符" class="headerlink" title="1. 逻辑运算符"></a>1. 逻辑运算符</h4><ul>
+<li>单个&amp;的时候，两边都参与运算。两个&amp;的时候，如果左边为true，右边参与运算，如果左边为false，右边不参与运算。在不需要逻辑运算两边都参与运算的时候，尽量使用&amp;&amp;和||</li>
+<li>异或追求的是‘异’</li>
+</ul>
+<h4 id="2-位运算符"><a href="#2-位运算符" class="headerlink" title="2. 位运算符"></a>2. 位运算符</h4><ul>
+<li><img src="https://s1.ax1x.com/2020/04/24/J0m3Pf.png" alt="img"></li>
+<li>右移除以2的n次方，左移乘以2的n次方。注意有符号右移和无符号右移的区别</li>
+<li>^同位运算时，两个数字相同则为false，不相同为true</li>
+<li>~运算，就是把二进制的同位翻转，0变1，1变0</li>
+</ul>
+<h4 id="3-三元运算符"><a href="#3-三元运算符" class="headerlink" title="3. 三元运算符"></a>3. 三元运算符</h4><ul>
+<li><p>格式：（条件表达式）？表达式1：表达式2</p>
+<p>如果是true执行表达式1，如果是false执行表达式2</p>
+</li>
+</ul>
+<h4 id="4-运算符的优先级"><a href="#4-运算符的优先级" class="headerlink" title="4. 运算符的优先级"></a>4. 运算符的优先级</h4><p><img src="https://s1.ax1x.com/2020/04/24/J0mJxg.png" alt="img"></p>
+<ul>
+<li>()在所有运算符里优先级最高</li>
+</ul>
+<h4 id="5-流程控制语句"><a href="#5-流程控制语句" class="headerlink" title="5. 流程控制语句"></a>5. 流程控制语句</h4><ul>
+<li>顺序结构，if-else，switch</li>
+<li>If-else可以嵌套</li>
+<li>switch语句规则：switch(表达式)中表达式的返回值必须是下述几种类型之一：bytes,     short, char, int, 枚举, String。case子句中的值必须是常量，且所有case子句中的值应是不同的。break语句用来在执行完一个case分支后使程序跳出switch语句块，如果没有break，程序会顺序执行到程序结尾。break是必须写的，不然程序就从case匹配到的位置一直往下执行到结尾。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/23/Day3/" data-id="ck9d2krsa00001cug7islf91m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/23/Day2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Day2 - 命名规范，变量，运算符，数据类型</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-SE/">Java SE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java/" style="font-size: 10px;">Java</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/23/Day3/">Day3 - 运算符，流程控制语句</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/23/Day2/">Day2 - 命名规范，变量，运算符，数据类型</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/23/Day1/">Day1 - DOS, JVM, JRE, Garbage Collection</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/23/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

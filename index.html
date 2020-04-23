@@ -64,6 +64,72 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Day3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/23/Day3/" class="article-date">
+  <time datetime="2020-04-23T17:54:01.000Z" itemprop="datePublished">2020-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java-SE/">Java SE</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/23/Day3/">Day3 - 运算符，流程控制语句</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-逻辑运算符"><a href="#1-逻辑运算符" class="headerlink" title="1. 逻辑运算符"></a>1. 逻辑运算符</h4><ul>
+<li>单个&amp;的时候，两边都参与运算。两个&amp;的时候，如果左边为true，右边参与运算，如果左边为false，右边不参与运算。在不需要逻辑运算两边都参与运算的时候，尽量使用&amp;&amp;和||</li>
+<li>异或追求的是‘异’</li>
+</ul>
+<h4 id="2-位运算符"><a href="#2-位运算符" class="headerlink" title="2. 位运算符"></a>2. 位运算符</h4><ul>
+<li><img src="https://s1.ax1x.com/2020/04/24/J0m3Pf.png" alt="img"></li>
+<li>右移除以2的n次方，左移乘以2的n次方。注意有符号右移和无符号右移的区别</li>
+<li>^同位运算时，两个数字相同则为false，不相同为true</li>
+<li>~运算，就是把二进制的同位翻转，0变1，1变0</li>
+</ul>
+<h4 id="3-三元运算符"><a href="#3-三元运算符" class="headerlink" title="3. 三元运算符"></a>3. 三元运算符</h4><ul>
+<li><p>格式：（条件表达式）？表达式1：表达式2</p>
+<p>如果是true执行表达式1，如果是false执行表达式2</p>
+</li>
+</ul>
+<h4 id="4-运算符的优先级"><a href="#4-运算符的优先级" class="headerlink" title="4. 运算符的优先级"></a>4. 运算符的优先级</h4><p><img src="https://s1.ax1x.com/2020/04/24/J0mJxg.png" alt="img"></p>
+<ul>
+<li>()在所有运算符里优先级最高</li>
+</ul>
+<h4 id="5-流程控制语句"><a href="#5-流程控制语句" class="headerlink" title="5. 流程控制语句"></a>5. 流程控制语句</h4><ul>
+<li>顺序结构，if-else，switch</li>
+<li>If-else可以嵌套</li>
+<li>switch语句规则：switch(表达式)中表达式的返回值必须是下述几种类型之一：bytes,     short, char, int, 枚举, String。case子句中的值必须是常量，且所有case子句中的值应是不同的。break语句用来在执行完一个case分支后使程序跳出switch语句块，如果没有break，程序会顺序执行到程序结尾。break是必须写的，不然程序就从case匹配到的位置一直往下执行到结尾。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/23/Day3/" data-id="ck9d2krsa00001cug7islf91m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Day2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/23/Day2/" class="article-date">
@@ -364,6 +430,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/04/23/Day3/">Day3 - 运算符，流程控制语句</a>
+          </li>
         
           <li>
             <a href="/2020/04/23/Day2/">Day2 - 命名规范，变量，运算符，数据类型</a>
