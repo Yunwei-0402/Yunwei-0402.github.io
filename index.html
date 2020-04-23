@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Day1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/23/Day1/" class="article-date">
+  <time datetime="2020-04-23T16:52:18.000Z" itemprop="datePublished">2020-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java-SE/">Java SE</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/23/Day1/">Day1 - DOS, JVM, JRE, Garbage Collection</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-常用DOS命令"><a href="#1-常用DOS命令" class="headerlink" title="1. 常用DOS命令:"></a>1. 常用DOS命令:</h4><ul>
+<li><p>dir：查看文件夹</p>
+</li>
+<li><p>md：创建文件夹</p>
+</li>
+<li><p>rd：删除文件夹</p>
+</li>
+<li><p>cd: 打开文件夹</p>
+</li>
+<li><p>cd .. : 返回上一级</p>
+</li>
+<li><p>cd: 返回根目录</p>
+</li>
+<li><p>del: 删除文件</p>
+</li>
+</ul>
+<h4 id="2-面向过程与面向对象"><a href="#2-面向过程与面向对象" class="headerlink" title="2. 面向过程与面向对象"></a>2. 面向过程与面向对象</h4><ul>
+<li>面向过程：对于每一个过程直接用代码实现</li>
+<li>面向对象：定义一个类，可以对不同的对象进行实例化。能够更好的在抽象的层面来分析问题，同时更好的复用之前的代码，这些是面向过程很难实现的。</li>
+</ul>
+<h4 id="3-Java特性"><a href="#3-Java特性" class="headerlink" title="3. Java特性"></a>3. Java特性</h4><ul>
+<li>解释型：先编译，再解释</li>
+<li>支持多线程</li>
+</ul>
+<h4 id="4-Java两种核心机制"><a href="#4-Java两种核心机制" class="headerlink" title="4. Java两种核心机制"></a>4. Java两种核心机制</h4><ul>
+<li><p>JVM（Java虚拟机）</p>
+<p>JVM是一个虚拟的计算机，具有指令集并使用不同的存储区域。对于不同的平台，有不同的虚拟机。JVM屏蔽了底层运行平台的差别，实现了‘一次编译，到处运行’。</p>
+</li>
+<li><p>垃圾收集机制（Garbage     Collection）GC</p>
+<p>C，C++由程序员手动编写代码回收内存空间（优点：能够在内存不使用时快速回收，准确，高效；缺点：容易失误出现Bug,例如忘记编写回收内存的代码，内存一直不回收）</p>
+<p>Java，垃圾回收是自动的，开了一个系统级线程自动去检测哪些内存不用了然后回收掉（优点：自动，不会出现忘记回收；缺点：回收不及时）</p>
+<p>一般观点：宁可回收不及时，但是一定要回收，使用自动的垃圾回收更合适</p>
+</li>
+</ul>
+<h4 id="5-什么是JDK-JRE"><a href="#5-什么是JDK-JRE" class="headerlink" title="5. 什么是JDK,JRE"></a>5. 什么是JDK,JRE</h4><ul>
+<li>JDK（Java     Development Kit Java开发工具包）提供给开发人员使用，包含了java的开发工具，也包括了JRE</li>
+<li>JRE（Java     Runtime Environment Java运行环境）包括Java虚拟机和Java程序所需的核心类库等。如果想要运行一个开发好的Java程序，计算机中只需安装JRE即可。</li>
+<li>JDK包含JRE，JRE包含JVM</li>
+</ul>
+<h4 id="6-Hello-World"><a href="#6-Hello-World" class="headerlink" title="6. Hello World"></a>6. Hello World</h4><ul>
+<li>步骤：</li>
+<li>将Java代码编写到扩展名为.java的文件中</li>
+<li>通过Javac命令对该文件进行编译</li>
+<li>通过java命令对生成的class文件进行运行</li>
+</ul>
+<h4 id="7-Hello-world小结"><a href="#7-Hello-world小结" class="headerlink" title="7. Hello world小结"></a>7. Hello world小结</h4><ul>
+<li>Java源文件以’java’为扩展名，源文件的基本组成部分是类（class）</li>
+<li>Java应用程序的执行入口是main()方法。它有固定的书写格式：public static void main(String[] args){…}</li>
+</ul>
+<h4 id="8-注释"><a href="#8-注释" class="headerlink" title="8. 注释"></a>8. 注释</h4><ul>
+<li>单行注释 //</li>
+<li>多行注释 /**/</li>
+<li>文档注释（java特有）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/23/Day1/" data-id="ck9d0iszo000024ugfeog9k6o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/23/hello-world/" class="article-date">
+  <time datetime="2020-04-23T16:45:20.613Z" itemprop="datePublished">2020-04-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/23/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/23/hello-world/" data-id="ck9czzgf400008sug760t9un8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-SE/">Java SE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java/" style="font-size: 10px;">Java</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/23/Day1/">Day1 - DOS, JVM, JRE, Garbage Collection</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/23/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
