@@ -64,6 +64,80 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Day5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/23/Day5/" class="article-date">
+  <time datetime="2020-04-23T18:05:50.000Z" itemprop="datePublished">2020-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java-SE/">Java SE</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/23/Day5/">Day5 - 类，变量，方法，对象</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://s1.ax1x.com/2020/04/24/J0mcM4.png" alt="面向过程和面向对象"></p>
+<h4 id="1-类"><a href="#1-类" class="headerlink" title="1. 类"></a>1. 类</h4><ul>
+<li><p>类有属性（类中的成员变量）和行为（类中的成员方法）</p>
+</li>
+<li><p>定义一个类需要思考：构成它需要什么，它能用来做什么-属性，行为</p>
+</li>
+<li><p>面向对象程序设计的重点是类的设计，定义类其实是定义类中的成员（成员变量和成员方法）</p>
+</li>
+<li><p>类只有一个，但是通过类实例出的对象可以有多个，且彼此相互独立</p>
+</li>
+</ul>
+<h4 id="2-变量"><a href="#2-变量" class="headerlink" title="2. 变量"></a>2. 变量</h4><p><img src="https://s1.ax1x.com/2020/04/24/J0m2L9.png" alt="变量分类"></p>
+<p><img src="https://s1.ax1x.com/2020/04/24/J0mfd1.png" alt="成员变量和局部变量的区别"></p>
+<h4 id="3-方法"><a href="#3-方法" class="headerlink" title="3. 方法"></a>3. 方法</h4><ul>
+<li>方法可以调用方法，但是方法中不能定义方法</li>
+<li>同一个类中所有的方法可以直接互相调用，不用new去实例化</li>
+</ul>
+<h4 id="4-对象"><a href="#4-对象" class="headerlink" title="4. 对象"></a>4. 对象</h4><p><img src="https://s1.ax1x.com/2020/04/24/J0mTzD.png" alt="成员变量的初始值"></p>
+<ul>
+<li>我们也可以不定义对象的句柄，而直接调用这个对象的方法，这个对象叫匿名对象</li>
+<li>如果对一个对象只需要一次方法调用，那么就可以使用匿名对象。我们经常将一个匿名对象作为实参传给方法调用。</li>
+</ul>
+<h4 id="5-提示"><a href="#5-提示" class="headerlink" title="5. 提示"></a>5. 提示</h4><ul>
+<li>在一个类中的访问机制：类中的方法可以直接访问类中的成员变量。（例外：static方法访问非static的成员变量，编译不通过）</li>
+<li>在不同类中的访问机制，县创建要访问类的对象，再用对象访问类中定义的成员。</li>
+</ul>
+<h4 id="6-方法的重载"><a href="#6-方法的重载" class="headerlink" title="6. 方法的重载"></a>6. 方法的重载</h4><ul>
+<li>在同一个类中，允许存在一个以上的同名方法，只要它们的参数个数或者参数类型不同即可。</li>
+<li>参数顺序不同也可以构成重载</li>
+<li>重载与返回类型及参数名称无关，只与参数个数个参数类型有关</li>
+<li>重载的前提是方法名相同</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/23/Day5/" data-id="ck9d31gbw0000k0ug8m5ffym7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Day4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/23/Day4/" class="article-date">
@@ -499,6 +573,10 @@
       <ul>
         
           <li>
+            <a href="/2020/04/23/Day5/">Day5 - 类，变量，方法，对象</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/23/Day4/">Day4 - 循环，流程控制语句， 数组</a>
           </li>
         
@@ -512,10 +590,6 @@
         
           <li>
             <a href="/2020/04/23/Day1/">Day1 - DOS, JVM, JRE, Garbage Collection</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/23/hello-world/">Hello World</a>
           </li>
         
       </ul>
