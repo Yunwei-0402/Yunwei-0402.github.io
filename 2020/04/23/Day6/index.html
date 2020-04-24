@@ -20,17 +20,17 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1.  方法的参数传递 Java里方法的参数传递方式只有一种：值传递。即将实际参数值的副本传入方法内，而参数本身不受影响。 对于基本数据类型而言，传的是栈中的值，对于引用对象而言，存的是保存在栈中的地址（实际引用对象保存在堆中）    基础数据类型的变量的值是保存在栈中的，引用对象的值保存在堆中，栈中保存的是该对象所在的地址  基本数据类型在参数传递的过程中，就是把实参的值复制在形参上  总结：如">
+  <meta name="description" content="方法的参数传递 Java里方法的参数传递方式只有一种：值传递。即将实际参数值的副本传入方法内，而参数本身不受影响。 对于基本数据类型而言，传的是栈中的值，对于引用对象而言，存的是保存在栈中的地址（实际引用对象保存在堆中）    基础数据类型的变量的值是保存在栈中的，引用对象的值保存在堆中，栈中保存的是该对象所在的地址  基本数据类型在参数传递的过程中，就是把实参的值复制在形参上  总结：如果方法的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day6 - 类的构造，this关键字，JavaBean">
 <meta property="og:url" content="http://yoursite.com/2020/04/23/Day6/index.html">
 <meta property="og:site_name" content="Welcome to Yunwei&#39;s blog">
-<meta property="og:description" content="1.  方法的参数传递 Java里方法的参数传递方式只有一种：值传递。即将实际参数值的副本传入方法内，而参数本身不受影响。 对于基本数据类型而言，传的是栈中的值，对于引用对象而言，存的是保存在栈中的地址（实际引用对象保存在堆中）    基础数据类型的变量的值是保存在栈中的，引用对象的值保存在堆中，栈中保存的是该对象所在的地址  基本数据类型在参数传递的过程中，就是把实参的值复制在形参上  总结：如">
+<meta property="og:description" content="方法的参数传递 Java里方法的参数传递方式只有一种：值传递。即将实际参数值的副本传入方法内，而参数本身不受影响。 对于基本数据类型而言，传的是栈中的值，对于引用对象而言，存的是保存在栈中的地址（实际引用对象保存在堆中）    基础数据类型的变量的值是保存在栈中的，引用对象的值保存在堆中，栈中保存的是该对象所在的地址  基本数据类型在参数传递的过程中，就是把实参的值复制在形参上  总结：如果方法的">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s1.ax1x.com/2020/04/24/J0GBnK.png">
 <meta property="og:image" content="https://s1.ax1x.com/2020/04/24/J0tWcR.png">
 <meta property="article:published_time" content="2020-04-23T21:11:33.000Z">
-<meta property="article:modified_time" content="2020-04-24T01:05:23.683Z">
+<meta property="article:modified_time" content="2020-04-24T01:10:32.546Z">
 <meta property="article:author" content="Yunwei">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -194,7 +194,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-24 02:05:23" itemprop="dateModified" datetime="2020-04-24T02:05:23+01:00">2020-04-24</time>
+                <time title="Modified: 2020-04-24 02:10:32" itemprop="dateModified" datetime="2020-04-24T02:10:32+01:00">2020-04-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -217,7 +217,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="1-方法的参数传递"><a href="#1-方法的参数传递" class="headerlink" title="1.  方法的参数传递"></a>1.  方法的参数传递</h4><ul>
+        <h4 id="方法的参数传递"><a href="#方法的参数传递" class="headerlink" title="方法的参数传递"></a>方法的参数传递</h4><ul>
 <li>Java里方法的参数传递方式只有一种：值传递。即将实际参数值的副本传入方法内，而参数本身不受影响。</li>
 <li>对于基本数据类型而言，传的是栈中的值，对于引用对象而言，存的是保存在栈中的地址（实际引用对象保存在堆中）</li>
 </ul>
@@ -229,20 +229,20 @@
 </li>
 <li><p>总结：<br>如果方法的形参是基本数据类型，那么实参（实际的数据）向形参传递参数时，就是直接传递值，把实参的值复制给形参。</p>
 <p>如果方法的形参是对象，那么实参（实际的对象）向形参传递参数时，也是把值给形参，这个值是实参在栈内存中的值，也就是引用对象在堆中的地址。</p>
-<h4 id="2-包"><a href="#2-包" class="headerlink" title="2. 包"></a>2. 包</h4><p>Java中的包package等同于文件夹，包和文件夹一样可以有多级。多级的包使用点分隔，用“.”来指明包的层次。使用Import来导入包下面的类。</p>
+<h4 id="包"><a href="#包" class="headerlink" title="包"></a>包</h4><p>Java中的包package等同于文件夹，包和文件夹一样可以有多级。多级的包使用点分隔，用“.”来指明包的层次。使用Import来导入包下面的类。</p>
 <p>Import day06.test.*</p>
 <p>如果使用同一个包下的类，Import可以省略</p>
-<h4 id="3-面向对象的特征之一–封装和隐藏"><a href="#3-面向对象的特征之一–封装和隐藏" class="headerlink" title="3. 面向对象的特征之一–封装和隐藏"></a>3. 面向对象的特征之一–封装和隐藏</h4><p>Java中通过将数据声明为私有的(private)，再提供公共的(public)方法:getXxx()和setXxx()实现对该属性的操作，以实现下述目的：</p>
+<h4 id="面向对象的特征之一–封装和隐藏"><a href="#面向对象的特征之一–封装和隐藏" class="headerlink" title="面向对象的特征之一–封装和隐藏"></a>面向对象的特征之一–封装和隐藏</h4><p>Java中通过将数据声明为私有的(private)，再提供公共的(public)方法:getXxx()和setXxx()实现对该属性的操作，以实现下述目的：</p>
 <ol>
 <li>隐藏一个类中不需要对外提供的实现细节</li>
 <li>使用者只能通过实现制定好的方法来访问数据，可以方便地加入空值逻辑，限制对属性的不合理操作</li>
 <li>便于修改，增强代码的可维护性</li>
 </ol>
-<h4 id="4-访问权限修饰符"><a href="#4-访问权限修饰符" class="headerlink" title="4. 访问权限修饰符"></a>4. 访问权限修饰符</h4><p>在同一个java文件中可以写多个的class，但是只有一个public的，其他的class只能是却生的</p>
+<h4 id="访问权限修饰符"><a href="#访问权限修饰符" class="headerlink" title="访问权限修饰符"></a>访问权限修饰符</h4><p>在同一个java文件中可以写多个的class，但是只有一个public的，其他的class只能是却生的</p>
 <p><img src="https://s1.ax1x.com/2020/04/24/J0tWcR.png" alt="访问权限修饰符"></p>
 </li>
 </ul>
-<h4 id="5-类的构造方法"><a href="#5-类的构造方法" class="headerlink" title="5. 类的构造方法"></a>5. 类的构造方法</h4><ul>
+<h4 id="类的构造方法"><a href="#类的构造方法" class="headerlink" title="类的构造方法"></a>类的构造方法</h4><ul>
 <li>构造器分为隐式无参构造器（系统默认提供）和显式定义一个或多个构造器（无参、有参）</li>
 <li>Java语言中，每个类都至少有一个构造器</li>
 <li>默认构造器的修饰符与所属类的修饰符一致</li>
@@ -251,12 +251,12 @@
 <li>父类的构造器不可被子类继承</li>
 <li>New 对象实际上就是调用类的构造方法</li>
 </ul>
-<h4 id="6-构造器重载"><a href="#6-构造器重载" class="headerlink" title="6. 构造器重载"></a>6. 构造器重载</h4><ul>
+<h4 id="构造器重载"><a href="#构造器重载" class="headerlink" title="构造器重载"></a>构造器重载</h4><ul>
 <li>构造器也叫构造方法，既然是方法，就可以重载</li>
 <li>构造器重载，参数列表必须不同</li>
 <li>构造器的重载，就是为了灵活创建出不同需要的对象。重载的多个构造方法实际上就是提供了多个初始化new对象的模板</li>
 </ul>
-<h4 id="7-关键字this"><a href="#7-关键字this" class="headerlink" title="7. 关键字this"></a>7. 关键字this</h4><ul>
+<h4 id="关键字this"><a href="#关键字this" class="headerlink" title="关键字this"></a>关键字this</h4><ul>
 <li><p>this在方法内部使用，即这个方法所属对象的引用；它在构造器内部使用，表示该构造器正在初始化的对象。</p>
 </li>
 <li><p>什么时候使用this？当在方法中需要用到调用该方法的对象时，就用this</p>
@@ -270,7 +270,7 @@
 <p>使用this调用本类中其他的构造器，保证至少有一个构造器是不用this的（实际上就是构造器不能自己调用自己）</p>
 </li>
 </ul>
-<h4 id="8-JavaBean"><a href="#8-JavaBean" class="headerlink" title="8. JavaBean"></a>8. JavaBean</h4><ul>
+<h4 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h4><ul>
 <li>JavaBean是一种Java语言写成的可重用组件</li>
 <li>不用手动生成，可以直接右键generate getter and setter</li>
 </ul>
@@ -357,7 +357,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-方法的参数传递"><span class="nav-number">1.</span> <span class="nav-text">1.  方法的参数传递</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-包"><span class="nav-number">2.</span> <span class="nav-text">2. 包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-面向对象的特征之一–封装和隐藏"><span class="nav-number">3.</span> <span class="nav-text">3. 面向对象的特征之一–封装和隐藏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-访问权限修饰符"><span class="nav-number">4.</span> <span class="nav-text">4. 访问权限修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-类的构造方法"><span class="nav-number">5.</span> <span class="nav-text">5. 类的构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-构造器重载"><span class="nav-number">6.</span> <span class="nav-text">6. 构造器重载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-关键字this"><span class="nav-number">7.</span> <span class="nav-text">7. 关键字this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-JavaBean"><span class="nav-number">8.</span> <span class="nav-text">8. JavaBean</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法的参数传递"><span class="nav-number">1.</span> <span class="nav-text">方法的参数传递</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包"><span class="nav-number">2.</span> <span class="nav-text">包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面向对象的特征之一–封装和隐藏"><span class="nav-number">3.</span> <span class="nav-text">面向对象的特征之一–封装和隐藏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问权限修饰符"><span class="nav-number">4.</span> <span class="nav-text">访问权限修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类的构造方法"><span class="nav-number">5.</span> <span class="nav-text">类的构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造器重载"><span class="nav-number">6.</span> <span class="nav-text">构造器重载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关键字this"><span class="nav-number">7.</span> <span class="nav-text">关键字this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaBean"><span class="nav-number">8.</span> <span class="nav-text">JavaBean</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
