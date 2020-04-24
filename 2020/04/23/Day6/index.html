@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2020/04/24/J0GBnK.png">
 <meta property="og:image" content="https://s1.ax1x.com/2020/04/24/J0tWcR.png">
 <meta property="article:published_time" content="2020-04-23T21:11:33.000Z">
-<meta property="article:modified_time" content="2020-04-24T01:10:32.546Z">
+<meta property="article:modified_time" content="2020-04-24T01:13:37.942Z">
 <meta property="article:author" content="Yunwei">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -194,7 +194,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-24 02:10:32" itemprop="dateModified" datetime="2020-04-24T02:10:32+01:00">2020-04-24</time>
+                <time title="Modified: 2020-04-24 02:13:37" itemprop="dateModified" datetime="2020-04-24T02:13:37+01:00">2020-04-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,9 +229,11 @@
 </li>
 <li><p>总结：<br>如果方法的形参是基本数据类型，那么实参（实际的数据）向形参传递参数时，就是直接传递值，把实参的值复制给形参。</p>
 <p>如果方法的形参是对象，那么实参（实际的对象）向形参传递参数时，也是把值给形参，这个值是实参在栈内存中的值，也就是引用对象在堆中的地址。</p>
-<h4 id="包"><a href="#包" class="headerlink" title="包"></a>包</h4><p>Java中的包package等同于文件夹，包和文件夹一样可以有多级。多级的包使用点分隔，用“.”来指明包的层次。使用Import来导入包下面的类。</p>
-<p>Import day06.test.*</p>
-<p>如果使用同一个包下的类，Import可以省略</p>
+</li>
+</ul>
+<p>  Java中的包package等同于文件夹，包和文件夹一样可以有多级。多级的包使用点分隔，用“.”来指明包的层次。使用Import来导入包下面的类。</p>
+<p>  Import day06.test.*</p>
+<p>  如果使用同一个包下的类，Import可以省略</p>
 <h4 id="面向对象的特征之一–封装和隐藏"><a href="#面向对象的特征之一–封装和隐藏" class="headerlink" title="面向对象的特征之一–封装和隐藏"></a>面向对象的特征之一–封装和隐藏</h4><p>Java中通过将数据声明为私有的(private)，再提供公共的(public)方法:getXxx()和setXxx()实现对该属性的操作，以实现下述目的：</p>
 <ol>
 <li>隐藏一个类中不需要对外提供的实现细节</li>
@@ -240,8 +242,6 @@
 </ol>
 <h4 id="访问权限修饰符"><a href="#访问权限修饰符" class="headerlink" title="访问权限修饰符"></a>访问权限修饰符</h4><p>在同一个java文件中可以写多个的class，但是只有一个public的，其他的class只能是却生的</p>
 <p><img src="https://s1.ax1x.com/2020/04/24/J0tWcR.png" alt="访问权限修饰符"></p>
-</li>
-</ul>
 <h4 id="类的构造方法"><a href="#类的构造方法" class="headerlink" title="类的构造方法"></a>类的构造方法</h4><ul>
 <li>构造器分为隐式无参构造器（系统默认提供）和显式定义一个或多个构造器（无参、有参）</li>
 <li>Java语言中，每个类都至少有一个构造器</li>
@@ -357,7 +357,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法的参数传递"><span class="nav-number">1.</span> <span class="nav-text">方法的参数传递</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包"><span class="nav-number">2.</span> <span class="nav-text">包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面向对象的特征之一–封装和隐藏"><span class="nav-number">3.</span> <span class="nav-text">面向对象的特征之一–封装和隐藏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问权限修饰符"><span class="nav-number">4.</span> <span class="nav-text">访问权限修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类的构造方法"><span class="nav-number">5.</span> <span class="nav-text">类的构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造器重载"><span class="nav-number">6.</span> <span class="nav-text">构造器重载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关键字this"><span class="nav-number">7.</span> <span class="nav-text">关键字this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaBean"><span class="nav-number">8.</span> <span class="nav-text">JavaBean</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法的参数传递"><span class="nav-number">1.</span> <span class="nav-text">方法的参数传递</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面向对象的特征之一–封装和隐藏"><span class="nav-number">2.</span> <span class="nav-text">面向对象的特征之一–封装和隐藏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问权限修饰符"><span class="nav-number">3.</span> <span class="nav-text">访问权限修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类的构造方法"><span class="nav-number">4.</span> <span class="nav-text">类的构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造器重载"><span class="nav-number">5.</span> <span class="nav-text">构造器重载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关键字this"><span class="nav-number">6.</span> <span class="nav-text">关键字this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaBean"><span class="nav-number">7.</span> <span class="nav-text">JavaBean</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
