@@ -22,26 +22,26 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Welcome to Yunwei&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/Linear-Regression/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Welcome to Yunwei&#39;s blog">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Yunwei">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/tags/Linear-Regression/">
+<link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
+    isHome : true,
     isPost : false,
     lang   : 'en'
   };
 </script>
 
-  <title>Tag: Linear Regression | Welcome to Yunwei's blog</title>
+  <title>Welcome to Yunwei's blog</title>
   
 
 
@@ -149,52 +149,140 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/23/Day1/">
 
-  
-  
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Linear Regression
-          <small>Tag</small>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yunwei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Yunwei's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/23/Day1/" class="post-title-link" itemprop="url">Day1 - DOS, JVM, JRE, Garbage Collection</a>
         </h2>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-23 17:52:18" itemprop="dateCreated datePublished" datetime="2020-04-23T17:52:18+01:00">2020-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-24 02:08:50" itemprop="dateModified" datetime="2020-04-24T02:08:50+01:00">2020-04-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-SE/" itemprop="url" rel="index"><span itemprop="name">Java SE</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+          <h4 id="常用DOS命令"><a href="#常用DOS命令" class="headerlink" title="常用DOS命令:"></a>常用DOS命令:</h4><ul>
+<li><p>dir：查看文件夹</p>
+</li>
+<li><p>md：创建文件夹</p>
+</li>
+<li><p>rd：删除文件夹</p>
+</li>
+<li><p>cd: 打开文件夹</p>
+</li>
+<li><p>cd .. : 返回上一级</p>
+</li>
+<li><p>cd: 返回根目录</p>
+</li>
+<li><p>del: 删除文件</p>
+</li>
+</ul>
+<h4 id="面向过程与面向对象"><a href="#面向过程与面向对象" class="headerlink" title="面向过程与面向对象"></a>面向过程与面向对象</h4><ul>
+<li>面向过程：对于每一个过程直接用代码实现</li>
+<li>面向对象：定义一个类，可以对不同的对象进行实例化。能够更好的在抽象的层面来分析问题，同时更好的复用之前的代码，这些是面向过程很难实现的。</li>
+</ul>
+<h4 id="Java特性"><a href="#Java特性" class="headerlink" title="Java特性"></a>Java特性</h4><ul>
+<li>解释型：先编译，再解释</li>
+<li>支持多线程</li>
+</ul>
+<h4 id="Java两种核心机制"><a href="#Java两种核心机制" class="headerlink" title="Java两种核心机制"></a>Java两种核心机制</h4><ul>
+<li><p>JVM（Java虚拟机）</p>
+<p>JVM是一个虚拟的计算机，具有指令集并使用不同的存储区域。对于不同的平台，有不同的虚拟机。JVM屏蔽了底层运行平台的差别，实现了‘一次编译，到处运行’。</p>
+</li>
+<li><p>垃圾收集机制（Garbage     Collection）GC</p>
+<p>C，C++由程序员手动编写代码回收内存空间（优点：能够在内存不使用时快速回收，准确，高效；缺点：容易失误出现Bug,例如忘记编写回收内存的代码，内存一直不回收）</p>
+<p>Java，垃圾回收是自动的，开了一个系统级线程自动去检测哪些内存不用了然后回收掉（优点：自动，不会出现忘记回收；缺点：回收不及时）</p>
+<p>一般观点：宁可回收不及时，但是一定要回收，使用自动的垃圾回收更合适</p>
+</li>
+</ul>
+<h4 id="什么是JDK-JRE"><a href="#什么是JDK-JRE" class="headerlink" title="什么是JDK,JRE"></a>什么是JDK,JRE</h4><ul>
+<li>JDK（Java     Development Kit Java开发工具包）提供给开发人员使用，包含了java的开发工具，也包括了JRE</li>
+<li>JRE（Java     Runtime Environment Java运行环境）包括Java虚拟机和Java程序所需的核心类库等。如果想要运行一个开发好的Java程序，计算机中只需安装JRE即可。</li>
+<li>JDK包含JRE，JRE包含JVM</li>
+</ul>
+<h4 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h4><ul>
+<li>步骤：</li>
+<li>将Java代码编写到扩展名为.java的文件中</li>
+<li>通过Javac命令对该文件进行编译</li>
+<li>通过java命令对生成的class文件进行运行</li>
+</ul>
+<h4 id="Hello-world小结"><a href="#Hello-world小结" class="headerlink" title="Hello world小结"></a>Hello world小结</h4><ul>
+<li>Java源文件以’java’为扩展名，源文件的基本组成部分是类（class）</li>
+<li>Java应用程序的执行入口是main()方法。它有固定的书写格式：public static void main(String[] args){…}</li>
+</ul>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><ul>
+<li>单行注释 //</li>
+<li>多行注释 /**/</li>
+<li>文档注释（java特有）</li>
+</ul>
+
+      
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-04-24T20:46:39+01:00"
-              content="2020-04-24">
-          04-24
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/04/24/Linear-Regression/" itemprop="url">
-            <span itemprop="name">Linear Regression</span>
-          </a>
-      </div>
-
-    </header>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
   </article>
-
-    </div>
-  </div>
   
   
   
 
+
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 
