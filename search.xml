@@ -781,4 +781,127 @@
         <tag>feature extraction</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Clustering</title>
+    <url>/2020/04/25/Clustering/</url>
+    <content><![CDATA[<h4 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h4><ul>
+<li>Partitioning set of data points into groups which are “similar” </li>
+<li>Unsupervised learning </li>
+<li>Different algorithms <ul>
+<li>k-means </li>
+<li>Distribution based </li>
+<li>Density based </li>
+</ul>
+</li>
+</ul>
+<h4 id="k-means-Clustering"><a href="#k-means-Clustering" class="headerlink" title="k-means Clustering"></a>k-means Clustering</h4><img src="https://s1.ax1x.com/2020/04/26/J6JQrd.png" alt="k-means" style="zoom: 40%;align=left" />
+
+<h5 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h5><ul>
+<li>Choose the number of clusters, k </li>
+<li>Choose k random centroids (possibly k observations) </li>
+<li>Repeat:  <ul>
+<li>Assign each observation to nearest centroid </li>
+<li>Update each centroid’s position to be mean of those observations assigned to it </li>
+</ul>
+</li>
+<li>Until there is no, or very little, change in the centroids </li>
+</ul>
+<h5 id="k-means-in-practice"><a href="#k-means-in-practice" class="headerlink" title="k-means in practice"></a>k-means in practice</h5><ul>
+<li>Must normalize the features so that the distances are not biased to a particular dimension </li>
+<li>Need to think carefully about the features you wish to include as algorithm will give each feature equal weight <ul>
+<li>Unlike linear regression where the weight may be zero, or Naïve Bayes where a meaningless feature will have no real impact </li>
+</ul>
+</li>
+<li>Can be hard to interpret <ul>
+<li>Sometimes the clusters seem meaningless </li>
+</ul>
+</li>
+<li>Need to choose k </li>
+</ul>
+<h5 id="Limitations"><a href="#Limitations" class="headerlink" title="Limitations"></a>Limitations</h5><ul>
+<li>Clusters assumed to be the same size </li>
+<li>Clusters on density not so good</li>
+</ul>
+<h5 id="HPC-Implementation"><a href="#HPC-Implementation" class="headerlink" title="HPC Implementation"></a>HPC Implementation</h5><ul>
+<li><p>All nodes get subset of the data </p>
+</li>
+<li><p>Repeat </p>
+<ul>
+<li>Centroids sent to all nodes </li>
+<li>Points assigned to nearest centroid </li>
+<li>For each cluster feature sums and count returned to master </li>
+</ul>
+</li>
+<li><p>Master computes new centroids - Until centroids are stable </p>
+</li>
+</ul>
+<h4 id="Distribution-Based-Clustering"><a href="#Distribution-Based-Clustering" class="headerlink" title="Distribution Based Clustering"></a>Distribution Based Clustering</h4><ul>
+<li>Model the data using statistical distributions </li>
+<li>Gaussian mixture models <ul>
+<li>Model is a fixed number of Gaussian distributions </li>
+<li>Need to discover the parameters of these Gaussian distributions - For each cluster need to know mean for each feature dimension and the covariance matrix </li>
+</ul>
+</li>
+<li>Expectation maximization algorithm </li>
+<li>Data points are assigned to the distribution they most likely belong to (hard clusters), or each data point is given probability of belonging to clusters (soft clusters) </li>
+</ul>
+<h5 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h5><ul>
+<li>Handles covariance of features - No need to normalize data </li>
+<li>Can choose number of clusters </li>
+</ul>
+<h5 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h5><ul>
+<li>Bad for density based clusters that don’t match distribution model </li>
+</ul>
+<h4 id="Density-Based-Clustering"><a href="#Density-Based-Clustering" class="headerlink" title="Density Based Clustering"></a>Density Based Clustering</h4><ul>
+<li><p>Clusters are defined as areas of higher density than the rest of the data set. Points in sparse areas are considered noise and border points </p>
+</li>
+<li><p>Popular method is DBSCAN algorithm: </p>
+<ul>
+<li><p>Density-Based Spatial Clustering of Applications with Noise </p>
+</li>
+<li><p>Group together points with many nearby neighbors </p>
+</li>
+<li><p>Points with few nearby neighbors are marked as outliers </p>
+</li>
+<li><p>Two parameters: </p>
+<ul>
+<li>ε : distance below which points are considered neighbors </li>
+<li>minPts: minimum number of points required to form a cluster </li>
+</ul>
+</li>
+<li><p>Uses “density-reachability” cluster model </p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="DBSCAN-definition"><a href="#DBSCAN-definition" class="headerlink" title="DBSCAN definition"></a>DBSCAN definition</h5><ul>
+<li><p>All points are identified as one of: </p>
+<ul>
+<li>Core point: A point p with at least minPts points within ε of it. Those points within ε of p are directly-reachable from p </li>
+<li>Density-reachable point: A point q is reachable from p if there is a path where , and is directly reachable from </li>
+<li>Outlier: Point not reachable from any other point </li>
+</ul>
+</li>
+<li><p>Points p and q are density connected if there exists a point o such that p and q are density-reachable from o. </p>
+</li>
+<li><p>A cluster defined as: </p>
+<ul>
+<li>Containing all points that are mutually density-connected </li>
+<li>Also contains any points density-reachable from a point in cluster </li>
+</ul>
+</li>
+</ul>
+<h5 id="Limitation-1"><a href="#Limitation-1" class="headerlink" title="Limitation"></a>Limitation</h5><ul>
+<li>Can be hard to tune parameters </li>
+<li>Does not produce model that can be used to classify data </li>
+<li>Cannot handle clusters with highly variable densities </li>
+</ul>
+]]></content>
+      <categories>
+        <category>Machine learning</category>
+      </categories>
+      <tags>
+        <tag>Clustering</tag>
+      </tags>
+  </entry>
 </search>
