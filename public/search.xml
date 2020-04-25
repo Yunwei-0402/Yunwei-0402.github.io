@@ -772,7 +772,7 @@
 <li><p>饿汉式是在类加载之后，还没有人调用的时候，就先New好一个对象，以后不论谁来调用，都是返回之前new好的那个对象</p>
 </li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--more--&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--more--&gt;</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
