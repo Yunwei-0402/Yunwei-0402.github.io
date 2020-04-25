@@ -229,7 +229,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="与equals"><a href="#与equals" class="headerlink" title="==与equals"></a>==与equals</h4><h5 id=""><a href="#" class="headerlink" title="=="></a>==</h5><ul>
+<h4 id="与equals"><a href="#与equals" class="headerlink" title="==与equals"></a>==与equals</h4><h5 id><a href="#" class="headerlink" title="=="></a>==</h5><ul>
 <li><p>基本类型比较：只要两个变量的值相等，即为true</p>
 </li>
 <li><p>引用类型比较（是否指向同一个对象）：只有指向同一个对象时，==才返回true</p>
@@ -252,63 +252,14 @@
 <li>除了特殊的类之外的其他普通的类的对象，==和equals比较的都是对象（对象的内存地址）</li>
 <li>如果你想改变一个类的equals，不想用equals比较对象的内存地址，就需要重写equals方法</li>
 </ul>
-<h4 id="String对象的创建"><a href="#String对象的创建" class="headerlink" title="String对象的创建"></a>String对象的创建</h4><p><img src="https://s1.ax1x.com/2020/04/25/JrxU54.png" alt="String对象的创建"></p>
-<h5 id="toString方法"><a href="#toString方法" class="headerlink" title="toString方法"></a>toString方法</h5><p>父类Object的toString方法输出当前对象的内存地址，如果想要输出类的其他信息，重写toString方法</p>
-<h4 id="包装类（Wrapper）"><a href="#包装类（Wrapper）" class="headerlink" title="包装类（Wrapper）"></a>包装类（Wrapper）</h4><p>针对八种基本数据类型定义相应的引用类型–包装类（封装类）</p>
-<p>有了类的特点就可以调用类中的方法</p>
-<p><img src="https://s1.ax1x.com/2020/04/25/JsSyND.png" alt="包装类"></p>
-<ul>
-<li><p>基本数据类型包装成包装类 – 装箱 </p>
-<p>Integer i = new Integer(“123”);</p>
-</li>
-<li><p>获得包装类对象中包装的基本类型变量 – 拆箱</p>
-<p>调用包装类的.xxxValue()方法</p>
-</li>
-<li><p>JDK1.5之后支持自动拆箱和自动装箱</p>
-</li>
-</ul>
-<h5 id="字符串和基本数据类型相互转换"><a href="#字符串和基本数据类型相互转换" class="headerlink" title="字符串和基本数据类型相互转换"></a>字符串和基本数据类型相互转换</h5><ul>
-<li><p>字符串转其他数据类型：‘parse’</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i6 = Integer.parseInt(<span class="string">"1234567"</span>);</span><br><span class="line"><span class="keyword">float</span> f = Float.parseFloat(<span class="string">"0.45"</span>);</span><br><span class="line"><span class="keyword">boolean</span> b = Boolean.parseBoolean(<span class="string">"true"</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>其他数据类型转字符串：’valueof’</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str1 = String.valueOf(<span class="number">1</span>);String str2 = String.valueOf(<span class="number">0.54</span>);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h5 id="基本数据类型的包装类的作用"><a href="#基本数据类型的包装类的作用" class="headerlink" title="基本数据类型的包装类的作用"></a>基本数据类型的包装类的作用</h5><p>为了完成基本数据类型与字符串之间的转换</p>
-<h4 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h4><p>如果想让一个类的所有实例共享数据，就用类变量</p>
-<p>类方法和类变量的构造：</p>
-<p><img src="https://s1.ax1x.com/2020/04/25/Js9fTf.png" alt="类方法和类变量"></p>
-<p>类变量，这种可以被所有的实例化对象共享的属性，使用起来要慎重，因为一改所有实例化对象都会改变。</p>
-<p>类方法，在工具类中用的最多</p>
-<ul>
-<li>因为不需要实例化就可以访问static方法，因此static方法内部不能有this，也不能有super</li>
-</ul>
-<h4 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h4><p>设计模式就是在实际编程过程中，总结出来的一些解决问题的套路。</p>
-<p>单例 - 只有一个实例（只有一个对象），在整个软件系统运行过程中，这个类只被实例化一次，以后无论在哪，都只调用这一个实例。</p>
-<p>适用范围：实例化对象的创建需要消耗大量的时间和资源（假设构造中要执行1000行代码，要占用很大的资源，耗时很长）– 这种情况就适合适用单例模式，只new一次对象，以后一直使用这个对象</p>
-<h5 id="单例设计模式-饿汉式"><a href="#单例设计模式-饿汉式" class="headerlink" title="单例设计模式 - 饿汉式"></a>单例设计模式 - 饿汉式</h5><ul>
-<li>定义好私有的构造函数</li>
-<li>定义好私有的类变量</li>
-<li>定义好公有的getInstance()方法</li>
-<li>在调用时将会一直调用已经生成的类变量</li>
-</ul>
-<h5 id="单例设计模式-懒汉式-（存在线程安全的问题）"><a href="#单例设计模式-懒汉式-（存在线程安全的问题）" class="headerlink" title="单例设计模式 - 懒汉式 （存在线程安全的问题）"></a>单例设计模式 - 懒汉式 （存在线程安全的问题）</h5><ul>
-<li>最开始，对象是null，直到有第一个人调用，才new一个对象，之后所有调用都用这个对象</li>
-<li>定义好私有的构造函数</li>
-<li>定义好私有的类变量并初始化为null</li>
-<li>定义好公有的getInstance()方法，在里面加一个判断</li>
-</ul>
-<h5 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h5><p>单例模式，软件的运行有且仅有一个实例化对象（只会new一次）</p>
-<p>懒汉和饿汉式的区别，就是什么时候New这个对象</p>
-<ul>
-<li><p>懒汉式是在第一次有人调用getInstance方法时new对象，以后再有人调用就返回第一次new好的对象</p>
-</li>
-<li><p>饿汉式是在类加载之后，还没有人调用的时候，就先New好一个对象，以后不论谁来调用，都是返回之前new好的那个对象</p>
-</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/25/Day8/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -443,6 +394,14 @@
 <li>Random Forest  - Very popular in medical image analysis and segmentation </li>
 </ul>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/24/Feature-Extraction/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -509,7 +468,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="K-Nearest-Neighbours"><a href="#K-Nearest-Neighbours" class="headerlink" title="K-Nearest Neighbours"></a>K-Nearest Neighbours</h4><img src="https://s1.ax1x.com/2020/04/25/JrXdPA.png" alt="K-Nearest neighbours" style="zoom: 40%;" />
+          <h4 id="K-Nearest-Neighbours"><a href="#K-Nearest-Neighbours" class="headerlink" title="K-Nearest Neighbours"></a>K-Nearest Neighbours</h4><img src="https://s1.ax1x.com/2020/04/25/JrXdPA.png" alt="K-Nearest neighbours" style="zoom: 40%;">
 
 <h5 id="Similarity"><a href="#Similarity" class="headerlink" title="Similarity"></a>Similarity</h5><ul>
 <li><p>Euclidean distance: heavily biased towards big number - we need to normalize data first</p>
@@ -568,7 +527,14 @@
 <li>For binary outcomes, we define TP, FP, FN, and TN </li>
 <li>ROC curve  - Receiver operating characteristic (ROC) curve  </li>
 </ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/24/Classification/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -647,78 +613,27 @@
 <p>The aim is to find regularities/structure in the input space. One method is called clustering, where the aim is to find clusters or groupings of input.</p>
 </li>
 </ul>
-<h4 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h4><img src="https://s1.ax1x.com/2020/04/25/JrqIKO.png" alt="Linear Regression" style="zoom: 50%;" />
+<h4 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h4><img src="https://s1.ax1x.com/2020/04/25/JrqIKO.png" alt="Linear Regression" style="zoom: 50%;">
 
 <h5 id="How-to-set-the-cost-function"><a href="#How-to-set-the-cost-function" class="headerlink" title="How to set the cost function?"></a>How to set the cost function?</h5><ul>
 <li><p>We use least squares estimation</p>
 </li>
-<li><img src="https://s1.ax1x.com/2020/04/25/Jrqbad.png" alt="Calculation" style="zoom:50%;" />
+<li><img src="https://s1.ax1x.com/2020/04/25/Jrqbad.png" alt="Calculation" style="zoom:50%;">
 </li>
 <li><p>Find the values of θ0 and θ1 which have minimum cost </p>
 </li>
 </ul>
 <h5 id="Why-do-we-use-mean-the-square-error-as-our-cost-function"><a href="#Why-do-we-use-mean-the-square-error-as-our-cost-function" class="headerlink" title="Why do we use mean the square error as our cost function?"></a>Why do we use mean the square error as our cost function?</h5><p>We assume that the numeric output is the sum of a linear function of the input and a random noise and the random noise is zero mean Gaussian with constant variance</p>
 <p>Then we use maximum likelihood to estimate the parameter. The theta that maximize the LHS of the equation correspond to the value that minimize the MSE. That’s why we use MSE as the cost function.</p>
-<h5 id="Gradient-descent-for-linear-regression"><a href="#Gradient-descent-for-linear-regression" class="headerlink" title="Gradient descent for linear regression"></a>Gradient descent for linear regression</h5><img src="https://s1.ax1x.com/2020/04/25/JrLnLF.png" alt="Gradient descent" style="zoom:40%;" />
-
-<h5 id="Gradient-descent-properties"><a href="#Gradient-descent-properties" class="headerlink" title="Gradient descent properties"></a>Gradient descent properties</h5><ul>
-<li>‘Batch’ algorithm because each iteration looks at all the training data</li>
-<li>Can be slow to converge</li>
-<li>Each iteration is slow because it need to process all the training data</li>
-<li>Simultaneously update parameters according to partial derivatives</li>
-</ul>
-<h5 id="Stochastic-gradient-descent-algorithm"><a href="#Stochastic-gradient-descent-algorithm" class="headerlink" title="Stochastic gradient descent algorithm"></a>Stochastic gradient descent algorithm</h5><ul>
-<li>Not like gradient descent where we use all the training data for each iteration, this time we only randomly choose one sample to update the parameters</li>
-<li>Can scale algorithms to much bigger training sets</li>
-<li>Can converge more fast than gradient descent</li>
-</ul>
-<h5 id="Mini-batch-gradient-descent"><a href="#Mini-batch-gradient-descent" class="headerlink" title="Mini-batch gradient descent"></a>Mini-batch gradient descent</h5><ul>
-<li>Hybrid between batch (update after all m records) and stochastic (update after 1 record)</li>
-<li>Upgrade using batch algorithm every b&lt;m training records</li>
-<li>Supports exploitation of vectorization and hence parallelism</li>
-</ul>
-<h4 id="Learning-process-for-supervised-learning"><a href="#Learning-process-for-supervised-learning" class="headerlink" title="Learning process for supervised learning"></a>Learning process for supervised learning</h4><ol>
-<li>Define the model</li>
-<li>Build the cost function</li>
-<li>Optimize the cost function to find the model’s parameters<ul>
-<li>Optimization algorithms: Gradient descent, Stochastic Gradient descent</li>
-<li>Normal equation (in linear and multiple regression)</li>
-</ul>
-</li>
-<li>Evaluation of the model</li>
-</ol>
-<h4 id="Normal-equation"><a href="#Normal-equation" class="headerlink" title="Normal equation"></a>Normal equation</h4><ul>
-<li>Normal equation is analytic solution rather than iterative (use math solution)</li>
-</ul>
-<h5 id="Compare-the-normal-equation-and-gradient-descent-n-features-m-training-records"><a href="#Compare-the-normal-equation-and-gradient-descent-n-features-m-training-records" class="headerlink" title="Compare the normal equation and gradient descent (n features, m training records)"></a>Compare the normal equation and gradient descent (n features, m training records)</h5><ul>
-<li>Gradient descent<ul>
-<li>Need to choose the learning rate</li>
-<li>Iterative</li>
-<li>Works for large n</li>
-<li>Used with many learning algorithms</li>
-</ul>
-</li>
-<li>Normal equation<ul>
-<li>No need to choose  the learning rate</li>
-<li>No iterations required</li>
-<li>Inverting n*n matrix can be slow for large n</li>
-<li>Only works with linear regression</li>
-<li>Can fail to find a solution</li>
-</ul>
-</li>
-</ul>
-<h4 id="Evaluation-of-Model"><a href="#Evaluation-of-Model" class="headerlink" title="Evaluation of Model"></a>Evaluation of Model</h4><ul>
-<li>Mean Square Error (MSE) - an absolute measure, we usually work with the root mean square error</li>
-<li>Residual Standard Error</li>
-<li>R^2 (coefficient of determination)<ul>
-<li>It is a measure of goodness of fit, estimating the proportion of variance explained by the fitted model.  </li>
-<li>It ranges from 0 to 1.</li>
-<li>If R2 = 1 there is a perfect fit. </li>
-<li>If R2 is 0 the model has the same performance as predicting using the overall mean . </li>
-</ul>
-</li>
-</ul>
-
+<h5 id="Gradient-descent-for-linear-regression"><a href="#Gradient-descent-for-linear-regression" class="headerlink" title="Gradient descent for linear regression"></a>Gradient descent for linear regression</h5>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/24/Linear-Regression/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -817,65 +732,14 @@
 </ul>
 <h5 id="重载和重写的区别"><a href="#重载和重写的区别" class="headerlink" title="重载和重写的区别"></a>重载和重写的区别</h5><p>重载：一个类可以有多个同名方法</p>
 <p>重写：子类可以重新写父类的方法，覆盖父类的方法</p>
-<h4 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h4><ul>
-<li>如果子类和父类在同一个包下，那么对于父类的成员修饰符，只要不是私有的private，那么就都可以使用</li>
-<li>如果子类和父类不在同一个包下，子类只能使用父类中protected和public修饰的方法和成员变量</li>
-</ul>
-<h4 id="关键字super"><a href="#关键字super" class="headerlink" title="关键字super"></a>关键字super</h4><ul>
-<li>在Java类中使用super来调用父类中的指定操作。可用于访问父类中定义的属性，调用父类中定义的成员方法，以及在子类构造方法中调用父类的构造器</li>
-<li>尤其当子父类出现同名成员时，可以用super进行区分</li>
-<li>super的追溯不仅限于直接父类，使用super，子类可以调用它之上的所有父类层级</li>
-<li>super和this的用法相像，this代表本类对象的引用，super代表父类的内存空间的标识</li>
-</ul>
-<h5 id="调用父类的构造器"><a href="#调用父类的构造器" class="headerlink" title="调用父类的构造器"></a>调用父类的构造器</h5><ul>
-<li>子类中所有的构造器默认都会访问父类中空参数的构造器</li>
-<li>当父类中没有空参数的构造器时，子类的构造器必须通过this（参数列表）或者super（参数列表）语句指定调用本类或者父类中的相应构造器，且必须放在构造器第一行</li>
-<li>如果子类构造器中既未显式调用父类或本类的构造器，且父类中又没有无参的构造器，则编译出错</li>
-</ul>
-<h4 id="this和super的区别"><a href="#this和super的区别" class="headerlink" title="this和super的区别"></a>this和super的区别</h4><p><img src="https://s1.ax1x.com/2020/04/24/JrFiMd.png" alt="this和super的区别"></p>
-<h4 id="面向对象特征之三：多态性"><a href="#面向对象特征之三：多态性" class="headerlink" title="面向对象特征之三：多态性"></a>面向对象特征之三：多态性</h4><p>多态在Java中的两种体现：</p>
-<ul>
-<li><p>方法的重载和重写</p>
-<p>重载：本类中的同名方法，体现相同的名称方法实现不同的逻辑</p>
-<p>重写：子类对父类方法的覆盖。子类可以使用和父类相同的方法名，覆盖掉父类的逻辑。</p>
-<p>父类的方法，想修改逻辑，但是有别的代码在调用父类的方法，可以考虑用子类继承父类，重写父类的方法。</p>
-</li>
-<li><p>对象的多态性：可以直接应用在抽象类和接口上</p>
-</li>
-</ul>
-<h5 id="编译时类型和运行时类型"><a href="#编译时类型和运行时类型" class="headerlink" title="编译时类型和运行时类型"></a>编译时类型和运行时类型</h5><p>Java引用变量有两个类型：编译时类型和运行时类型。编译时类型由声明该变量时使用的类型决定，运行时类型由实际赋给该变量的对象决定</p>
-<p>若编译时类型和运行时类型不一致，就出现多态 – 对象的多态</p>
-<h5 id="子类和父类的多态性"><a href="#子类和父类的多态性" class="headerlink" title="子类和父类的多态性"></a>子类和父类的多态性</h5><p><img src="https://s1.ax1x.com/2020/04/24/JrwI2T.png" alt="子类和父类的多态"></p>
-<ul>
-<li>一个引用类型变量如果声明为父类的类型，但实际引用的是子类的对象，那么该变量就不能再访问子类中添加的属性和方法（此时的方法是没有被重写的，无法被调用）</li>
-</ul>
-<h5 id="虚拟方法调用-–-必须建立在方法的重写之上"><a href="#虚拟方法调用-–-必须建立在方法的重写之上" class="headerlink" title="虚拟方法调用 – 必须建立在方法的重写之上"></a>虚拟方法调用 – 必须建立在方法的重写之上</h5><p><img src="https://s1.ax1x.com/2020/04/24/Jr0heH.png" alt="虚拟方法调用"></p>
-<ul>
-<li><p>成员方法的多态性，也就是动态绑定，必须得存在于方法的重写之上。（只有子类重写父类的方法，才有可能出现动态绑定）</p>
-</li>
-<li><p>如果子类没有重写父类的方法，那么子类就是直接使用父类的方法。</p>
-<p>如果重写了，子类就使用自己重写之后的方法</p>
-</li>
-</ul>
-<h4 id="instanceof操作符"><a href="#instanceof操作符" class="headerlink" title="instanceof操作符"></a>instanceof操作符</h4><p>x instanceof A：检验x是否为类A的对象，返回值为boolean型</p>
-<p>要求x所属的类与类A必须是子类和父类的关系，否则编译错误</p>
-<p>如果x属于类A的子类B，返回的值也为true</p>
-<p>就是检验某个对象是不是类A的子类</p>
-<h4 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h4><ul>
-<li><p>Object类是所有Java类的根父类（基类）</p>
-</li>
-<li><p>如果在类的声明中未使用extends关键字指明其父类，则默认父类为Object类</p>
-</li>
-<li><p>多层继承，处于最高层的父类一定是Object类</p>
-</li>
-</ul>
-<h5 id="Object类中的主要方法"><a href="#Object类中的主要方法" class="headerlink" title="Object类中的主要方法"></a>Object类中的主要方法</h5><ul>
-<li>public Object() – 构造函数</li>
-<li>public boolean equals(Object obj) – 判断两个对象是否一样</li>
-<li>public int hashCode() – 取得hash码</li>
-<li>public String toString() – 对象打印时调用（打印当前对象所在的地址）</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/24/Day7/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -946,6 +810,14 @@
 <li>同一个类中的方法可以直接互相调用，不用定义新的对象</li>
 </ul>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/24/Java%E5%AD%A6%E4%B9%A0%E6%98%93%E9%94%99%E7%82%B9/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1041,41 +913,14 @@
 <li>使用者只能通过实现制定好的方法来访问数据，可以方便地加入空值逻辑，限制对属性的不合理操作</li>
 <li>便于修改，增强代码的可维护性</li>
 </ol>
-<h4 id="访问权限修饰符"><a href="#访问权限修饰符" class="headerlink" title="访问权限修饰符"></a>访问权限修饰符</h4><p>在同一个java文件中可以写多个的class，但是只有一个public的，其他的class只能是却生的</p>
-<p><img src="https://s1.ax1x.com/2020/04/24/J0tWcR.png" alt="访问权限修饰符"></p>
-<h4 id="类的构造方法"><a href="#类的构造方法" class="headerlink" title="类的构造方法"></a>类的构造方法</h4><ul>
-<li>构造器分为隐式无参构造器（系统默认提供）和显式定义一个或多个构造器（无参、有参）</li>
-<li>Java语言中，每个类都至少有一个构造器</li>
-<li>默认构造器的修饰符与所属类的修饰符一致</li>
-<li>一旦显式定义了构造器，则系统不再提供默认构造器</li>
-<li>一个类可以创建多个重载的构造器</li>
-<li>父类的构造器不可被子类继承</li>
-<li>New 对象实际上就是调用类的构造方法</li>
-</ul>
-<h4 id="构造器重载"><a href="#构造器重载" class="headerlink" title="构造器重载"></a>构造器重载</h4><ul>
-<li>构造器也叫构造方法，既然是方法，就可以重载</li>
-<li>构造器重载，参数列表必须不同</li>
-<li>构造器的重载，就是为了灵活创建出不同需要的对象。重载的多个构造方法实际上就是提供了多个初始化new对象的模板</li>
-</ul>
-<h4 id="关键字this"><a href="#关键字this" class="headerlink" title="关键字this"></a>关键字this</h4><ul>
-<li><p>this在方法内部使用，即这个方法所属对象的引用；它在构造器内部使用，表示该构造器正在初始化的对象。</p>
-</li>
-<li><p>什么时候使用this？当在方法中需要用到调用该方法的对象时，就用this</p>
-</li>
-<li><p>当形参与成员变量重名时，如果在方法内部需要使用成员变量，必须添加this来表明该变量是类成员</p>
-</li>
-<li><p>在任意方法内，如果使用当前类的成员变量或成员方法，可以在其前面添加this，增强程序的阅读性</p>
-</li>
-<li><p>this可以作为一个类中，构造器相互调用的特殊格式</p>
-<p>使用this（）必须放在构造器的首行</p>
-<p>使用this调用本类中其他的构造器，保证至少有一个构造器是不用this的（实际上就是构造器不能自己调用自己）</p>
-</li>
-</ul>
-<h4 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h4><ul>
-<li>JavaBean是一种Java语言写成的可重用组件</li>
-<li>不用手动生成，可以直接右键generate getter and setter</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/23/Day6/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1166,21 +1011,14 @@
 <li>同一个类中所有的方法可以直接互相调用，不用new去实例化</li>
 </ul>
 <h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p><img src="https://s1.ax1x.com/2020/04/24/J0mTzD.png" alt="成员变量的初始值"></p>
-<ul>
-<li>我们也可以不定义对象的句柄，而直接调用这个对象的方法，这个对象叫匿名对象</li>
-<li>如果对一个对象只需要一次方法调用，那么就可以使用匿名对象。我们经常将一个匿名对象作为实参传给方法调用。</li>
-</ul>
-<h4 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h4><ul>
-<li>在一个类中的访问机制：类中的方法可以直接访问类中的成员变量。（例外：static方法访问非static的成员变量，编译不通过）</li>
-<li>在不同类中的访问机制，县创建要访问类的对象，再用对象访问类中定义的成员。</li>
-</ul>
-<h4 id="方法的重载"><a href="#方法的重载" class="headerlink" title="方法的重载"></a>方法的重载</h4><ul>
-<li>在同一个类中，允许存在一个以上的同名方法，只要它们的参数个数或者参数类型不同即可。</li>
-<li>参数顺序不同也可以构成重载</li>
-<li>重载与返回类型及参数名称无关，只与参数个数个参数类型有关</li>
-<li>重载的前提是方法名相同</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/23/Day5/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1279,6 +1117,14 @@
 <li>Int[] x,y[] : 特殊写法，x是一维数组，y是二维数组</li>
 </ul>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/23/Day4/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1370,12 +1216,15 @@
 <ul>
 <li>()在所有运算符里优先级最高</li>
 </ul>
-<h4 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h4><ul>
-<li>顺序结构，if-else，switch</li>
-<li>If-else可以嵌套</li>
-<li>switch语句规则：switch(表达式)中表达式的返回值必须是下述几种类型之一：bytes,     short, char, int, 枚举, String。case子句中的值必须是常量，且所有case子句中的值应是不同的。break语句用来在执行完一个case分支后使程序跳出switch语句块，如果没有break，程序会顺序执行到程序结尾。break是必须写的，不然程序就从case匹配到的位置一直往下执行到结尾。</li>
-</ul>
-
+<h4 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/23/Day3/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
