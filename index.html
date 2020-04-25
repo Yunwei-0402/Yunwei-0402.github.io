@@ -155,6 +155,170 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/Day8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yunwei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Yunwei's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/25/Day8/" class="post-title-link" itemprop="url">Day8 - 对象类型转换，Wrapper，static，单例设计模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-25 14:24:46 / Modified: 14:20:13" itemprop="dateCreated datePublished" datetime="2020-04-25T14:24:46+01:00">2020-04-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-SE/" itemprop="url" rel="index"><span itemprop="name">Java SE</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="对象类型转换-Casting"><a href="#对象类型转换-Casting" class="headerlink" title="对象类型转换(Casting)"></a>对象类型转换(Casting)</h4><ul>
+<li><p>基本数据类型的Casting：</p>
+<ul>
+<li>自动类型转换：小的数据类型可以自动转换成大的数据类型</li>
+<li>强制类型转换：可以把大的数据类型强制转换成小的数据类型</li>
+</ul>
+</li>
+<li><p>对Java对象的强制类型转换称为造型</p>
+<ul>
+<li><p>从子类到父类的类型转换可以自动进行</p>
+</li>
+<li><p>从父类到子类的类型转换必须通过造型（强制类型转换）实现</p>
+<p>使用instanceof进行判断</p>
+</li>
+<li><p>无继承关系的引用类型间的转换是非法的</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="与equals"><a href="#与equals" class="headerlink" title="==与equals"></a>==与equals</h4><h5 id=""><a href="#" class="headerlink" title="=="></a>==</h5><ul>
+<li><p>基本类型比较：只要两个变量的值相等，即为true</p>
+</li>
+<li><p>引用类型比较（是否指向同一个对象）：只有指向同一个对象时，==才返回true</p>
+<p>用“==”进行比较时，符号两边的数据类型必须兼容（可自动转换的基本数据类型除外），否则编译出错</p>
+</li>
+</ul>
+<h5 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h5><ul>
+<li><p>所有类都继承了Object，也就获得了equals()方法，还可以重写</p>
+</li>
+<li><p>只能比较引用类型，其作用与“==”相同，比较是否指向同一个对象</p>
+</li>
+<li><p>特例: 当用equals()方法进行比较时，对类File, String, Date及包装类（Wrapper Class）来说，是比较类型及内容而不考虑引用的是否是同一个对象</p>
+<p>原因：在这些类中重写了Object类的equals()方法</p>
+</li>
+</ul>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>对于对象来说</p>
+<ul>
+<li>特殊的类如String, File, Date， 使用==比较的是对象的地址，equals比较的是内容</li>
+<li>除了特殊的类之外的其他普通的类的对象，==和equals比较的都是对象（对象的内存地址）</li>
+<li>如果你想改变一个类的equals，不想用equals比较对象的内存地址，就需要重写equals方法</li>
+</ul>
+<h4 id="String对象的创建"><a href="#String对象的创建" class="headerlink" title="String对象的创建"></a>String对象的创建</h4><p><img src="https://s1.ax1x.com/2020/04/25/JrxU54.png" alt="String对象的创建"></p>
+<h5 id="toString方法"><a href="#toString方法" class="headerlink" title="toString方法"></a>toString方法</h5><p>父类Object的toString方法输出当前对象的内存地址，如果想要输出类的其他信息，重写toString方法</p>
+<h4 id="包装类（Wrapper）"><a href="#包装类（Wrapper）" class="headerlink" title="包装类（Wrapper）"></a>包装类（Wrapper）</h4><p>针对八种基本数据类型定义相应的引用类型–包装类（封装类）</p>
+<p>有了类的特点就可以调用类中的方法</p>
+<p><img src="https://s1.ax1x.com/2020/04/25/JsSyND.png" alt="包装类"></p>
+<ul>
+<li><p>基本数据类型包装成包装类 – 装箱 </p>
+<p>Integer i = new Integer(“123”);</p>
+</li>
+<li><p>获得包装类对象中包装的基本类型变量 – 拆箱</p>
+<p>调用包装类的.xxxValue()方法</p>
+</li>
+<li><p>JDK1.5之后支持自动拆箱和自动装箱</p>
+</li>
+</ul>
+<h5 id="字符串和基本数据类型相互转换"><a href="#字符串和基本数据类型相互转换" class="headerlink" title="字符串和基本数据类型相互转换"></a>字符串和基本数据类型相互转换</h5><ul>
+<li><p>字符串转其他数据类型：‘parse’</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i6 = Integer.parseInt(<span class="string">"1234567"</span>);</span><br><span class="line"><span class="keyword">float</span> f = Float.parseFloat(<span class="string">"0.45"</span>);</span><br><span class="line"><span class="keyword">boolean</span> b = Boolean.parseBoolean(<span class="string">"true"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他数据类型转字符串：’valueof’</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str1 = String.valueOf(<span class="number">1</span>);String str2 = String.valueOf(<span class="number">0.54</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="基本数据类型的包装类的作用"><a href="#基本数据类型的包装类的作用" class="headerlink" title="基本数据类型的包装类的作用"></a>基本数据类型的包装类的作用</h5><p>为了完成基本数据类型与字符串之间的转换</p>
+<h4 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h4><p>如果想让一个类的所有实例共享数据，就用类变量</p>
+<p>类方法和类变量的构造：</p>
+<p><img src="https://s1.ax1x.com/2020/04/25/Js9fTf.png" alt="类方法和类变量"></p>
+<p>类变量，这种可以被所有的实例化对象共享的属性，使用起来要慎重，因为一改所有实例化对象都会改变。</p>
+<p>类方法，在工具类中用的最多</p>
+<ul>
+<li>因为不需要实例化就可以访问static方法，因此static方法内部不能有this，也不能有super</li>
+</ul>
+<h4 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h4><p>设计模式就是在实际编程过程中，总结出来的一些解决问题的套路。</p>
+<p>单例 - 只有一个实例（只有一个对象），在整个软件系统运行过程中，这个类只被实例化一次，以后无论在哪，都只调用这一个实例。</p>
+<p>适用范围：实例化对象的创建需要消耗大量的时间和资源（假设构造中要执行1000行代码，要占用很大的资源，耗时很长）– 这种情况就适合适用单例模式，只new一次对象，以后一直使用这个对象</p>
+<h5 id="单例设计模式-饿汉式"><a href="#单例设计模式-饿汉式" class="headerlink" title="单例设计模式 - 饿汉式"></a>单例设计模式 - 饿汉式</h5><ul>
+<li>定义好私有的构造函数</li>
+<li>定义好私有的类变量</li>
+<li>定义好公有的getInstance()方法</li>
+<li>在调用时将会一直调用已经生成的类变量</li>
+</ul>
+<h5 id="单例设计模式-懒汉式-（存在线程安全的问题）"><a href="#单例设计模式-懒汉式-（存在线程安全的问题）" class="headerlink" title="单例设计模式 - 懒汉式 （存在线程安全的问题）"></a>单例设计模式 - 懒汉式 （存在线程安全的问题）</h5><ul>
+<li>最开始，对象是null，直到有第一个人调用，才new一个对象，之后所有调用都用这个对象</li>
+<li>定义好私有的构造函数</li>
+<li>定义好私有的类变量并初始化为null</li>
+<li>定义好公有的getInstance()方法，在里面加一个判断</li>
+</ul>
+<h5 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h5><p>单例模式，软件的运行有且仅有一个实例化对象（只会new一次）</p>
+<p>懒汉和饿汉式的区别，就是什么时候New这个对象</p>
+<ul>
+<li><p>懒汉式是在第一次有人调用getInstance方法时new对象，以后再有人调用就返回第一次new好的对象</p>
+</li>
+<li><p>饿汉式是在类加载之后，还没有人调用的时候，就先New好一个对象，以后不论谁来调用，都是返回之前new好的那个对象</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/Feature-Extraction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -588,9 +752,24 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-24 13:24:46 / Modified: 16:40:41" itemprop="dateCreated datePublished" datetime="2020-04-24T13:24:46+01:00">2020-04-24</time>
+              <time title="Created: 2020-04-24 13:24:46" itemprop="dateCreated datePublished" datetime="2020-04-24T13:24:46+01:00">2020-04-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-25 14:20:25" itemprop="dateModified" datetime="2020-04-25T14:20:25+01:00">2020-04-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-SE/" itemprop="url" rel="index"><span itemprop="name">Java SE</span></a>
+                </span>
             </span>
 
           
@@ -1203,142 +1382,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/23/Day2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yunwei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to Yunwei's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/23/Day2/" class="post-title-link" itemprop="url">Day2 - 命名规范，变量，运算符，数据类型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-04-23 18:20:52" itemprop="dateCreated datePublished" datetime="2020-04-23T18:20:52+01:00">2020-04-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-24 02:09:11" itemprop="dateModified" datetime="2020-04-24T02:09:11+01:00">2020-04-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java-SE/" itemprop="url" rel="index"><span itemprop="name">Java SE</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><ul>
-<li>在java语言编程的时候，在关键的地方使用的单词，体现关键的地方的含义</li>
-<li>关键字所有字母都小写</li>
-</ul>
-<h4 id="保留字"><a href="#保留字" class="headerlink" title="保留字"></a>保留字</h4><ul>
-<li>可能在以后被用来作为关键字的单词，java已经把这些单词预定了，这些单词尽量就不要在编程中随意使用</li>
-</ul>
-<h4 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h4><ul>
-<li>包名：多单词组成时所有字母都小写：xxxyyyzzz</li>
-<li>类名、接口名：多单词组成时，所有单词的首字母大写：XxxYyyZzz</li>
-<li>变量名、方法名：多单词组成时，第一个单词首字母小写，第二个单词开始每个单词首字母大写：xxxYyyZzz</li>
-<li>常量名：所有字母都大写，多单词时每个单词用下划线链接：XXX_YYY_ZZZ</li>
-</ul>
-<h4 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h4><ul>
-<li>数据类型 变量名 = 变量的值，例如：int i =     1</li>
-<li>变量时放在内存中的，变量必须先申明再使用</li>
-<li>变量的值是可以不断变化的</li>
-<li>注意：声明变量过程中的=，不是数学意义上的=，在java编程中代表赋值（赋予变量值）</li>
-<li>变量的作用域：一对{}中有效</li>
-<li>Int m; 这样写不对，因为没有给变量初始化（第一次给变量赋值）</li>
-</ul>
-<h4 id="变量的分类"><a href="#变量的分类" class="headerlink" title="变量的分类"></a>变量的分类</h4><ul>
-<li>在Java中，数据类型分为基本数据类型和引用数据类型，其中基本数据类型有8种，除了这8中之外的所有数据类型都是引用数据类型</li>
-<li>整数类型：byte,     short, int, long。byte的范围-128到127之间，声明byte类型变量的时候赋值不能超过这个范围。</li>
-<li>1 byte=8bit</li>
-<li>byte占用1个字节，short占用2个字节，int占用4个字节，long占用8个字节</li>
-<li>long类型赋值：long I =     3l 这个类型变量赋值时要在数值后面加一个l</li>
-<li>浮点类型：float,     double</li>
-<li>Float 类型变量赋值，值得后面加f</li>
-<li>字符类型：char     char c1 =’a’ </li>
-<li>布尔类型：只能用true和false</li>
-<li>8 种基本数据类型：byte,int,short,long,float,double,char,bool</li>
-</ul>
-<h4 id="引用数据类型String"><a href="#引用数据类型String" class="headerlink" title="引用数据类型String"></a>引用数据类型String</h4><ul>
-<li><p>字符串就是由0到多个字母数字符号共同组成的一个串，这个串要用英文的双引号括起来</p>
-<p>String str = “hello world”</p>
-</li>
-<li><p>引用类型，都可以用null作为值，就是说可以在初始化时赋值为null</p>
-</li>
-<li><p>Int i0 =     1; int i1 =1 这种会在内存中存储两个1的值</p>
-<p>String s0 = “hello”; String s1 = “hello” 这种不会在内存中存在两个“hello”，只存在一个“hello”。假设“hello”的内存地址xxxx，声明s0变量时给s0赋值”hello”实际上让s0变量引用”hello”的内存地址xxxx</p>
-</li>
-</ul>
-<h4 id="基本数据类型转换"><a href="#基本数据类型转换" class="headerlink" title="基本数据类型转换"></a>基本数据类型转换</h4><ul>
-<li><p>容量小的类型可以自动转换为容量大的数据类型，但是反之不可以。变量混合运算时，系统会自动转化为容量最大的数据类型。</p>
-</li>
-<li><p>Byte,short和char不能相互转化</p>
-</li>
-<li><p>任何数据类型与String相加（+）时，会自动转化成String类型</p>
-<p><img src="https://s1.ax1x.com/2020/04/24/J0e03D.png" alt="image-20200423182928088"></p>
-</li>
-<li><p>强制类型转换：前面加（）布尔类型不能转化成其他类型</p>
-</li>
-</ul>
-<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><ul>
-<li>当整数除以整数时，会把结果的小数部分舍弃，只保留整数部分</li>
-<li>%取模（取余数）</li>
-<li>++和–分别是加一和减一的运算，++或者–符号在变量之前，先对变量进行运算，再取变量的值；如果++和–在变量之后，先取变量的值，再对变量进行运算</li>
-<li>字符串的加号是字符串的拼接</li>
-<li>char类型数据是可以做数学运算的，在做数学运算时把字符转化为ASCII码进行计算</li>
-<li>字符串与其他数据类型相加时，实际上是在做字符串的拼接</li>
-<li>在使用扩展运算符时，变量在参与运算时会把结果自动强制转换为当前变量的类型</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1408,7 +1451,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

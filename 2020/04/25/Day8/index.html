@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="对象类型转换(Casting) 基本数据类型的Casting：  自动类型转换：小的数据类型可以自动转换成大的数据类型 强制类型转换：可以把大的数据类型强制转换成小的数据类型   对Java对象的强制类型转换称为造型  从子类到父类的类型转换可以自动进行  从父类到子类的类型转换必须通过造型（强制类型转换）实现 使用instanceof进行判断  无继承关系的引用类型间的转换是非法的     &#x3D;&#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day8 - 对象类型转换，Wrapper，static，单例设计模式">
+<meta property="og:url" content="http://yoursite.com/2020/04/25/Day8/index.html">
+<meta property="og:site_name" content="Welcome to Yunwei&#39;s blog">
+<meta property="og:description" content="对象类型转换(Casting) 基本数据类型的Casting：  自动类型转换：小的数据类型可以自动转换成大的数据类型 强制类型转换：可以把大的数据类型强制转换成小的数据类型   对Java对象的强制类型转换称为造型  从子类到父类的类型转换可以自动进行  从父类到子类的类型转换必须通过造型（强制类型转换）实现 使用instanceof进行判断  无继承关系的引用类型间的转换是非法的     &#x3D;&#x3D;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/25/JrxU54.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/25/JsSyND.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/25/Js9fTf.png">
+<meta property="article:published_time" content="2020-04-25T13:24:46.000Z">
+<meta property="article:modified_time" content="2020-04-25T13:20:13.731Z">
+<meta property="article:author" content="Yunwei">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/04/25/JrxU54.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/25/Day8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Day8 - 对象类型转换，Wrapper，static，单例设计模式 | Welcome to Yunwei's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to Yunwei's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/Day8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yunwei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Yunwei's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day8 - 对象类型转换，Wrapper，static，单例设计模式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-25 14:24:46 / Modified: 14:20:13" itemprop="dateCreated datePublished" datetime="2020-04-25T14:24:46+01:00">2020-04-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-SE/" itemprop="url" rel="index"><span itemprop="name">Java SE</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="对象类型转换-Casting"><a href="#对象类型转换-Casting" class="headerlink" title="对象类型转换(Casting)"></a>对象类型转换(Casting)</h4><ul>
+<li><p>基本数据类型的Casting：</p>
+<ul>
+<li>自动类型转换：小的数据类型可以自动转换成大的数据类型</li>
+<li>强制类型转换：可以把大的数据类型强制转换成小的数据类型</li>
+</ul>
+</li>
+<li><p>对Java对象的强制类型转换称为造型</p>
+<ul>
+<li><p>从子类到父类的类型转换可以自动进行</p>
+</li>
+<li><p>从父类到子类的类型转换必须通过造型（强制类型转换）实现</p>
+<p>使用instanceof进行判断</p>
+</li>
+<li><p>无继承关系的引用类型间的转换是非法的</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="与equals"><a href="#与equals" class="headerlink" title="==与equals"></a>==与equals</h4><h5 id=""><a href="#" class="headerlink" title="=="></a>==</h5><ul>
+<li><p>基本类型比较：只要两个变量的值相等，即为true</p>
+</li>
+<li><p>引用类型比较（是否指向同一个对象）：只有指向同一个对象时，==才返回true</p>
+<p>用“==”进行比较时，符号两边的数据类型必须兼容（可自动转换的基本数据类型除外），否则编译出错</p>
+</li>
+</ul>
+<h5 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h5><ul>
+<li><p>所有类都继承了Object，也就获得了equals()方法，还可以重写</p>
+</li>
+<li><p>只能比较引用类型，其作用与“==”相同，比较是否指向同一个对象</p>
+</li>
+<li><p>特例: 当用equals()方法进行比较时，对类File, String, Date及包装类（Wrapper Class）来说，是比较类型及内容而不考虑引用的是否是同一个对象</p>
+<p>原因：在这些类中重写了Object类的equals()方法</p>
+</li>
+</ul>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>对于对象来说</p>
+<ul>
+<li>特殊的类如String, File, Date， 使用==比较的是对象的地址，equals比较的是内容</li>
+<li>除了特殊的类之外的其他普通的类的对象，==和equals比较的都是对象（对象的内存地址）</li>
+<li>如果你想改变一个类的equals，不想用equals比较对象的内存地址，就需要重写equals方法</li>
+</ul>
+<h4 id="String对象的创建"><a href="#String对象的创建" class="headerlink" title="String对象的创建"></a>String对象的创建</h4><p><img src="https://s1.ax1x.com/2020/04/25/JrxU54.png" alt="String对象的创建"></p>
+<h5 id="toString方法"><a href="#toString方法" class="headerlink" title="toString方法"></a>toString方法</h5><p>父类Object的toString方法输出当前对象的内存地址，如果想要输出类的其他信息，重写toString方法</p>
+<h4 id="包装类（Wrapper）"><a href="#包装类（Wrapper）" class="headerlink" title="包装类（Wrapper）"></a>包装类（Wrapper）</h4><p>针对八种基本数据类型定义相应的引用类型–包装类（封装类）</p>
+<p>有了类的特点就可以调用类中的方法</p>
+<p><img src="https://s1.ax1x.com/2020/04/25/JsSyND.png" alt="包装类"></p>
+<ul>
+<li><p>基本数据类型包装成包装类 – 装箱 </p>
+<p>Integer i = new Integer(“123”);</p>
+</li>
+<li><p>获得包装类对象中包装的基本类型变量 – 拆箱</p>
+<p>调用包装类的.xxxValue()方法</p>
+</li>
+<li><p>JDK1.5之后支持自动拆箱和自动装箱</p>
+</li>
+</ul>
+<h5 id="字符串和基本数据类型相互转换"><a href="#字符串和基本数据类型相互转换" class="headerlink" title="字符串和基本数据类型相互转换"></a>字符串和基本数据类型相互转换</h5><ul>
+<li><p>字符串转其他数据类型：‘parse’</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i6 = Integer.parseInt(<span class="string">"1234567"</span>);</span><br><span class="line"><span class="keyword">float</span> f = Float.parseFloat(<span class="string">"0.45"</span>);</span><br><span class="line"><span class="keyword">boolean</span> b = Boolean.parseBoolean(<span class="string">"true"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他数据类型转字符串：’valueof’</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str1 = String.valueOf(<span class="number">1</span>);String str2 = String.valueOf(<span class="number">0.54</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="基本数据类型的包装类的作用"><a href="#基本数据类型的包装类的作用" class="headerlink" title="基本数据类型的包装类的作用"></a>基本数据类型的包装类的作用</h5><p>为了完成基本数据类型与字符串之间的转换</p>
+<h4 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h4><p>如果想让一个类的所有实例共享数据，就用类变量</p>
+<p>类方法和类变量的构造：</p>
+<p><img src="https://s1.ax1x.com/2020/04/25/Js9fTf.png" alt="类方法和类变量"></p>
+<p>类变量，这种可以被所有的实例化对象共享的属性，使用起来要慎重，因为一改所有实例化对象都会改变。</p>
+<p>类方法，在工具类中用的最多</p>
+<ul>
+<li>因为不需要实例化就可以访问static方法，因此static方法内部不能有this，也不能有super</li>
+</ul>
+<h4 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h4><p>设计模式就是在实际编程过程中，总结出来的一些解决问题的套路。</p>
+<p>单例 - 只有一个实例（只有一个对象），在整个软件系统运行过程中，这个类只被实例化一次，以后无论在哪，都只调用这一个实例。</p>
+<p>适用范围：实例化对象的创建需要消耗大量的时间和资源（假设构造中要执行1000行代码，要占用很大的资源，耗时很长）– 这种情况就适合适用单例模式，只new一次对象，以后一直使用这个对象</p>
+<h5 id="单例设计模式-饿汉式"><a href="#单例设计模式-饿汉式" class="headerlink" title="单例设计模式 - 饿汉式"></a>单例设计模式 - 饿汉式</h5><ul>
+<li>定义好私有的构造函数</li>
+<li>定义好私有的类变量</li>
+<li>定义好公有的getInstance()方法</li>
+<li>在调用时将会一直调用已经生成的类变量</li>
+</ul>
+<h5 id="单例设计模式-懒汉式-（存在线程安全的问题）"><a href="#单例设计模式-懒汉式-（存在线程安全的问题）" class="headerlink" title="单例设计模式 - 懒汉式 （存在线程安全的问题）"></a>单例设计模式 - 懒汉式 （存在线程安全的问题）</h5><ul>
+<li>最开始，对象是null，直到有第一个人调用，才new一个对象，之后所有调用都用这个对象</li>
+<li>定义好私有的构造函数</li>
+<li>定义好私有的类变量并初始化为null</li>
+<li>定义好公有的getInstance()方法，在里面加一个判断</li>
+</ul>
+<h5 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h5><p>单例模式，软件的运行有且仅有一个实例化对象（只会new一次）</p>
+<p>懒汉和饿汉式的区别，就是什么时候New这个对象</p>
+<ul>
+<li><p>懒汉式是在第一次有人调用getInstance方法时new对象，以后再有人调用就返回第一次new好的对象</p>
+</li>
+<li><p>饿汉式是在类加载之后，还没有人调用的时候，就先New好一个对象，以后不论谁来调用，都是返回之前new好的那个对象</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/24/Feature-Extraction/" rel="prev" title="Feature Extraction">
+      <i class="fa fa-chevron-left"></i> Feature Extraction
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象类型转换-Casting"><span class="nav-number">1.</span> <span class="nav-text">对象类型转换(Casting)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与equals"><span class="nav-number">2.</span> <span class="nav-text">&#x3D;&#x3D;与equals</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#"><span class="nav-number">2.1.</span> <span class="nav-text">&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#equals"><span class="nav-number">2.2.</span> <span class="nav-text">equals</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总结"><span class="nav-number">2.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String对象的创建"><span class="nav-number">3.</span> <span class="nav-text">String对象的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#toString方法"><span class="nav-number">3.1.</span> <span class="nav-text">toString方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包装类（Wrapper）"><span class="nav-number">4.</span> <span class="nav-text">包装类（Wrapper）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串和基本数据类型相互转换"><span class="nav-number">4.1.</span> <span class="nav-text">字符串和基本数据类型相互转换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基本数据类型的包装类的作用"><span class="nav-number">4.2.</span> <span class="nav-text">基本数据类型的包装类的作用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#static关键字"><span class="nav-number">5.</span> <span class="nav-text">static关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单例设计模式"><span class="nav-number">6.</span> <span class="nav-text">单例设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单例设计模式-饿汉式"><span class="nav-number">6.1.</span> <span class="nav-text">单例设计模式 - 饿汉式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单例设计模式-懒汉式-（存在线程安全的问题）"><span class="nav-number">6.2.</span> <span class="nav-text">单例设计模式 - 懒汉式 （存在线程安全的问题）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总结-1"><span class="nav-number">6.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yunwei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yunwei</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
