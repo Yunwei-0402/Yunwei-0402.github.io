@@ -904,4 +904,54 @@
         <tag>Clustering</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Logistic Regression</title>
+    <url>/2020/04/25/Logistic-Regression/</url>
+    <content><![CDATA[<h4 id="Learning-process"><a href="#Learning-process" class="headerlink" title="Learning process"></a>Learning process</h4><ul>
+<li>Define model </li>
+<li>Build the cost function </li>
+<li>Optimize the cost function to find the model’s parameters <ul>
+<li>Optimization algorithms • <ul>
+<li>Gradient descent</li>
+<li>Stochastic Gradient descent </li>
+<li>Mini-batch Stochastic Gradient descent</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Logistic-regression-limitations"><a href="#Logistic-regression-limitations" class="headerlink" title="Logistic regression limitations"></a>Logistic regression limitations</h5><ul>
+<li><p>What if our data is not linearly separable? </p>
+<p>Possible solution: fit with a high order polynomial </p>
+<p>This is usually a bad idea, as the model may overfit the training data and therefore will be unable to generalize to new data. </p>
+</li>
+</ul>
+<h5 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h5><ul>
+<li><p>It is a parametrical model where we make assumptions on the underlying distribution of the data and build the cost function in terms of the maximum likelihood of the training set.</p>
+</li>
+<li><p>Features should be normalized before the learning process.</p>
+</li>
+<li><p>Linear models are fast to use for prediction. </p>
+</li>
+<li><p>Returns a probability </p>
+</li>
+<li><p>Bad performance in problems where observations cannot be linearly separated. </p>
+<p>Example: XOR </p>
+</li>
+<li><p>Can use logistic regression with polynomial terms. </p>
+<ul>
+<li>If we include all the quadratic terms we have O(n2) features. </li>
+<li>If we include all the cubic terms we have O(n3) features. </li>
+<li>The algorithm will have high variance and this may lead to overfitting.  </li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Machine learning</category>
+      </categories>
+      <tags>
+        <tag>Logistic Regression</tag>
+      </tags>
+  </entry>
 </search>
