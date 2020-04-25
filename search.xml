@@ -708,6 +708,7 @@
 </li>
 <li><p>特例: 当用equals()方法进行比较时，对类File, String, Date及包装类（Wrapper Class）来说，是比较类型及内容而不考虑引用的是否是同一个对象</p>
 <p>原因：在这些类中重写了Object类的equals()方法</p>
+<p>&lt; !–more–&gt; </p>
 </li>
 </ul>
 <h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>对于对象来说</p>
@@ -772,8 +773,6 @@
 <li><p>饿汉式是在类加载之后，还没有人调用的时候，就先New好一个对象，以后不论谁来调用，都是返回之前new好的那个对象</p>
 </li>
 </ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--more--&gt;</span></span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <categories>
         <category>Java SE</category>
