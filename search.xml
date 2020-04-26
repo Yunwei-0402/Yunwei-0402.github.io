@@ -1,6 +1,378 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Day1 - DOS, JVM, JRE, Garbage Collection</title>
+    <url>/2020/04/23/Day1/</url>
+    <content><![CDATA[<h4 id="常用DOS命令"><a href="#常用DOS命令" class="headerlink" title="常用DOS命令:"></a>常用DOS命令:</h4><ul>
+<li><p>dir：查看文件夹</p>
+</li>
+<li><p>md：创建文件夹</p>
+</li>
+<li><p>rd：删除文件夹</p>
+</li>
+<li><p>cd: 打开文件夹</p>
+</li>
+<li><p>cd .. : 返回上一级</p>
+</li>
+<li><p>cd: 返回根目录</p>
+</li>
+<li><p>del: 删除文件</p>
+</li>
+</ul>
+<h4 id="面向过程与面向对象"><a href="#面向过程与面向对象" class="headerlink" title="面向过程与面向对象"></a>面向过程与面向对象</h4><ul>
+<li>面向过程：对于每一个过程直接用代码实现</li>
+<li>面向对象：定义一个类，可以对不同的对象进行实例化。能够更好的在抽象的层面来分析问题，同时更好的复用之前的代码，这些是面向过程很难实现的。</li>
+</ul>
+<h4 id="Java特性"><a href="#Java特性" class="headerlink" title="Java特性"></a>Java特性</h4><ul>
+<li>解释型：先编译，再解释</li>
+<li>支持多线程</li>
+</ul>
+<h4 id="Java两种核心机制"><a href="#Java两种核心机制" class="headerlink" title="Java两种核心机制"></a>Java两种核心机制</h4><ul>
+<li><p>JVM（Java虚拟机）</p>
+<p>JVM是一个虚拟的计算机，具有指令集并使用不同的存储区域。对于不同的平台，有不同的虚拟机。JVM屏蔽了底层运行平台的差别，实现了‘一次编译，到处运行’。</p>
+</li>
+<li><p>垃圾收集机制（Garbage     Collection）GC</p>
+<p>C，C++由程序员手动编写代码回收内存空间（优点：能够在内存不使用时快速回收，准确，高效；缺点：容易失误出现Bug,例如忘记编写回收内存的代码，内存一直不回收）</p>
+<p>Java，垃圾回收是自动的，开了一个系统级线程自动去检测哪些内存不用了然后回收掉（优点：自动，不会出现忘记回收；缺点：回收不及时）</p>
+<p>一般观点：宁可回收不及时，但是一定要回收，使用自动的垃圾回收更合适</p>
+</li>
+</ul>
+<h4 id="什么是JDK-JRE"><a href="#什么是JDK-JRE" class="headerlink" title="什么是JDK,JRE"></a>什么是JDK,JRE</h4><ul>
+<li>JDK（Java     Development Kit Java开发工具包）提供给开发人员使用，包含了java的开发工具，也包括了JRE</li>
+<li>JRE（Java     Runtime Environment Java运行环境）包括Java虚拟机和Java程序所需的核心类库等。如果想要运行一个开发好的Java程序，计算机中只需安装JRE即可。</li>
+<li>JDK包含JRE，JRE包含JVM</li>
+</ul>
+<h4 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h4><ul>
+<li>步骤：</li>
+<li>将Java代码编写到扩展名为.java的文件中</li>
+<li>通过Javac命令对该文件进行编译</li>
+<li>通过java命令对生成的class文件进行运行</li>
+</ul>
+<h4 id="Hello-world小结"><a href="#Hello-world小结" class="headerlink" title="Hello world小结"></a>Hello world小结</h4><ul>
+<li>Java源文件以’java’为扩展名，源文件的基本组成部分是类（class）</li>
+<li>Java应用程序的执行入口是main()方法。它有固定的书写格式：public static void main(String[] args){…}</li>
+</ul>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><ul>
+<li>单行注释 //</li>
+<li>多行注释 /**/</li>
+<li>文档注释（java特有）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java SE</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Classification</title>
+    <url>/2020/04/24/Classification/</url>
+    <content><![CDATA[<h4 id="K-Nearest-Neighbours"><a href="#K-Nearest-Neighbours" class="headerlink" title="K-Nearest Neighbours"></a>K-Nearest Neighbours</h4><img src="https://s1.ax1x.com/2020/04/25/JrXdPA.png" alt="K-Nearest neighbours" style="zoom: 40%;" />
+
+<h5 id="Similarity"><a href="#Similarity" class="headerlink" title="Similarity"></a>Similarity</h5><ul>
+<li><p>Euclidean distance: heavily biased towards big number - we need to normalize data first</p>
+<p>We also need to avoid highly correlated features as these give extra weight to that characteristic</p>
+</li>
+<li><p>Jaccard Similarity: Can be used to measure the similarity between sets</p>
+</li>
+<li><p>Cosine similarity: Measure of angle between vectors</p>
+<p>Used in text analysis - can be used to classify documents, tweets</p>
+</li>
+<li><p>Mahalanobis Distance</p>
+</li>
+<li><p>Hamming Distance</p>
+</li>
+</ul>
+<h5 id="Algorithm-for-choosing-K"><a href="#Algorithm-for-choosing-K" class="headerlink" title="Algorithm for choosing K"></a>Algorithm for choosing K</h5><ul>
+<li><p>Choose similarity or distance metric  </p>
+</li>
+<li><p>Divide data set into training set and test set (80/20)  </p>
+</li>
+<li><p>Choose evaluation metric </p>
+<ul>
+<li>e.g. accuracy : fraction of correctly classified instances</li>
+</ul>
+</li>
+<li><p>Run k-NN several times with varying k </p>
+<ul>
+<li>Use the training set as the model   </li>
+<li>Evaluate accuracy using the test set </li>
+</ul>
+</li>
+<li><p>Optimize k by choosing the one that maximises the accuracy </p>
+</li>
+</ul>
+<h5 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h5><ul>
+<li><p>Supervised learning  </p>
+</li>
+<li><p>Classification (outputs a class)</p>
+</li>
+<li><p>Features need not be numeric so long a numeric distance measure can be defined  </p>
+</li>
+<li><p>Model</p>
+<ul>
+<li>Large – full data set</li>
+<li>Slow to apply: in order to predict the class of a new observation, we need to get the distance of this to all the observations of the training set and then predict the class using a majority rule  </li>
+</ul>
+</li>
+<li><p>Learning</p>
+<ul>
+<li>Need to choose or learn k  </li>
+<li>Normalization may be required – one time transform of all data  </li>
+</ul>
+</li>
+</ul>
+<h4 id="Evaluation-Metrics"><a href="#Evaluation-Metrics" class="headerlink" title="Evaluation Metrics"></a>Evaluation Metrics</h4><ul>
+<li>For binary outcomes, we define TP, FP, FN, and TN </li>
+<li>ROC curve  - Receiver operating characteristic (ROC) curve  </li>
+</ul>
+]]></content>
+      <categories>
+        <category>Machine learning</category>
+      </categories>
+      <tags>
+        <tag>KNN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Clustering</title>
+    <url>/2020/04/25/Clustering/</url>
+    <content><![CDATA[<h4 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h4><ul>
+<li>Partitioning set of data points into groups which are “similar” </li>
+<li>Unsupervised learning </li>
+<li>Different algorithms <ul>
+<li>k-means </li>
+<li>Distribution based </li>
+<li>Density based </li>
+</ul>
+</li>
+</ul>
+<h4 id="k-means-Clustering"><a href="#k-means-Clustering" class="headerlink" title="k-means Clustering"></a>k-means Clustering</h4><img src="https://s1.ax1x.com/2020/04/26/J6JQrd.png" alt="k-means" style="zoom: 40%;align=left" />
+
+<h5 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h5><ul>
+<li>Choose the number of clusters, k </li>
+<li>Choose k random centroids (possibly k observations) </li>
+<li>Repeat:  <ul>
+<li>Assign each observation to nearest centroid </li>
+<li>Update each centroid’s position to be mean of those observations assigned to it </li>
+</ul>
+</li>
+<li>Until there is no, or very little, change in the centroids </li>
+</ul>
+<h5 id="k-means-in-practice"><a href="#k-means-in-practice" class="headerlink" title="k-means in practice"></a>k-means in practice</h5><ul>
+<li>Must normalize the features so that the distances are not biased to a particular dimension </li>
+<li>Need to think carefully about the features you wish to include as algorithm will give each feature equal weight <ul>
+<li>Unlike linear regression where the weight may be zero, or Naïve Bayes where a meaningless feature will have no real impact </li>
+</ul>
+</li>
+<li>Can be hard to interpret <ul>
+<li>Sometimes the clusters seem meaningless </li>
+</ul>
+</li>
+<li>Need to choose k </li>
+</ul>
+<h5 id="Limitations"><a href="#Limitations" class="headerlink" title="Limitations"></a>Limitations</h5><ul>
+<li>Clusters assumed to be the same size </li>
+<li>Clusters on density not so good</li>
+</ul>
+<h5 id="HPC-Implementation"><a href="#HPC-Implementation" class="headerlink" title="HPC Implementation"></a>HPC Implementation</h5><ul>
+<li><p>All nodes get subset of the data </p>
+</li>
+<li><p>Repeat </p>
+<ul>
+<li>Centroids sent to all nodes </li>
+<li>Points assigned to nearest centroid </li>
+<li>For each cluster feature sums and count returned to master </li>
+</ul>
+</li>
+<li><p>Master computes new centroids - Until centroids are stable </p>
+</li>
+</ul>
+<h4 id="Distribution-Based-Clustering"><a href="#Distribution-Based-Clustering" class="headerlink" title="Distribution Based Clustering"></a>Distribution Based Clustering</h4><ul>
+<li>Model the data using statistical distributions </li>
+<li>Gaussian mixture models <ul>
+<li>Model is a fixed number of Gaussian distributions </li>
+<li>Need to discover the parameters of these Gaussian distributions - For each cluster need to know mean for each feature dimension and the covariance matrix </li>
+</ul>
+</li>
+<li>Expectation maximization algorithm </li>
+<li>Data points are assigned to the distribution they most likely belong to (hard clusters), or each data point is given probability of belonging to clusters (soft clusters) </li>
+</ul>
+<h5 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h5><ul>
+<li>Handles covariance of features - No need to normalize data </li>
+<li>Can choose number of clusters </li>
+</ul>
+<h5 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h5><ul>
+<li>Bad for density based clusters that don’t match distribution model </li>
+</ul>
+<h4 id="Density-Based-Clustering"><a href="#Density-Based-Clustering" class="headerlink" title="Density Based Clustering"></a>Density Based Clustering</h4><ul>
+<li><p>Clusters are defined as areas of higher density than the rest of the data set. Points in sparse areas are considered noise and border points </p>
+</li>
+<li><p>Popular method is DBSCAN algorithm: </p>
+<ul>
+<li><p>Density-Based Spatial Clustering of Applications with Noise </p>
+</li>
+<li><p>Group together points with many nearby neighbors </p>
+</li>
+<li><p>Points with few nearby neighbors are marked as outliers </p>
+</li>
+<li><p>Two parameters: </p>
+<ul>
+<li>ε : distance below which points are considered neighbors </li>
+<li>minPts: minimum number of points required to form a cluster </li>
+</ul>
+</li>
+<li><p>Uses “density-reachability” cluster model </p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="DBSCAN-definition"><a href="#DBSCAN-definition" class="headerlink" title="DBSCAN definition"></a>DBSCAN definition</h5><ul>
+<li><p>All points are identified as one of: </p>
+<ul>
+<li>Core point: A point p with at least minPts points within ε of it. Those points within ε of p are directly-reachable from p </li>
+<li>Density-reachable point: A point q is reachable from p if there is a path where , and is directly reachable from </li>
+<li>Outlier: Point not reachable from any other point </li>
+</ul>
+</li>
+<li><p>Points p and q are density connected if there exists a point o such that p and q are density-reachable from o. </p>
+</li>
+<li><p>A cluster defined as: </p>
+<ul>
+<li>Containing all points that are mutually density-connected </li>
+<li>Also contains any points density-reachable from a point in cluster </li>
+</ul>
+</li>
+</ul>
+<h5 id="Limitation-1"><a href="#Limitation-1" class="headerlink" title="Limitation"></a>Limitation</h5><ul>
+<li>Can be hard to tune parameters </li>
+<li>Does not produce model that can be used to classify data </li>
+<li>Cannot handle clusters with highly variable densities </li>
+</ul>
+]]></content>
+      <categories>
+        <category>Machine learning</category>
+      </categories>
+      <tags>
+        <tag>Clustering</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day4 - 循环，流程控制语句， 数组</title>
+    <url>/2020/04/23/Day4/</url>
+    <content><![CDATA[<h4 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h4><ul>
+<li>在写嵌套循环时，要尽量保证外层循环次数小于内层的循环次数</li>
+</ul>
+<h4 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h4><ul>
+<li>break终止当前所在的循环</li>
+<li>continue结束当前这次循环，直接进入下一次循环（当前循环的下面的代码不执行）</li>
+<li>return结束方法</li>
+</ul>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ul>
+<li><p>存放多个数据的集合</p>
+<p><img src="https://s1.ax1x.com/2020/04/24/J0mDiV.png" alt="一维数组的声明"></p>
+</li>
+<li><p>数组内的元素都有一个引用的元素下标，这个下标是个数字，从左到右从0开始计数</p>
+</li>
+<li><p>每个数组都有一个属性length指明它的长度a.length</p>
+</li>
+<li><p>数组一旦初始化，其长度是不可变的</p>
+</li>
+<li><p>使用动态初始化时，数组会有默认值，数字类型的元素默认值为0，对象默认类型是null</p>
+</li>
+</ul>
+<h4 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h4><ul>
+<li>一维数组中每一个元素都是一个数组，这样的数组就是二维数组</li>
+<li>Int[] x,y[] : 特殊写法，x是一维数组，y是二维数组</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java SE</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day3 - 运算符，流程控制语句</title>
+    <url>/2020/04/23/Day3/</url>
+    <content><![CDATA[<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><ul>
+<li>单个&amp;的时候，两边都参与运算。两个&amp;的时候，如果左边为true，右边参与运算，如果左边为false，右边不参与运算。在不需要逻辑运算两边都参与运算的时候，尽量使用&amp;&amp;和||</li>
+<li>异或追求的是‘异’</li>
+</ul>
+<h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h4><ul>
+<li><img src="https://s1.ax1x.com/2020/04/24/J0m3Pf.png" alt="img"></li>
+<li>右移除以2的n次方，左移乘以2的n次方。注意有符号右移和无符号右移的区别</li>
+<li>^同位运算时，两个数字相同则为false，不相同为true</li>
+<li>~运算，就是把二进制的同位翻转，0变1，1变0</li>
+</ul>
+<h4 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h4><ul>
+<li><p>格式：（条件表达式）？表达式1：表达式2</p>
+<p>如果是true执行表达式1，如果是false执行表达式2</p>
+</li>
+</ul>
+<h4 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h4><p><img src="https://s1.ax1x.com/2020/04/24/J0mJxg.png" alt="img"></p>
+<ul>
+<li>()在所有运算符里优先级最高</li>
+</ul>
+<h4 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h4><ul>
+<li>顺序结构，if-else，switch</li>
+<li>If-else可以嵌套</li>
+<li>switch语句规则：switch(表达式)中表达式的返回值必须是下述几种类型之一：bytes,     short, char, int, 枚举, String。case子句中的值必须是常量，且所有case子句中的值应是不同的。break语句用来在执行完一个case分支后使程序跳出switch语句块，如果没有break，程序会顺序执行到程序结尾。break是必须写的，不然程序就从case匹配到的位置一直往下执行到结尾。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java SE</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day5 - 类，变量，方法，对象</title>
+    <url>/2020/04/23/Day5/</url>
+    <content><![CDATA[<p><img src="https://s1.ax1x.com/2020/04/24/J0mcM4.png" alt="面向过程和面向对象"></p>
+<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><ul>
+<li><p>类有属性（类中的成员变量）和行为（类中的成员方法）</p>
+</li>
+<li><p>定义一个类需要思考：构成它需要什么，它能用来做什么-属性，行为</p>
+</li>
+<li><p>面向对象程序设计的重点是类的设计，定义类其实是定义类中的成员（成员变量和成员方法）</p>
+</li>
+<li><p>类只有一个，但是通过类实例出的对象可以有多个，且彼此相互独立</p>
+</li>
+</ul>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p><img src="https://s1.ax1x.com/2020/04/24/J0m2L9.png" alt="变量分类"></p>
+<p><img src="https://s1.ax1x.com/2020/04/24/J0mfd1.png" alt="成员变量和局部变量的区别"></p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>方法可以调用方法，但是方法中不能定义方法</li>
+<li>同一个类中所有的方法可以直接互相调用，不用new去实例化</li>
+</ul>
+<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p><img src="https://s1.ax1x.com/2020/04/24/J0mTzD.png" alt="成员变量的初始值"></p>
+<ul>
+<li>我们也可以不定义对象的句柄，而直接调用这个对象的方法，这个对象叫匿名对象</li>
+<li>如果对一个对象只需要一次方法调用，那么就可以使用匿名对象。我们经常将一个匿名对象作为实参传给方法调用。</li>
+</ul>
+<h4 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h4><ul>
+<li>在一个类中的访问机制：类中的方法可以直接访问类中的成员变量。（例外：static方法访问非static的成员变量，编译不通过）</li>
+<li>在不同类中的访问机制，县创建要访问类的对象，再用对象访问类中定义的成员。</li>
+</ul>
+<h4 id="方法的重载"><a href="#方法的重载" class="headerlink" title="方法的重载"></a>方法的重载</h4><ul>
+<li>在同一个类中，允许存在一个以上的同名方法，只要它们的参数个数或者参数类型不同即可。</li>
+<li>参数顺序不同也可以构成重载</li>
+<li>重载与返回类型及参数名称无关，只与参数个数个参数类型有关</li>
+<li>重载的前提是方法名相同</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java SE</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Day2 - 命名规范，变量，运算符，数据类型</title>
     <url>/2020/04/23/Day2/</url>
     <content><![CDATA[<h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><ul>
@@ -75,62 +447,76 @@
       </tags>
   </entry>
   <entry>
-    <title>Day1 - DOS, JVM, JRE, Garbage Collection</title>
-    <url>/2020/04/23/Day1/</url>
-    <content><![CDATA[<h4 id="常用DOS命令"><a href="#常用DOS命令" class="headerlink" title="常用DOS命令:"></a>常用DOS命令:</h4><ul>
-<li><p>dir：查看文件夹</p>
+    <title>Day9 - 代码块，内部类，final，抽象类，接口，模板方法，工厂方法</title>
+    <url>/2020/04/26/Day9/</url>
+    <content><![CDATA[<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><p>外部的类要用自己内部类的方法，得先new内部类的对象</p>
+<h5 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h5><ul>
+<li>如果内部类是static的，就不能再使用外部类非static的成员</li>
+<li>可以声明为final的</li>
+<li>和外部类不同，可以声明为private或protected</li>
+<li>可以声明为abstract类，因此可以被其他的内部类继承</li>
+</ul>
+<h5 id="内部类有什么用？"><a href="#内部类有什么用？" class="headerlink" title="内部类有什么用？"></a>内部类有什么用？</h5><p>内部类主要是解决java不能多重继承的问题</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiExtend</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 最后new A的对象，调用新增的方法</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        A a = <span class="keyword">new</span> A();</span><br><span class="line">        a.testB();</span><br><span class="line">        a.testC();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 想让A同时继承B和C的方法，并且重写</span></span><br><span class="line"><span class="comment"> * 可以使用内部类变相的实现类的内部继承</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 再在A内部定义与重写方法同名的方法，通过new内部类对象来调用重写后的方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testB</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">new</span> InnerB().testB();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testC</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">new</span> InnerC().testC();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 先用两个内部类分别继承B和C，并且分别重写</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerB</span> <span class="keyword">extends</span> <span class="title">B</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"这是重写之后的testB方法"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerC</span> <span class="keyword">extends</span> <span class="title">C</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testC</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"这是重写之后的testC方法"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testB</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testC</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h4><h5 id="静态代码块和非静态代码块比较"><a href="#静态代码块和非静态代码块比较" class="headerlink" title="静态代码块和非静态代码块比较"></a>静态代码块和非静态代码块比较</h5><img src="https://s1.ax1x.com/2020/04/26/JgNvwQ.png" style="zoom:67%;" />
+
+<h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><ul>
+<li><p>实际开发中，static静态代码块用在初始化类的静态属性（static类型属性）</p>
 </li>
-<li><p>md：创建文件夹</p>
-</li>
-<li><p>rd：删除文件夹</p>
-</li>
-<li><p>cd: 打开文件夹</p>
-</li>
-<li><p>cd .. : 返回上一级</p>
-</li>
-<li><p>cd: 返回根目录</p>
-</li>
-<li><p>del: 删除文件</p>
+<li><p>非静态的代码块可以用来在匿名内部类中代替构造方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//匿名内部类</span></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 构建了一个没有类名的Person子类，也就是匿名的Person子类</span></span><br><span class="line"><span class="comment">         * 这种类没有类名，就不能显式的new方法来创建对象</span></span><br><span class="line"><span class="comment">         * 如果还需要在构造器中初始化属性就没有办法了，这种情况就要用代码块&#123;&#125;来进行初始化</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        Person p = <span class="keyword">new</span> Person()&#123;<span class="comment">//一个Person的匿名子类</span></span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 问：现在想把name改掉，但是不想动Person的代码</span></span><br><span class="line"><span class="comment">             * 在匿名内部类中，用代码块来代替构造方法</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">super</span>.name = <span class="string">"Anna"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"这是重写之后的test方法"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        System.out.println(p.name);<span class="comment">//会输出anna</span></span><br><span class="line">        p.test();<span class="comment">//会输出重写之后的代码</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 在new Person()执行的时候，第一步是类的属性的默认初始化和显式初始化</span></span><br><span class="line"><span class="comment">     * 第二步是执行代码块，如果有多个代码块，会按照程序的编写顺序执行</span></span><br><span class="line"><span class="comment">     * 第三步：执行构造器的代码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">static</span> TestPerson tp = <span class="keyword">new</span> TestPerson();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = <span class="string">"lisa"</span>;</span><br><span class="line">        System.out.println(<span class="string">"这是构造方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//非静态代码块</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"这是非静态代码块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//静态代码块，这里只能使用静态修饰的属性和方法</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(age);</span><br><span class="line">        showAge();</span><br><span class="line"></span><br><span class="line">        tp.age = <span class="number">12</span>;</span><br><span class="line">        tp.name = <span class="string">"ANNA"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showAge</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"这是Person的test方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<h4 id="面向过程与面向对象"><a href="#面向过程与面向对象" class="headerlink" title="面向过程与面向对象"></a>面向过程与面向对象</h4><ul>
-<li>面向过程：对于每一个过程直接用代码实现</li>
-<li>面向对象：定义一个类，可以对不同的对象进行实例化。能够更好的在抽象的层面来分析问题，同时更好的复用之前的代码，这些是面向过程很难实现的。</li>
+<h4 id="关键字final"><a href="#关键字final" class="headerlink" title="关键字final"></a>关键字final</h4><ul>
+<li>在Java中声明类、属性和方法时，可使用关键字final来修饰，表示“最终”</li>
+<li>final标记的类不能被继承，标记的方法不能被重写，标记的变量（成员变量或局部变量）即成为常量。名称大写，且只能被赋值一次，不能改变</li>
+<li>final和static一起修饰，就是全局常量</li>
 </ul>
-<h4 id="Java特性"><a href="#Java特性" class="headerlink" title="Java特性"></a>Java特性</h4><ul>
-<li>解释型：先编译，再解释</li>
-<li>支持多线程</li>
-</ul>
-<h4 id="Java两种核心机制"><a href="#Java两种核心机制" class="headerlink" title="Java两种核心机制"></a>Java两种核心机制</h4><ul>
-<li><p>JVM（Java虚拟机）</p>
-<p>JVM是一个虚拟的计算机，具有指令集并使用不同的存储区域。对于不同的平台，有不同的虚拟机。JVM屏蔽了底层运行平台的差别，实现了‘一次编译，到处运行’。</p>
+<h4 id="抽象类abstract-class"><a href="#抽象类abstract-class" class="headerlink" title="抽象类abstract class"></a>抽象类abstract class</h4><ul>
+<li><p>用abstract关键字来修饰一个类时，这个类叫抽象类</p>
 </li>
-<li><p>垃圾收集机制（Garbage     Collection）GC</p>
-<p>C，C++由程序员手动编写代码回收内存空间（优点：能够在内存不使用时快速回收，准确，高效；缺点：容易失误出现Bug,例如忘记编写回收内存的代码，内存一直不回收）</p>
-<p>Java，垃圾回收是自动的，开了一个系统级线程自动去检测哪些内存不用了然后回收掉（优点：自动，不会出现忘记回收；缺点：回收不及时）</p>
-<p>一般观点：宁可回收不及时，但是一定要回收，使用自动的垃圾回收更合适</p>
+<li><p>用abstract来修饰一个方法时，该方法叫做抽象方法</p>
+<p>抽象方法只有方法的声明，没有方法的实现，以分号结束</p>
+</li>
+<li><p>含有抽象方法的类必须被声明为抽象类</p>
+</li>
+<li><p>抽象类不能被实例化。抽象类是用来作为父类被继承的，抽象类的子类必须重写父类的抽象方法，并提供方法体。若没有重写全部的抽象方法，仍为抽象类</p>
 </li>
 </ul>
-<h4 id="什么是JDK-JRE"><a href="#什么是JDK-JRE" class="headerlink" title="什么是JDK,JRE"></a>什么是JDK,JRE</h4><ul>
-<li>JDK（Java     Development Kit Java开发工具包）提供给开发人员使用，包含了java的开发工具，也包括了JRE</li>
-<li>JRE（Java     Runtime Environment Java运行环境）包括Java虚拟机和Java程序所需的核心类库等。如果想要运行一个开发好的Java程序，计算机中只需安装JRE即可。</li>
-<li>JDK包含JRE，JRE包含JVM</li>
+<h5 id="为什么抽象类不可以使用final关键字声明？"><a href="#为什么抽象类不可以使用final关键字声明？" class="headerlink" title="为什么抽象类不可以使用final关键字声明？"></a>为什么抽象类不可以使用final关键字声明？</h5><p>抽象类不能被实例化。抽象类是用来被继承的。抽象类的子类必须重写父类的构造方法，并提供方法体</p>
+<h5 id="一个抽象类中可以定义构造器吗？"><a href="#一个抽象类中可以定义构造器吗？" class="headerlink" title="一个抽象类中可以定义构造器吗？"></a>一个抽象类中可以定义构造器吗？</h5><p>抽象类可以有构造方法，只是不能直接创建抽象类的实例对象</p>
+<h4 id="模板方法设计模式-Template-Method"><a href="#模板方法设计模式-Template-Method" class="headerlink" title="模板方法设计模式(Template Method)"></a>模板方法设计模式(Template Method)</h4><p>抽象类体现的就是一种模板模式的设计。</p>
+<ul>
+<li>当功能内部一部分实现是确定，一部分实现是不确定的。这时可以把不确定的部分暴露出去，让子类去实现。</li>
 </ul>
-<h4 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h4><ul>
-<li>步骤：</li>
-<li>将Java代码编写到扩展名为.java的文件中</li>
-<li>通过Javac命令对该文件进行编译</li>
-<li>通过java命令对生成的class文件进行运行</li>
+<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><ul>
+<li><p>接口可以用来达到多重继承的效果</p>
+</li>
+<li><p>从本质上讲，接口是一种特殊的抽象类，这种抽象类中只包含常量和方法的定义，而没有变量和方法的实现。</p>
+</li>
+<li><p>一个类可以实现多个接口，接口也可以继承其他接口</p>
+</li>
+<li><p>如果既有继承又有实现，那么先继承，再实现</p>
+</li>
 </ul>
-<h4 id="Hello-world小结"><a href="#Hello-world小结" class="headerlink" title="Hello world小结"></a>Hello world小结</h4><ul>
-<li>Java源文件以’java’为扩展名，源文件的基本组成部分是类（class）</li>
-<li>Java应用程序的执行入口是main()方法。它有固定的书写格式：public static void main(String[] args){…}</li>
+<p>问：接口和抽象类很相似，好像接口能做的事抽象类也能做，为什么要定义接口呢？</p>
+<p>父类需要稳定的抽象，如果父类总是改变，基于这个父类的子类，子类的子类都会受到影响。有时我们又确实需要给父类增加一些方法，那么就不能直接在父类上下手，只能新建一个接口，在接口上扩展方法，其他需要的子类自行去实现接口。</p>
+<p>如果实现接口的类中没有实现接口中的全部方法，必须将此类定义为抽象类</p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ul>
+<li><p>抽象类是对于一类事物的高度抽象，其中既有属性也有方法。接口是对方法的抽象，也就是对一系列动作的抽象。</p>
+</li>
+<li><p>当需要对一类事物抽象的时候，应该使用抽象类，好形成一个父类。</p>
+</li>
+<li><p>当需要对一系列的动作抽象的时候，就应该使用接口，需要使用这些动作的类去实现相应的接口即可。</p>
+</li>
 </ul>
-<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><ul>
-<li>单行注释 //</li>
-<li>多行注释 /**/</li>
-<li>文档注释（java特有）</li>
-</ul>
+<h4 id="工厂方法-Factory-method"><a href="#工厂方法-Factory-method" class="headerlink" title="工厂方法(Factory method)"></a>工厂方法(Factory method)</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 宝马车的产品接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BWM</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 产品的信息介绍</span></span><br><span class="line"><span class="comment">     * 车的发动方式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 构建具体的车的类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM3</span> <span class="keyword">implements</span> <span class="title">BWM</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BMW3系"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM5</span> <span class="keyword">implements</span> <span class="title">BWM</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BMW5系"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM7</span> <span class="keyword">implements</span> <span class="title">BWM</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BMW7系"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 汽车生产接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BWMFactory</span> </span>&#123;</span><br><span class="line">    <span class="function">BWM <span class="title">productBWM</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现具体的车型的生产</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM3Factory</span> <span class="keyword">implements</span> <span class="title">BWMFactory</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BWM <span class="title">productBWM</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"生产BWM3系"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BWM3();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM5Factory</span> <span class="keyword">implements</span> <span class="title">BWMFactory</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BWM <span class="title">productBWM</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"生产BWM5系"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BWM5();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM7Factory</span> <span class="keyword">implements</span> <span class="title">BWMFactory</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BWM <span class="title">productBWM</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"生产BWM7系"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BWM7();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//这是开发人员b的工作</span></span><br><span class="line">        BWM b3 = <span class="keyword">new</span> BWM3Factory().productBWM();</span><br><span class="line">        BWM b5 = <span class="keyword">new</span> BWM5Factory().productBWM();</span><br><span class="line">        BWM b7 = <span class="keyword">new</span> BWM7Factory().productBWM();</span><br><span class="line"></span><br><span class="line">        b3.showInfo();</span><br><span class="line">        b5.showInfo();</span><br><span class="line">        b7.showInfo();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过工厂，把new对象隔离。通过产品的接口，可以接受不同实际产品的实现类，这样实现类的类名改变不影响其他合作人员的编程</p>
 ]]></content>
       <categories>
         <category>Java SE</category>
@@ -140,38 +526,17 @@
       </tags>
   </entry>
   <entry>
-    <title>Day3 - 运算符，流程控制语句</title>
-    <url>/2020/04/23/Day3/</url>
-    <content><![CDATA[<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><ul>
-<li>单个&amp;的时候，两边都参与运算。两个&amp;的时候，如果左边为true，右边参与运算，如果左边为false，右边不参与运算。在不需要逻辑运算两边都参与运算的时候，尽量使用&amp;&amp;和||</li>
-<li>异或追求的是‘异’</li>
-</ul>
-<h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h4><ul>
-<li><img src="https://s1.ax1x.com/2020/04/24/J0m3Pf.png" alt="img"></li>
-<li>右移除以2的n次方，左移乘以2的n次方。注意有符号右移和无符号右移的区别</li>
-<li>^同位运算时，两个数字相同则为false，不相同为true</li>
-<li>~运算，就是把二进制的同位翻转，0变1，1变0</li>
-</ul>
-<h4 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h4><ul>
-<li><p>格式：（条件表达式）？表达式1：表达式2</p>
-<p>如果是true执行表达式1，如果是false执行表达式2</p>
-</li>
-</ul>
-<h4 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h4><p><img src="https://s1.ax1x.com/2020/04/24/J0mJxg.png" alt="img"></p>
-<ul>
-<li>()在所有运算符里优先级最高</li>
-</ul>
-<h4 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h4><ul>
-<li>顺序结构，if-else，switch</li>
-<li>If-else可以嵌套</li>
-<li>switch语句规则：switch(表达式)中表达式的返回值必须是下述几种类型之一：bytes,     short, char, int, 枚举, String。case子句中的值必须是常量，且所有case子句中的值应是不同的。break语句用来在执行完一个case分支后使程序跳出switch语句块，如果没有break，程序会顺序执行到程序结尾。break是必须写的，不然程序就从case匹配到的位置一直往下执行到结尾。</li>
+    <title>Java学习易错点</title>
+    <url>/2020/04/24/Java%E5%AD%A6%E4%B9%A0%E6%98%93%E9%94%99%E7%82%B9/</url>
+    <content><![CDATA[<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>同一个类中的方法可以直接互相调用，不用定义新的对象</li>
 </ul>
 ]]></content>
       <categories>
         <category>Java SE</category>
       </categories>
       <tags>
-        <tag>Java</tag>
+        <tag>Java_hints</tag>
       </tags>
   </entry>
   <entry>
@@ -338,73 +703,225 @@
       </tags>
   </entry>
   <entry>
-    <title>Classification</title>
-    <url>/2020/04/24/Classification/</url>
-    <content><![CDATA[<h4 id="K-Nearest-Neighbours"><a href="#K-Nearest-Neighbours" class="headerlink" title="K-Nearest Neighbours"></a>K-Nearest Neighbours</h4><img src="https://s1.ax1x.com/2020/04/25/JrXdPA.png" alt="K-Nearest neighbours" style="zoom: 40%;" />
+    <title>Linear Regression</title>
+    <url>/2020/04/24/Linear-Regression/</url>
+    <content><![CDATA[<h4 id="Type-of-Machine-learning"><a href="#Type-of-Machine-learning" class="headerlink" title="Type of Machine learning"></a>Type of Machine learning</h4><ul>
+<li><p>Supervised Learning</p>
+<p>Where there is an input X, and an output Y and the task is to learn the mapping from the input to the output.</p>
+<ul>
+<li>Classification: when Y is a categorical variable (e.g. span/not spam)</li>
+<li>Regression: when Y is a continuous variable.</li>
+</ul>
+</li>
+<li><p>Unsupervised Learning: there is only input X</p>
+<p>The aim is to find regularities/structure in the input space. One method is called clustering, where the aim is to find clusters or groupings of input.</p>
+</li>
+</ul>
+<h4 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h4><img src="https://s1.ax1x.com/2020/04/25/JrqIKO.png" alt="Linear Regression" style="zoom: 50%;" />
 
-<h5 id="Similarity"><a href="#Similarity" class="headerlink" title="Similarity"></a>Similarity</h5><ul>
-<li><p>Euclidean distance: heavily biased towards big number - we need to normalize data first</p>
-<p>We also need to avoid highly correlated features as these give extra weight to that characteristic</p>
+<h5 id="How-to-set-the-cost-function"><a href="#How-to-set-the-cost-function" class="headerlink" title="How to set the cost function?"></a>How to set the cost function?</h5><ul>
+<li><p>We use least squares estimation</p>
 </li>
-<li><p>Jaccard Similarity: Can be used to measure the similarity between sets</p>
+<li><img src="https://s1.ax1x.com/2020/04/25/Jrqbad.png" alt="Calculation" style="zoom:50%;" />
 </li>
-<li><p>Cosine similarity: Measure of angle between vectors</p>
-<p>Used in text analysis - can be used to classify documents, tweets</p>
-</li>
-<li><p>Mahalanobis Distance</p>
-</li>
-<li><p>Hamming Distance</p>
+<li><p>Find the values of θ0 and θ1 which have minimum cost </p>
 </li>
 </ul>
-<h5 id="Algorithm-for-choosing-K"><a href="#Algorithm-for-choosing-K" class="headerlink" title="Algorithm for choosing K"></a>Algorithm for choosing K</h5><ul>
-<li><p>Choose similarity or distance metric  </p>
-</li>
-<li><p>Divide data set into training set and test set (80/20)  </p>
-</li>
-<li><p>Choose evaluation metric </p>
-<ul>
-<li>e.g. accuracy : fraction of correctly classified instances</li>
+<h5 id="Why-do-we-use-mean-the-square-error-as-our-cost-function"><a href="#Why-do-we-use-mean-the-square-error-as-our-cost-function" class="headerlink" title="Why do we use mean the square error as our cost function?"></a>Why do we use mean the square error as our cost function?</h5><p>We assume that the numeric output is the sum of a linear function of the input and a random noise and the random noise is zero mean Gaussian with constant variance</p>
+<p>Then we use maximum likelihood to estimate the parameter. The theta that maximize the LHS of the equation correspond to the value that minimize the MSE. That’s why we use MSE as the cost function.</p>
+<h5 id="Gradient-descent-for-linear-regression"><a href="#Gradient-descent-for-linear-regression" class="headerlink" title="Gradient descent for linear regression"></a>Gradient descent for linear regression</h5><img src="https://s1.ax1x.com/2020/04/25/JrLnLF.png" alt="Gradient descent" style="zoom:40%;" />
+
+<h5 id="Gradient-descent-properties"><a href="#Gradient-descent-properties" class="headerlink" title="Gradient descent properties"></a>Gradient descent properties</h5><ul>
+<li>‘Batch’ algorithm because each iteration looks at all the training data</li>
+<li>Can be slow to converge</li>
+<li>Each iteration is slow because it need to process all the training data</li>
+<li>Simultaneously update parameters according to partial derivatives</li>
+</ul>
+<h5 id="Stochastic-gradient-descent-algorithm"><a href="#Stochastic-gradient-descent-algorithm" class="headerlink" title="Stochastic gradient descent algorithm"></a>Stochastic gradient descent algorithm</h5><ul>
+<li>Not like gradient descent where we use all the training data for each iteration, this time we only randomly choose one sample to update the parameters</li>
+<li>Can scale algorithms to much bigger training sets</li>
+<li>Can converge more fast than gradient descent</li>
+</ul>
+<h5 id="Mini-batch-gradient-descent"><a href="#Mini-batch-gradient-descent" class="headerlink" title="Mini-batch gradient descent"></a>Mini-batch gradient descent</h5><ul>
+<li>Hybrid between batch (update after all m records) and stochastic (update after 1 record)</li>
+<li>Upgrade using batch algorithm every b&lt;m training records</li>
+<li>Supports exploitation of vectorization and hence parallelism</li>
+</ul>
+<h4 id="Learning-process-for-supervised-learning"><a href="#Learning-process-for-supervised-learning" class="headerlink" title="Learning process for supervised learning"></a>Learning process for supervised learning</h4><ol>
+<li>Define the model</li>
+<li>Build the cost function</li>
+<li>Optimize the cost function to find the model’s parameters<ul>
+<li>Optimization algorithms: Gradient descent, Stochastic Gradient descent</li>
+<li>Normal equation (in linear and multiple regression)</li>
 </ul>
 </li>
-<li><p>Run k-NN several times with varying k </p>
-<ul>
-<li>Use the training set as the model   </li>
-<li>Evaluate accuracy using the test set </li>
+<li>Evaluation of the model</li>
+</ol>
+<h4 id="Normal-equation"><a href="#Normal-equation" class="headerlink" title="Normal equation"></a>Normal equation</h4><ul>
+<li>Normal equation is analytic solution rather than iterative (use math solution)</li>
+</ul>
+<h5 id="Compare-the-normal-equation-and-gradient-descent-n-features-m-training-records"><a href="#Compare-the-normal-equation-and-gradient-descent-n-features-m-training-records" class="headerlink" title="Compare the normal equation and gradient descent (n features, m training records)"></a>Compare the normal equation and gradient descent (n features, m training records)</h5><ul>
+<li>Gradient descent<ul>
+<li>Need to choose the learning rate</li>
+<li>Iterative</li>
+<li>Works for large n</li>
+<li>Used with many learning algorithms</li>
 </ul>
 </li>
-<li><p>Optimize k by choosing the one that maximises the accuracy </p>
-</li>
-</ul>
-<h5 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h5><ul>
-<li><p>Supervised learning  </p>
-</li>
-<li><p>Classification (outputs a class)</p>
-</li>
-<li><p>Features need not be numeric so long a numeric distance measure can be defined  </p>
-</li>
-<li><p>Model</p>
-<ul>
-<li>Large – full data set</li>
-<li>Slow to apply: in order to predict the class of a new observation, we need to get the distance of this to all the observations of the training set and then predict the class using a majority rule  </li>
-</ul>
-</li>
-<li><p>Learning</p>
-<ul>
-<li>Need to choose or learn k  </li>
-<li>Normalization may be required – one time transform of all data  </li>
+<li>Normal equation<ul>
+<li>No need to choose  the learning rate</li>
+<li>No iterations required</li>
+<li>Inverting n*n matrix can be slow for large n</li>
+<li>Only works with linear regression</li>
+<li>Can fail to find a solution</li>
 </ul>
 </li>
 </ul>
-<h4 id="Evaluation-Metrics"><a href="#Evaluation-Metrics" class="headerlink" title="Evaluation Metrics"></a>Evaluation Metrics</h4><ul>
-<li>For binary outcomes, we define TP, FP, FN, and TN </li>
-<li>ROC curve  - Receiver operating characteristic (ROC) curve  </li>
+<h4 id="Evaluation-of-Model"><a href="#Evaluation-of-Model" class="headerlink" title="Evaluation of Model"></a>Evaluation of Model</h4><ul>
+<li>Mean Square Error (MSE) - an absolute measure, we usually work with the root mean square error</li>
+<li>Residual Standard Error</li>
+<li>R^2 (coefficient of determination)<ul>
+<li>It is a measure of goodness of fit, estimating the proportion of variance explained by the fitted model.  </li>
+<li>It ranges from 0 to 1.</li>
+<li>If R2 = 1 there is a perfect fit. </li>
+<li>If R2 is 0 the model has the same performance as predicting using the overall mean . </li>
+</ul>
+</li>
 </ul>
 ]]></content>
       <categories>
         <category>Machine learning</category>
       </categories>
       <tags>
-        <tag>KNN</tag>
+        <tag>Linear Regression</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Logistic Regression</title>
+    <url>/2020/04/25/Logistic-Regression/</url>
+    <content><![CDATA[<h4 id="Learning-process"><a href="#Learning-process" class="headerlink" title="Learning process"></a>Learning process</h4><ul>
+<li>Define model </li>
+<li>Build the cost function </li>
+<li>Optimize the cost function to find the model’s parameters <ul>
+<li>Optimization algorithms • <ul>
+<li>Gradient descent</li>
+<li>Stochastic Gradient descent </li>
+<li>Mini-batch Stochastic Gradient descent</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Logistic-regression-limitations"><a href="#Logistic-regression-limitations" class="headerlink" title="Logistic regression limitations"></a>Logistic regression limitations</h5><ul>
+<li><p>What if our data is not linearly separable? </p>
+<p>Possible solution: fit with a high order polynomial </p>
+<p>This is usually a bad idea, as the model may overfit the training data and therefore will be unable to generalize to new data. </p>
+</li>
+</ul>
+<h5 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h5><ul>
+<li><p>It is a parametrical model where we make assumptions on the underlying distribution of the data and build the cost function in terms of the maximum likelihood of the training set.</p>
+</li>
+<li><p>Features should be normalized before the learning process.</p>
+</li>
+<li><p>Linear models are fast to use for prediction. </p>
+</li>
+<li><p>Returns a probability </p>
+</li>
+<li><p>Bad performance in problems where observations cannot be linearly separated. </p>
+<p>Example: XOR </p>
+</li>
+<li><p>Can use logistic regression with polynomial terms. </p>
+<ul>
+<li>If we include all the quadratic terms we have O(n2) features. </li>
+<li>If we include all the cubic terms we have O(n3) features. </li>
+<li>The algorithm will have high variance and this may lead to overfitting.  </li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Machine learning</category>
+      </categories>
+      <tags>
+        <tag>Logistic Regression</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Feature Extraction</title>
+    <url>/2020/04/24/Feature-Extraction/</url>
+    <content><![CDATA[<h4 id="Feature-Choosing"><a href="#Feature-Choosing" class="headerlink" title="Feature Choosing"></a>Feature Choosing</h4><p> In a 2003 paper Introduction to Variable and Feature Selection, Guyon and Elisseeff classify three approaches to feature selection: </p>
+<ul>
+<li><p>Filters </p>
+<p>Select subsets of variables as pre-processing step before learning. </p>
+</li>
+<li><p>Wrappers </p>
+<p>Use learning system as black box to score subsets of variables as to their predictive power.</p>
+</li>
+<li><p>Embedded methods</p>
+<p>Feature selection is an embedded part of the learning algorithm. </p>
+</li>
+</ul>
+<h5 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h5><ul>
+<li>Rank features according to a metric or statistic </li>
+<li>If we look at all features independently:<ul>
+<li>Could miss important interactions </li>
+<li>Could have redundant features (But unless they are absolutely correlated then likely to still be useful)</li>
+</ul>
+</li>
+</ul>
+<h5 id="Wrappers"><a href="#Wrappers" class="headerlink" title="Wrappers"></a>Wrappers</h5><ul>
+<li>Use learning system as black box to score subsets of variables as to their predictive power. </li>
+<li>Selection algorithms <ul>
+<li>Forward selection <ul>
+<li>Add features one at a time choosing the one that gives best improvement. </li>
+<li>Stop when selection criterion fails to improve. </li>
+</ul>
+</li>
+<li>Backward elimination <ul>
+<li>Remove features one at a time choosing the one that gives best improvement </li>
+<li>Stop when selection criterion fails to improve. </li>
+</ul>
+</li>
+<li>Combined approach <ul>
+<li>Add a few, remove the worst, repeat. </li>
+<li>{A} {A,B} {A,B,C} {A,B,C,D} {A,C,D} {A,C,D,E} </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Need to divide training set into two </li>
+</ul>
+<h5 id="Embedded-selection"><a href="#Embedded-selection" class="headerlink" title="Embedded selection"></a>Embedded selection</h5><ul>
+<li>Learning algorithms explicitly select features <ul>
+<li>E.g. decision or regression tree </li>
+</ul>
+</li>
+<li>Feature Selection Criteria: <ul>
+<li>Entropy / Information gain </li>
+<li>Gini index </li>
+<li>Reduction in Variance/Standard Deviation </li>
+</ul>
+</li>
+<li>Decision Tree Algorithm<ul>
+<li>At root node determine the information gain for each feature </li>
+<li>Split the node according to the feature that gives the maximum information gain (given starting entropy for that node) </li>
+<li>Repeat process again for each new node until: <ul>
+<li>All entries in the node are the same class, or </li>
+<li>All features are used: take a majority vote </li>
+</ul>
+</li>
+<li>Final tree to often be pruned to avoid over-fitting </li>
+</ul>
+</li>
+<li>Bagging -   Bootstrap AGGregation </li>
+<li>Random Forest  - Very popular in medical image analysis and segmentation </li>
+</ul>
+]]></content>
+      <categories>
+        <category>Machine learning</category>
+      </categories>
+      <tags>
+        <tag>feature extraction</tag>
       </tags>
   </entry>
   <entry>
@@ -508,523 +1025,6 @@
 <li><p>饿汉式是在类加载之后，还没有人调用的时候，就先New好一个对象，以后不论谁来调用，都是返回之前new好的那个对象</p>
 </li>
 </ul>
-]]></content>
-      <categories>
-        <category>Java SE</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Day4 - 循环，流程控制语句， 数组</title>
-    <url>/2020/04/23/Day4/</url>
-    <content><![CDATA[<h4 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h4><ul>
-<li>在写嵌套循环时，要尽量保证外层循环次数小于内层的循环次数</li>
-</ul>
-<h4 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h4><ul>
-<li>break终止当前所在的循环</li>
-<li>continue结束当前这次循环，直接进入下一次循环（当前循环的下面的代码不执行）</li>
-<li>return结束方法</li>
-</ul>
-<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ul>
-<li><p>存放多个数据的集合</p>
-<p><img src="https://s1.ax1x.com/2020/04/24/J0mDiV.png" alt="一维数组的声明"></p>
-</li>
-<li><p>数组内的元素都有一个引用的元素下标，这个下标是个数字，从左到右从0开始计数</p>
-</li>
-<li><p>每个数组都有一个属性length指明它的长度a.length</p>
-</li>
-<li><p>数组一旦初始化，其长度是不可变的</p>
-</li>
-<li><p>使用动态初始化时，数组会有默认值，数字类型的元素默认值为0，对象默认类型是null</p>
-</li>
-</ul>
-<h4 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h4><ul>
-<li>一维数组中每一个元素都是一个数组，这样的数组就是二维数组</li>
-<li>Int[] x,y[] : 特殊写法，x是一维数组，y是二维数组</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java SE</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java学习易错点</title>
-    <url>/2020/04/24/Java%E5%AD%A6%E4%B9%A0%E6%98%93%E9%94%99%E7%82%B9/</url>
-    <content><![CDATA[<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>同一个类中的方法可以直接互相调用，不用定义新的对象</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java SE</category>
-      </categories>
-      <tags>
-        <tag>Java_hints</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Day5 - 类，变量，方法，对象</title>
-    <url>/2020/04/23/Day5/</url>
-    <content><![CDATA[<p><img src="https://s1.ax1x.com/2020/04/24/J0mcM4.png" alt="面向过程和面向对象"></p>
-<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><ul>
-<li><p>类有属性（类中的成员变量）和行为（类中的成员方法）</p>
-</li>
-<li><p>定义一个类需要思考：构成它需要什么，它能用来做什么-属性，行为</p>
-</li>
-<li><p>面向对象程序设计的重点是类的设计，定义类其实是定义类中的成员（成员变量和成员方法）</p>
-</li>
-<li><p>类只有一个，但是通过类实例出的对象可以有多个，且彼此相互独立</p>
-</li>
-</ul>
-<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p><img src="https://s1.ax1x.com/2020/04/24/J0m2L9.png" alt="变量分类"></p>
-<p><img src="https://s1.ax1x.com/2020/04/24/J0mfd1.png" alt="成员变量和局部变量的区别"></p>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>方法可以调用方法，但是方法中不能定义方法</li>
-<li>同一个类中所有的方法可以直接互相调用，不用new去实例化</li>
-</ul>
-<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p><img src="https://s1.ax1x.com/2020/04/24/J0mTzD.png" alt="成员变量的初始值"></p>
-<ul>
-<li>我们也可以不定义对象的句柄，而直接调用这个对象的方法，这个对象叫匿名对象</li>
-<li>如果对一个对象只需要一次方法调用，那么就可以使用匿名对象。我们经常将一个匿名对象作为实参传给方法调用。</li>
-</ul>
-<h4 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h4><ul>
-<li>在一个类中的访问机制：类中的方法可以直接访问类中的成员变量。（例外：static方法访问非static的成员变量，编译不通过）</li>
-<li>在不同类中的访问机制，县创建要访问类的对象，再用对象访问类中定义的成员。</li>
-</ul>
-<h4 id="方法的重载"><a href="#方法的重载" class="headerlink" title="方法的重载"></a>方法的重载</h4><ul>
-<li>在同一个类中，允许存在一个以上的同名方法，只要它们的参数个数或者参数类型不同即可。</li>
-<li>参数顺序不同也可以构成重载</li>
-<li>重载与返回类型及参数名称无关，只与参数个数个参数类型有关</li>
-<li>重载的前提是方法名相同</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java SE</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linear Regression</title>
-    <url>/2020/04/24/Linear-Regression/</url>
-    <content><![CDATA[<h4 id="Type-of-Machine-learning"><a href="#Type-of-Machine-learning" class="headerlink" title="Type of Machine learning"></a>Type of Machine learning</h4><ul>
-<li><p>Supervised Learning</p>
-<p>Where there is an input X, and an output Y and the task is to learn the mapping from the input to the output.</p>
-<ul>
-<li>Classification: when Y is a categorical variable (e.g. span/not spam)</li>
-<li>Regression: when Y is a continuous variable.</li>
-</ul>
-</li>
-<li><p>Unsupervised Learning: there is only input X</p>
-<p>The aim is to find regularities/structure in the input space. One method is called clustering, where the aim is to find clusters or groupings of input.</p>
-</li>
-</ul>
-<h4 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h4><img src="https://s1.ax1x.com/2020/04/25/JrqIKO.png" alt="Linear Regression" style="zoom: 50%;" />
-
-<h5 id="How-to-set-the-cost-function"><a href="#How-to-set-the-cost-function" class="headerlink" title="How to set the cost function?"></a>How to set the cost function?</h5><ul>
-<li><p>We use least squares estimation</p>
-</li>
-<li><img src="https://s1.ax1x.com/2020/04/25/Jrqbad.png" alt="Calculation" style="zoom:50%;" />
-</li>
-<li><p>Find the values of θ0 and θ1 which have minimum cost </p>
-</li>
-</ul>
-<h5 id="Why-do-we-use-mean-the-square-error-as-our-cost-function"><a href="#Why-do-we-use-mean-the-square-error-as-our-cost-function" class="headerlink" title="Why do we use mean the square error as our cost function?"></a>Why do we use mean the square error as our cost function?</h5><p>We assume that the numeric output is the sum of a linear function of the input and a random noise and the random noise is zero mean Gaussian with constant variance</p>
-<p>Then we use maximum likelihood to estimate the parameter. The theta that maximize the LHS of the equation correspond to the value that minimize the MSE. That’s why we use MSE as the cost function.</p>
-<h5 id="Gradient-descent-for-linear-regression"><a href="#Gradient-descent-for-linear-regression" class="headerlink" title="Gradient descent for linear regression"></a>Gradient descent for linear regression</h5><img src="https://s1.ax1x.com/2020/04/25/JrLnLF.png" alt="Gradient descent" style="zoom:40%;" />
-
-<h5 id="Gradient-descent-properties"><a href="#Gradient-descent-properties" class="headerlink" title="Gradient descent properties"></a>Gradient descent properties</h5><ul>
-<li>‘Batch’ algorithm because each iteration looks at all the training data</li>
-<li>Can be slow to converge</li>
-<li>Each iteration is slow because it need to process all the training data</li>
-<li>Simultaneously update parameters according to partial derivatives</li>
-</ul>
-<h5 id="Stochastic-gradient-descent-algorithm"><a href="#Stochastic-gradient-descent-algorithm" class="headerlink" title="Stochastic gradient descent algorithm"></a>Stochastic gradient descent algorithm</h5><ul>
-<li>Not like gradient descent where we use all the training data for each iteration, this time we only randomly choose one sample to update the parameters</li>
-<li>Can scale algorithms to much bigger training sets</li>
-<li>Can converge more fast than gradient descent</li>
-</ul>
-<h5 id="Mini-batch-gradient-descent"><a href="#Mini-batch-gradient-descent" class="headerlink" title="Mini-batch gradient descent"></a>Mini-batch gradient descent</h5><ul>
-<li>Hybrid between batch (update after all m records) and stochastic (update after 1 record)</li>
-<li>Upgrade using batch algorithm every b&lt;m training records</li>
-<li>Supports exploitation of vectorization and hence parallelism</li>
-</ul>
-<h4 id="Learning-process-for-supervised-learning"><a href="#Learning-process-for-supervised-learning" class="headerlink" title="Learning process for supervised learning"></a>Learning process for supervised learning</h4><ol>
-<li>Define the model</li>
-<li>Build the cost function</li>
-<li>Optimize the cost function to find the model’s parameters<ul>
-<li>Optimization algorithms: Gradient descent, Stochastic Gradient descent</li>
-<li>Normal equation (in linear and multiple regression)</li>
-</ul>
-</li>
-<li>Evaluation of the model</li>
-</ol>
-<h4 id="Normal-equation"><a href="#Normal-equation" class="headerlink" title="Normal equation"></a>Normal equation</h4><ul>
-<li>Normal equation is analytic solution rather than iterative (use math solution)</li>
-</ul>
-<h5 id="Compare-the-normal-equation-and-gradient-descent-n-features-m-training-records"><a href="#Compare-the-normal-equation-and-gradient-descent-n-features-m-training-records" class="headerlink" title="Compare the normal equation and gradient descent (n features, m training records)"></a>Compare the normal equation and gradient descent (n features, m training records)</h5><ul>
-<li>Gradient descent<ul>
-<li>Need to choose the learning rate</li>
-<li>Iterative</li>
-<li>Works for large n</li>
-<li>Used with many learning algorithms</li>
-</ul>
-</li>
-<li>Normal equation<ul>
-<li>No need to choose  the learning rate</li>
-<li>No iterations required</li>
-<li>Inverting n*n matrix can be slow for large n</li>
-<li>Only works with linear regression</li>
-<li>Can fail to find a solution</li>
-</ul>
-</li>
-</ul>
-<h4 id="Evaluation-of-Model"><a href="#Evaluation-of-Model" class="headerlink" title="Evaluation of Model"></a>Evaluation of Model</h4><ul>
-<li>Mean Square Error (MSE) - an absolute measure, we usually work with the root mean square error</li>
-<li>Residual Standard Error</li>
-<li>R^2 (coefficient of determination)<ul>
-<li>It is a measure of goodness of fit, estimating the proportion of variance explained by the fitted model.  </li>
-<li>It ranges from 0 to 1.</li>
-<li>If R2 = 1 there is a perfect fit. </li>
-<li>If R2 is 0 the model has the same performance as predicting using the overall mean . </li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Machine learning</category>
-      </categories>
-      <tags>
-        <tag>Linear Regression</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Feature Extraction</title>
-    <url>/2020/04/24/Feature-Extraction/</url>
-    <content><![CDATA[<h4 id="Feature-Choosing"><a href="#Feature-Choosing" class="headerlink" title="Feature Choosing"></a>Feature Choosing</h4><p> In a 2003 paper Introduction to Variable and Feature Selection, Guyon and Elisseeff classify three approaches to feature selection: </p>
-<ul>
-<li><p>Filters </p>
-<p>Select subsets of variables as pre-processing step before learning. </p>
-</li>
-<li><p>Wrappers </p>
-<p>Use learning system as black box to score subsets of variables as to their predictive power.</p>
-</li>
-<li><p>Embedded methods</p>
-<p>Feature selection is an embedded part of the learning algorithm. </p>
-</li>
-</ul>
-<h5 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h5><ul>
-<li>Rank features according to a metric or statistic </li>
-<li>If we look at all features independently:<ul>
-<li>Could miss important interactions </li>
-<li>Could have redundant features (But unless they are absolutely correlated then likely to still be useful)</li>
-</ul>
-</li>
-</ul>
-<h5 id="Wrappers"><a href="#Wrappers" class="headerlink" title="Wrappers"></a>Wrappers</h5><ul>
-<li>Use learning system as black box to score subsets of variables as to their predictive power. </li>
-<li>Selection algorithms <ul>
-<li>Forward selection <ul>
-<li>Add features one at a time choosing the one that gives best improvement. </li>
-<li>Stop when selection criterion fails to improve. </li>
-</ul>
-</li>
-<li>Backward elimination <ul>
-<li>Remove features one at a time choosing the one that gives best improvement </li>
-<li>Stop when selection criterion fails to improve. </li>
-</ul>
-</li>
-<li>Combined approach <ul>
-<li>Add a few, remove the worst, repeat. </li>
-<li>{A} {A,B} {A,B,C} {A,B,C,D} {A,C,D} {A,C,D,E} </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Need to divide training set into two </li>
-</ul>
-<h5 id="Embedded-selection"><a href="#Embedded-selection" class="headerlink" title="Embedded selection"></a>Embedded selection</h5><ul>
-<li>Learning algorithms explicitly select features <ul>
-<li>E.g. decision or regression tree </li>
-</ul>
-</li>
-<li>Feature Selection Criteria: <ul>
-<li>Entropy / Information gain </li>
-<li>Gini index </li>
-<li>Reduction in Variance/Standard Deviation </li>
-</ul>
-</li>
-<li>Decision Tree Algorithm<ul>
-<li>At root node determine the information gain for each feature </li>
-<li>Split the node according to the feature that gives the maximum information gain (given starting entropy for that node) </li>
-<li>Repeat process again for each new node until: <ul>
-<li>All entries in the node are the same class, or </li>
-<li>All features are used: take a majority vote </li>
-</ul>
-</li>
-<li>Final tree to often be pruned to avoid over-fitting </li>
-</ul>
-</li>
-<li>Bagging -   Bootstrap AGGregation </li>
-<li>Random Forest  - Very popular in medical image analysis and segmentation </li>
-</ul>
-]]></content>
-      <categories>
-        <category>Machine learning</category>
-      </categories>
-      <tags>
-        <tag>feature extraction</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Clustering</title>
-    <url>/2020/04/25/Clustering/</url>
-    <content><![CDATA[<h4 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h4><ul>
-<li>Partitioning set of data points into groups which are “similar” </li>
-<li>Unsupervised learning </li>
-<li>Different algorithms <ul>
-<li>k-means </li>
-<li>Distribution based </li>
-<li>Density based </li>
-</ul>
-</li>
-</ul>
-<h4 id="k-means-Clustering"><a href="#k-means-Clustering" class="headerlink" title="k-means Clustering"></a>k-means Clustering</h4><img src="https://s1.ax1x.com/2020/04/26/J6JQrd.png" alt="k-means" style="zoom: 40%;align=left" />
-
-<h5 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h5><ul>
-<li>Choose the number of clusters, k </li>
-<li>Choose k random centroids (possibly k observations) </li>
-<li>Repeat:  <ul>
-<li>Assign each observation to nearest centroid </li>
-<li>Update each centroid’s position to be mean of those observations assigned to it </li>
-</ul>
-</li>
-<li>Until there is no, or very little, change in the centroids </li>
-</ul>
-<h5 id="k-means-in-practice"><a href="#k-means-in-practice" class="headerlink" title="k-means in practice"></a>k-means in practice</h5><ul>
-<li>Must normalize the features so that the distances are not biased to a particular dimension </li>
-<li>Need to think carefully about the features you wish to include as algorithm will give each feature equal weight <ul>
-<li>Unlike linear regression where the weight may be zero, or Naïve Bayes where a meaningless feature will have no real impact </li>
-</ul>
-</li>
-<li>Can be hard to interpret <ul>
-<li>Sometimes the clusters seem meaningless </li>
-</ul>
-</li>
-<li>Need to choose k </li>
-</ul>
-<h5 id="Limitations"><a href="#Limitations" class="headerlink" title="Limitations"></a>Limitations</h5><ul>
-<li>Clusters assumed to be the same size </li>
-<li>Clusters on density not so good</li>
-</ul>
-<h5 id="HPC-Implementation"><a href="#HPC-Implementation" class="headerlink" title="HPC Implementation"></a>HPC Implementation</h5><ul>
-<li><p>All nodes get subset of the data </p>
-</li>
-<li><p>Repeat </p>
-<ul>
-<li>Centroids sent to all nodes </li>
-<li>Points assigned to nearest centroid </li>
-<li>For each cluster feature sums and count returned to master </li>
-</ul>
-</li>
-<li><p>Master computes new centroids - Until centroids are stable </p>
-</li>
-</ul>
-<h4 id="Distribution-Based-Clustering"><a href="#Distribution-Based-Clustering" class="headerlink" title="Distribution Based Clustering"></a>Distribution Based Clustering</h4><ul>
-<li>Model the data using statistical distributions </li>
-<li>Gaussian mixture models <ul>
-<li>Model is a fixed number of Gaussian distributions </li>
-<li>Need to discover the parameters of these Gaussian distributions - For each cluster need to know mean for each feature dimension and the covariance matrix </li>
-</ul>
-</li>
-<li>Expectation maximization algorithm </li>
-<li>Data points are assigned to the distribution they most likely belong to (hard clusters), or each data point is given probability of belonging to clusters (soft clusters) </li>
-</ul>
-<h5 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h5><ul>
-<li>Handles covariance of features - No need to normalize data </li>
-<li>Can choose number of clusters </li>
-</ul>
-<h5 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h5><ul>
-<li>Bad for density based clusters that don’t match distribution model </li>
-</ul>
-<h4 id="Density-Based-Clustering"><a href="#Density-Based-Clustering" class="headerlink" title="Density Based Clustering"></a>Density Based Clustering</h4><ul>
-<li><p>Clusters are defined as areas of higher density than the rest of the data set. Points in sparse areas are considered noise and border points </p>
-</li>
-<li><p>Popular method is DBSCAN algorithm: </p>
-<ul>
-<li><p>Density-Based Spatial Clustering of Applications with Noise </p>
-</li>
-<li><p>Group together points with many nearby neighbors </p>
-</li>
-<li><p>Points with few nearby neighbors are marked as outliers </p>
-</li>
-<li><p>Two parameters: </p>
-<ul>
-<li>ε : distance below which points are considered neighbors </li>
-<li>minPts: minimum number of points required to form a cluster </li>
-</ul>
-</li>
-<li><p>Uses “density-reachability” cluster model </p>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="DBSCAN-definition"><a href="#DBSCAN-definition" class="headerlink" title="DBSCAN definition"></a>DBSCAN definition</h5><ul>
-<li><p>All points are identified as one of: </p>
-<ul>
-<li>Core point: A point p with at least minPts points within ε of it. Those points within ε of p are directly-reachable from p </li>
-<li>Density-reachable point: A point q is reachable from p if there is a path where , and is directly reachable from </li>
-<li>Outlier: Point not reachable from any other point </li>
-</ul>
-</li>
-<li><p>Points p and q are density connected if there exists a point o such that p and q are density-reachable from o. </p>
-</li>
-<li><p>A cluster defined as: </p>
-<ul>
-<li>Containing all points that are mutually density-connected </li>
-<li>Also contains any points density-reachable from a point in cluster </li>
-</ul>
-</li>
-</ul>
-<h5 id="Limitation-1"><a href="#Limitation-1" class="headerlink" title="Limitation"></a>Limitation</h5><ul>
-<li>Can be hard to tune parameters </li>
-<li>Does not produce model that can be used to classify data </li>
-<li>Cannot handle clusters with highly variable densities </li>
-</ul>
-]]></content>
-      <categories>
-        <category>Machine learning</category>
-      </categories>
-      <tags>
-        <tag>Clustering</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Logistic Regression</title>
-    <url>/2020/04/25/Logistic-Regression/</url>
-    <content><![CDATA[<h4 id="Learning-process"><a href="#Learning-process" class="headerlink" title="Learning process"></a>Learning process</h4><ul>
-<li>Define model </li>
-<li>Build the cost function </li>
-<li>Optimize the cost function to find the model’s parameters <ul>
-<li>Optimization algorithms • <ul>
-<li>Gradient descent</li>
-<li>Stochastic Gradient descent </li>
-<li>Mini-batch Stochastic Gradient descent</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="Logistic-regression-limitations"><a href="#Logistic-regression-limitations" class="headerlink" title="Logistic regression limitations"></a>Logistic regression limitations</h5><ul>
-<li><p>What if our data is not linearly separable? </p>
-<p>Possible solution: fit with a high order polynomial </p>
-<p>This is usually a bad idea, as the model may overfit the training data and therefore will be unable to generalize to new data. </p>
-</li>
-</ul>
-<h5 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h5><ul>
-<li><p>It is a parametrical model where we make assumptions on the underlying distribution of the data and build the cost function in terms of the maximum likelihood of the training set.</p>
-</li>
-<li><p>Features should be normalized before the learning process.</p>
-</li>
-<li><p>Linear models are fast to use for prediction. </p>
-</li>
-<li><p>Returns a probability </p>
-</li>
-<li><p>Bad performance in problems where observations cannot be linearly separated. </p>
-<p>Example: XOR </p>
-</li>
-<li><p>Can use logistic regression with polynomial terms. </p>
-<ul>
-<li>If we include all the quadratic terms we have O(n2) features. </li>
-<li>If we include all the cubic terms we have O(n3) features. </li>
-<li>The algorithm will have high variance and this may lead to overfitting.  </li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Machine learning</category>
-      </categories>
-      <tags>
-        <tag>Logistic Regression</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Day9 - 代码块，内部类，final，抽象类，接口，模板方法，工厂方法</title>
-    <url>/2020/04/26/Day9/</url>
-    <content><![CDATA[<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><p>外部的类要用自己内部类的方法，得先new内部类的对象</p>
-<h5 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h5><ul>
-<li>如果内部类是static的，就不能再使用外部类非static的成员</li>
-<li>可以声明为final的</li>
-<li>和外部类不同，可以声明为private或protected</li>
-<li>可以声明为abstract类，因此可以被其他的内部类继承</li>
-</ul>
-<h5 id="内部类有什么用？"><a href="#内部类有什么用？" class="headerlink" title="内部类有什么用？"></a>内部类有什么用？</h5><p>内部类主要是解决java不能多重继承的问题</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiExtend</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 最后new A的对象，调用新增的方法</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        A a = <span class="keyword">new</span> A();</span><br><span class="line">        a.testB();</span><br><span class="line">        a.testC();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 想让A同时继承B和C的方法，并且重写</span></span><br><span class="line"><span class="comment"> * 可以使用内部类变相的实现类的内部继承</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 再在A内部定义与重写方法同名的方法，通过new内部类对象来调用重写后的方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testB</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">new</span> InnerB().testB();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testC</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">new</span> InnerC().testC();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 先用两个内部类分别继承B和C，并且分别重写</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerB</span> <span class="keyword">extends</span> <span class="title">B</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"这是重写之后的testB方法"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerC</span> <span class="keyword">extends</span> <span class="title">C</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testC</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"这是重写之后的testC方法"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testB</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testC</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h4><h5 id="静态代码块和非静态代码块比较"><a href="#静态代码块和非静态代码块比较" class="headerlink" title="静态代码块和非静态代码块比较"></a>静态代码块和非静态代码块比较</h5><img src="https://s1.ax1x.com/2020/04/26/JgNvwQ.png" style="zoom:67%;" />
-
-<h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><ul>
-<li><p>实际开发中，static静态代码块用在初始化类的静态属性（static类型属性）</p>
-</li>
-<li><p>非静态的代码块可以用来在匿名内部类中代替构造方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//匿名内部类</span></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 构建了一个没有类名的Person子类，也就是匿名的Person子类</span></span><br><span class="line"><span class="comment">         * 这种类没有类名，就不能显式的new方法来创建对象</span></span><br><span class="line"><span class="comment">         * 如果还需要在构造器中初始化属性就没有办法了，这种情况就要用代码块&#123;&#125;来进行初始化</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        Person p = <span class="keyword">new</span> Person()&#123;<span class="comment">//一个Person的匿名子类</span></span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 问：现在想把name改掉，但是不想动Person的代码</span></span><br><span class="line"><span class="comment">             * 在匿名内部类中，用代码块来代替构造方法</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">super</span>.name = <span class="string">"Anna"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"这是重写之后的test方法"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        System.out.println(p.name);<span class="comment">//会输出anna</span></span><br><span class="line">        p.test();<span class="comment">//会输出重写之后的代码</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 在new Person()执行的时候，第一步是类的属性的默认初始化和显式初始化</span></span><br><span class="line"><span class="comment">     * 第二步是执行代码块，如果有多个代码块，会按照程序的编写顺序执行</span></span><br><span class="line"><span class="comment">     * 第三步：执行构造器的代码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">static</span> TestPerson tp = <span class="keyword">new</span> TestPerson();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = <span class="string">"lisa"</span>;</span><br><span class="line">        System.out.println(<span class="string">"这是构造方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//非静态代码块</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"这是非静态代码块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//静态代码块，这里只能使用静态修饰的属性和方法</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(age);</span><br><span class="line">        showAge();</span><br><span class="line"></span><br><span class="line">        tp.age = <span class="number">12</span>;</span><br><span class="line">        tp.name = <span class="string">"ANNA"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showAge</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"这是Person的test方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="关键字final"><a href="#关键字final" class="headerlink" title="关键字final"></a>关键字final</h4><ul>
-<li>在Java中声明类、属性和方法时，可使用关键字final来修饰，表示“最终”</li>
-<li>final标记的类不能被继承，标记的方法不能被重写，标记的变量（成员变量或局部变量）即成为常量。名称大写，且只能被赋值一次，不能改变</li>
-<li>final和static一起修饰，就是全局常量</li>
-</ul>
-<h4 id="抽象类abstract-class"><a href="#抽象类abstract-class" class="headerlink" title="抽象类abstract class"></a>抽象类abstract class</h4><ul>
-<li><p>用abstract关键字来修饰一个类时，这个类叫抽象类</p>
-</li>
-<li><p>用abstract来修饰一个方法时，该方法叫做抽象方法</p>
-<p>抽象方法只有方法的声明，没有方法的实现，以分号结束</p>
-</li>
-<li><p>含有抽象方法的类必须被声明为抽象类</p>
-</li>
-<li><p>抽象类不能被实例化。抽象类是用来作为父类被继承的，抽象类的子类必须重写父类的抽象方法，并提供方法体。若没有重写全部的抽象方法，仍为抽象类</p>
-</li>
-</ul>
-<h5 id="为什么抽象类不可以使用final关键字声明？"><a href="#为什么抽象类不可以使用final关键字声明？" class="headerlink" title="为什么抽象类不可以使用final关键字声明？"></a>为什么抽象类不可以使用final关键字声明？</h5><p>抽象类不能被实例化。抽象类是用来被继承的。抽象类的子类必须重写父类的构造方法，并提供方法体</p>
-<h5 id="一个抽象类中可以定义构造器吗？"><a href="#一个抽象类中可以定义构造器吗？" class="headerlink" title="一个抽象类中可以定义构造器吗？"></a>一个抽象类中可以定义构造器吗？</h5><p>抽象类可以有构造方法，只是不能直接创建抽象类的实例对象</p>
-<h4 id="模板方法设计模式-Template-Method"><a href="#模板方法设计模式-Template-Method" class="headerlink" title="模板方法设计模式(Template Method)"></a>模板方法设计模式(Template Method)</h4><p>抽象类体现的就是一种模板模式的设计。</p>
-<ul>
-<li>当功能内部一部分实现是确定，一部分实现是不确定的。这时可以把不确定的部分暴露出去，让子类去实现。</li>
-</ul>
-<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><ul>
-<li><p>接口可以用来达到多重继承的效果</p>
-</li>
-<li><p>从本质上讲，接口是一种特殊的抽象类，这种抽象类中只包含常量和方法的定义，而没有变量和方法的实现。</p>
-</li>
-<li><p>一个类可以实现多个接口，接口也可以继承其他接口</p>
-</li>
-<li><p>如果既有继承又有实现，那么先继承，再实现</p>
-</li>
-</ul>
-<p>问：接口和抽象类很相似，好像接口能做的事抽象类也能做，为什么要定义接口呢？</p>
-<p>父类需要稳定的抽象，如果父类总是改变，基于这个父类的子类，子类的子类都会受到影响。有时我们又确实需要给父类增加一些方法，那么就不能直接在父类上下手，只能新建一个接口，在接口上扩展方法，其他需要的子类自行去实现接口。</p>
-<p>如果实现接口的类中没有实现接口中的全部方法，必须将此类定义为抽象类</p>
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ul>
-<li><p>抽象类是对于一类事物的高度抽象，其中既有属性也有方法。接口是对方法的抽象，也就是对一系列动作的抽象。</p>
-</li>
-<li><p>当需要对一类事物抽象的时候，应该使用抽象类，好形成一个父类。</p>
-</li>
-<li><p>当需要对一系列的动作抽象的时候，就应该使用接口，需要使用这些动作的类去实现相应的接口即可。</p>
-</li>
-</ul>
-<h4 id="工厂方法-Factory-method"><a href="#工厂方法-Factory-method" class="headerlink" title="工厂方法(Factory method)"></a>工厂方法(Factory method)</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 宝马车的产品接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BWM</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 产品的信息介绍</span></span><br><span class="line"><span class="comment">     * 车的发动方式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 构建具体的车的类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM3</span> <span class="keyword">implements</span> <span class="title">BWM</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BMW3系"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM5</span> <span class="keyword">implements</span> <span class="title">BWM</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BMW5系"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM7</span> <span class="keyword">implements</span> <span class="title">BWM</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BMW7系"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 汽车生产接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BWMFactory</span> </span>&#123;</span><br><span class="line">    <span class="function">BWM <span class="title">productBWM</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现具体的车型的生产</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM3Factory</span> <span class="keyword">implements</span> <span class="title">BWMFactory</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BWM <span class="title">productBWM</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"生产BWM3系"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BWM3();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM5Factory</span> <span class="keyword">implements</span> <span class="title">BWMFactory</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BWM <span class="title">productBWM</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"生产BWM5系"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BWM5();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM7Factory</span> <span class="keyword">implements</span> <span class="title">BWMFactory</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BWM <span class="title">productBWM</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"生产BWM7系"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BWM7();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//这是开发人员b的工作</span></span><br><span class="line">        BWM b3 = <span class="keyword">new</span> BWM3Factory().productBWM();</span><br><span class="line">        BWM b5 = <span class="keyword">new</span> BWM5Factory().productBWM();</span><br><span class="line">        BWM b7 = <span class="keyword">new</span> BWM7Factory().productBWM();</span><br><span class="line"></span><br><span class="line">        b3.showInfo();</span><br><span class="line">        b5.showInfo();</span><br><span class="line">        b7.showInfo();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>通过工厂，把new对象隔离。通过产品的接口，可以接受不同实际产品的实现类，这样实现类的类名改变不影响其他合作人员的编程</p>
 ]]></content>
       <categories>
         <category>Java SE</category>

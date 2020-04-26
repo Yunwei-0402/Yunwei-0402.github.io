@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="内部类外部的类要用自己内部类的方法，得先new内部类的对象 特性 如果内部类是static的，就不能再使用外部类非static的成员 可以声明为final的 和外部类不同，可以声明为private或protected 可以声明为abstract类，因此可以被其他的内部类继承  内部类有什么用？内部类主要是解决java不能多重继承的问题 1234567891011121314151617181920">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day9 - 代码块，内部类，final，抽象类，接口，模板方法，工厂方法">
+<meta property="og:url" content="http://yoursite.com/2020/04/26/Day9/index.html">
+<meta property="og:site_name" content="Welcome to Yunwei&#39;s blog">
+<meta property="og:description" content="内部类外部的类要用自己内部类的方法，得先new内部类的对象 特性 如果内部类是static的，就不能再使用外部类非static的成员 可以声明为final的 和外部类不同，可以声明为private或protected 可以声明为abstract类，因此可以被其他的内部类继承  内部类有什么用？内部类主要是解决java不能多重继承的问题 1234567891011121314151617181920">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/26/JgNvwQ.png">
+<meta property="article:published_time" content="2020-04-26T11:07:06.000Z">
+<meta property="article:modified_time" content="2020-04-26T14:21:41.877Z">
+<meta property="article:author" content="Yunwei Xie">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/04/26/JgNvwQ.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/26/Day9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Day9 - 代码块，内部类，final，抽象类，接口，模板方法，工厂方法 | Welcome to Yunwei's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to Yunwei's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/Day9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Yunwei Xie">
+      <meta itemprop="description" content="A blog used to record my study process">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Yunwei's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day9 - 代码块，内部类，final，抽象类，接口，模板方法，工厂方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-26 12:07:06 / Modified: 15:21:41" itemprop="dateCreated datePublished" datetime="2020-04-26T12:07:06+01:00">2020-04-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-SE/" itemprop="url" rel="index"><span itemprop="name">Java SE</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><p>外部的类要用自己内部类的方法，得先new内部类的对象</p>
+<h5 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h5><ul>
+<li>如果内部类是static的，就不能再使用外部类非static的成员</li>
+<li>可以声明为final的</li>
+<li>和外部类不同，可以声明为private或protected</li>
+<li>可以声明为abstract类，因此可以被其他的内部类继承</li>
+</ul>
+<h5 id="内部类有什么用？"><a href="#内部类有什么用？" class="headerlink" title="内部类有什么用？"></a>内部类有什么用？</h5><p>内部类主要是解决java不能多重继承的问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiExtend</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 最后new A的对象，调用新增的方法</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        A a = <span class="keyword">new</span> A();</span><br><span class="line">        a.testB();</span><br><span class="line">        a.testC();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 想让A同时继承B和C的方法，并且重写</span></span><br><span class="line"><span class="comment"> * 可以使用内部类变相的实现类的内部继承</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 再在A内部定义与重写方法同名的方法，通过new内部类对象来调用重写后的方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testB</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">new</span> InnerB().testB();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testC</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">new</span> InnerC().testC();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 先用两个内部类分别继承B和C，并且分别重写</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerB</span> <span class="keyword">extends</span> <span class="title">B</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"这是重写之后的testB方法"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerC</span> <span class="keyword">extends</span> <span class="title">C</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testC</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"这是重写之后的testC方法"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testB</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testC</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h4><h5 id="静态代码块和非静态代码块比较"><a href="#静态代码块和非静态代码块比较" class="headerlink" title="静态代码块和非静态代码块比较"></a>静态代码块和非静态代码块比较</h5><img src="https://s1.ax1x.com/2020/04/26/JgNvwQ.png" style="zoom:67%;" />
+
+<h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><ul>
+<li><p>实际开发中，static静态代码块用在初始化类的静态属性（static类型属性）</p>
+</li>
+<li><p>非静态的代码块可以用来在匿名内部类中代替构造方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//匿名内部类</span></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 构建了一个没有类名的Person子类，也就是匿名的Person子类</span></span><br><span class="line"><span class="comment">         * 这种类没有类名，就不能显式的new方法来创建对象</span></span><br><span class="line"><span class="comment">         * 如果还需要在构造器中初始化属性就没有办法了，这种情况就要用代码块&#123;&#125;来进行初始化</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        Person p = <span class="keyword">new</span> Person()&#123;<span class="comment">//一个Person的匿名子类</span></span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 问：现在想把name改掉，但是不想动Person的代码</span></span><br><span class="line"><span class="comment">             * 在匿名内部类中，用代码块来代替构造方法</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">super</span>.name = <span class="string">"Anna"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"这是重写之后的test方法"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        System.out.println(p.name);<span class="comment">//会输出anna</span></span><br><span class="line">        p.test();<span class="comment">//会输出重写之后的代码</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 在new Person()执行的时候，第一步是类的属性的默认初始化和显式初始化</span></span><br><span class="line"><span class="comment">     * 第二步是执行代码块，如果有多个代码块，会按照程序的编写顺序执行</span></span><br><span class="line"><span class="comment">     * 第三步：执行构造器的代码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">static</span> TestPerson tp = <span class="keyword">new</span> TestPerson();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = <span class="string">"lisa"</span>;</span><br><span class="line">        System.out.println(<span class="string">"这是构造方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//非静态代码块</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"这是非静态代码块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//静态代码块，这里只能使用静态修饰的属性和方法</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(age);</span><br><span class="line">        showAge();</span><br><span class="line"></span><br><span class="line">        tp.age = <span class="number">12</span>;</span><br><span class="line">        tp.name = <span class="string">"ANNA"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showAge</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"这是Person的test方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="关键字final"><a href="#关键字final" class="headerlink" title="关键字final"></a>关键字final</h4><ul>
+<li>在Java中声明类、属性和方法时，可使用关键字final来修饰，表示“最终”</li>
+<li>final标记的类不能被继承，标记的方法不能被重写，标记的变量（成员变量或局部变量）即成为常量。名称大写，且只能被赋值一次，不能改变</li>
+<li>final和static一起修饰，就是全局常量</li>
+</ul>
+<h4 id="抽象类abstract-class"><a href="#抽象类abstract-class" class="headerlink" title="抽象类abstract class"></a>抽象类abstract class</h4><ul>
+<li><p>用abstract关键字来修饰一个类时，这个类叫抽象类</p>
+</li>
+<li><p>用abstract来修饰一个方法时，该方法叫做抽象方法</p>
+<p>抽象方法只有方法的声明，没有方法的实现，以分号结束</p>
+</li>
+<li><p>含有抽象方法的类必须被声明为抽象类</p>
+</li>
+<li><p>抽象类不能被实例化。抽象类是用来作为父类被继承的，抽象类的子类必须重写父类的抽象方法，并提供方法体。若没有重写全部的抽象方法，仍为抽象类</p>
+</li>
+</ul>
+<h5 id="为什么抽象类不可以使用final关键字声明？"><a href="#为什么抽象类不可以使用final关键字声明？" class="headerlink" title="为什么抽象类不可以使用final关键字声明？"></a>为什么抽象类不可以使用final关键字声明？</h5><p>抽象类不能被实例化。抽象类是用来被继承的。抽象类的子类必须重写父类的构造方法，并提供方法体</p>
+<h5 id="一个抽象类中可以定义构造器吗？"><a href="#一个抽象类中可以定义构造器吗？" class="headerlink" title="一个抽象类中可以定义构造器吗？"></a>一个抽象类中可以定义构造器吗？</h5><p>抽象类可以有构造方法，只是不能直接创建抽象类的实例对象</p>
+<h4 id="模板方法设计模式-Template-Method"><a href="#模板方法设计模式-Template-Method" class="headerlink" title="模板方法设计模式(Template Method)"></a>模板方法设计模式(Template Method)</h4><p>抽象类体现的就是一种模板模式的设计。</p>
+<ul>
+<li>当功能内部一部分实现是确定，一部分实现是不确定的。这时可以把不确定的部分暴露出去，让子类去实现。</li>
+</ul>
+<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><ul>
+<li><p>接口可以用来达到多重继承的效果</p>
+</li>
+<li><p>从本质上讲，接口是一种特殊的抽象类，这种抽象类中只包含常量和方法的定义，而没有变量和方法的实现。</p>
+</li>
+<li><p>一个类可以实现多个接口，接口也可以继承其他接口</p>
+</li>
+<li><p>如果既有继承又有实现，那么先继承，再实现</p>
+</li>
+</ul>
+<p>问：接口和抽象类很相似，好像接口能做的事抽象类也能做，为什么要定义接口呢？</p>
+<p>父类需要稳定的抽象，如果父类总是改变，基于这个父类的子类，子类的子类都会受到影响。有时我们又确实需要给父类增加一些方法，那么就不能直接在父类上下手，只能新建一个接口，在接口上扩展方法，其他需要的子类自行去实现接口。</p>
+<p>如果实现接口的类中没有实现接口中的全部方法，必须将此类定义为抽象类</p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ul>
+<li><p>抽象类是对于一类事物的高度抽象，其中既有属性也有方法。接口是对方法的抽象，也就是对一系列动作的抽象。</p>
+</li>
+<li><p>当需要对一类事物抽象的时候，应该使用抽象类，好形成一个父类。</p>
+</li>
+<li><p>当需要对一系列的动作抽象的时候，就应该使用接口，需要使用这些动作的类去实现相应的接口即可。</p>
+</li>
+</ul>
+<h4 id="工厂方法-Factory-method"><a href="#工厂方法-Factory-method" class="headerlink" title="工厂方法(Factory method)"></a>工厂方法(Factory method)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 宝马车的产品接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BWM</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 产品的信息介绍</span></span><br><span class="line"><span class="comment">     * 车的发动方式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 构建具体的车的类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM3</span> <span class="keyword">implements</span> <span class="title">BWM</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BMW3系"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM5</span> <span class="keyword">implements</span> <span class="title">BWM</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BMW5系"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM7</span> <span class="keyword">implements</span> <span class="title">BWM</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BMW7系"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 汽车生产接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BWMFactory</span> </span>&#123;</span><br><span class="line">    <span class="function">BWM <span class="title">productBWM</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现具体的车型的生产</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM3Factory</span> <span class="keyword">implements</span> <span class="title">BWMFactory</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BWM <span class="title">productBWM</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"生产BWM3系"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BWM3();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM5Factory</span> <span class="keyword">implements</span> <span class="title">BWMFactory</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BWM <span class="title">productBWM</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"生产BWM5系"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BWM5();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BWM7Factory</span> <span class="keyword">implements</span> <span class="title">BWMFactory</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BWM <span class="title">productBWM</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"生产BWM7系"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BWM7();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//这是开发人员b的工作</span></span><br><span class="line">        BWM b3 = <span class="keyword">new</span> BWM3Factory().productBWM();</span><br><span class="line">        BWM b5 = <span class="keyword">new</span> BWM5Factory().productBWM();</span><br><span class="line">        BWM b7 = <span class="keyword">new</span> BWM7Factory().productBWM();</span><br><span class="line"></span><br><span class="line">        b3.showInfo();</span><br><span class="line">        b5.showInfo();</span><br><span class="line">        b7.showInfo();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过工厂，把new对象隔离。通过产品的接口，可以接受不同实际产品的实现类，这样实现类的类名改变不影响其他合作人员的编程</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/25/Logistic-Regression/" rel="prev" title="Logistic Regression">
+      <i class="fa fa-chevron-left"></i> Logistic Regression
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#内部类"><span class="nav-number">1.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特性"><span class="nav-number">1.1.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内部类有什么用？"><span class="nav-number">1.2.</span> <span class="nav-text">内部类有什么用？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码块"><span class="nav-number">2.</span> <span class="nav-text">代码块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#静态代码块和非静态代码块比较"><span class="nav-number">2.1.</span> <span class="nav-text">静态代码块和非静态代码块比较</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用"><span class="nav-number">2.2.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关键字final"><span class="nav-number">3.</span> <span class="nav-text">关键字final</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类abstract-class"><span class="nav-number">4.</span> <span class="nav-text">抽象类abstract class</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么抽象类不可以使用final关键字声明？"><span class="nav-number">4.1.</span> <span class="nav-text">为什么抽象类不可以使用final关键字声明？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一个抽象类中可以定义构造器吗？"><span class="nav-number">4.2.</span> <span class="nav-text">一个抽象类中可以定义构造器吗？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模板方法设计模式-Template-Method"><span class="nav-number">5.</span> <span class="nav-text">模板方法设计模式(Template Method)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口"><span class="nav-number">6.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#总结"><span class="nav-number">6.1.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工厂方法-Factory-method"><span class="nav-number">7.</span> <span class="nav-text">工厂方法(Factory method)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yunwei Xie"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">Yunwei Xie</p>
+  <div class="site-description" itemprop="description">A blog used to record my study process</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yunwei-0402" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yunwei-0402" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:msyunwei@gmail.com" title="E-Mail → mailto:msyunwei@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yunwei Xie</span>
+</div>
+
+<!--
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
