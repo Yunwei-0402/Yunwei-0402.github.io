@@ -190,6 +190,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/04/Day10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Yunwei Xie">
+      <meta itemprop="description" content="A blog used to record my study process">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Yunwei's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/04/Day10/" class="post-title-link" itemprop="url">Day10 - 集合</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-04 15:09:14 / Modified: 19:35:23" itemprop="dateCreated datePublished" datetime="2020-05-04T15:09:14+01:00">2020-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-SE/" itemprop="url" rel="index"><span itemprop="name">Java SE</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="异常处理机制"><a href="#异常处理机制" class="headerlink" title="异常处理机制"></a>异常处理机制</h4><ul>
+<li>子类重写父类的方法时，子类不能抛出比父类方法更大范围的异常</li>
+</ul>
+<h4 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h4><ul>
+<li>Java集合类存放于java.util包中，是一个用来存放对象的容器<ul>
+<li>集合只能存放对象</li>
+<li>集合存放的是多个对象的引用，对象本身还是放在堆内存中的</li>
+<li>集合可以存放不同类型、不同数量的数据类型</li>
+</ul>
+</li>
+<li>Java集合可以分为Set, List和Map三大体系<ul>
+<li>Set: 无序、不可重复的集合</li>
+<li>List: 有序、可重复的集合</li>
+<li>Map: 具有映射关系的集合</li>
+</ul>
+</li>
+</ul>
+<h4 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h4><p>HashSet是Set接口的典型实现，大多数时候使用Set集合时都使用这个实现类。HashSet按Hash算法存储集合中的元素，因此具有很好的存取和查找性能。</p>
+<h5 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h5><ul>
+<li>不能保证元素的排列顺序</li>
+<li>不可重复，指的是hashcode不相同</li>
+<li>不是线程安全的</li>
+<li>集合元素可以是null</li>
+</ul>
+<p>当向HashSet集合中存入一个元素时，HashSet会调用该对象的hashCode()方法来得到该对象的hashCode值，然后根据hashCode值来决定该对象在HashSet中的存储位置</p>
+<h5 id="判断两个元素相等"><a href="#判断两个元素相等" class="headerlink" title="判断两个元素相等"></a>判断两个元素相等</h5>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/04/Day10/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/Day9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1173,109 +1273,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/23/Day6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Yunwei Xie">
-      <meta itemprop="description" content="A blog used to record my study process">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to Yunwei's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/23/Day6/" class="post-title-link" itemprop="url">Day6 - 类的构造，this关键字，JavaBean</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-04-23 22:11:33" itemprop="dateCreated datePublished" datetime="2020-04-23T22:11:33+01:00">2020-04-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-24 02:13:37" itemprop="dateModified" datetime="2020-04-24T02:13:37+01:00">2020-04-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java-SE/" itemprop="url" rel="index"><span itemprop="name">Java SE</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="方法的参数传递"><a href="#方法的参数传递" class="headerlink" title="方法的参数传递"></a>方法的参数传递</h4><ul>
-<li>Java里方法的参数传递方式只有一种：值传递。即将实际参数值的副本传入方法内，而参数本身不受影响。</li>
-<li>对于基本数据类型而言，传的是栈中的值，对于引用对象而言，存的是保存在栈中的地址（实际引用对象保存在堆中）</li>
-</ul>
-<p><img src="https://s1.ax1x.com/2020/04/24/J0GBnK.png" alt="JVM结构"></p>
-<ul>
-<li><p>基础数据类型的变量的值是保存在栈中的，引用对象的值保存在堆中，栈中保存的是该对象所在的地址</p>
-</li>
-<li><p>基本数据类型在参数传递的过程中，就是把实参的值复制在形参上</p>
-</li>
-<li><p>总结：<br>如果方法的形参是基本数据类型，那么实参（实际的数据）向形参传递参数时，就是直接传递值，把实参的值复制给形参。</p>
-<p>如果方法的形参是对象，那么实参（实际的对象）向形参传递参数时，也是把值给形参，这个值是实参在栈内存中的值，也就是引用对象在堆中的地址。</p>
-</li>
-</ul>
-<p>  Java中的包package等同于文件夹，包和文件夹一样可以有多级。多级的包使用点分隔，用“.”来指明包的层次。使用Import来导入包下面的类。</p>
-<p>  Import day06.test.*</p>
-<p>  如果使用同一个包下的类，Import可以省略</p>
-<h4 id="面向对象的特征之一–封装和隐藏"><a href="#面向对象的特征之一–封装和隐藏" class="headerlink" title="面向对象的特征之一–封装和隐藏"></a>面向对象的特征之一–封装和隐藏</h4><p>Java中通过将数据声明为私有的(private)，再提供公共的(public)方法:getXxx()和setXxx()实现对该属性的操作，以实现下述目的：</p>
-<ol>
-<li>隐藏一个类中不需要对外提供的实现细节</li>
-<li>使用者只能通过实现制定好的方法来访问数据，可以方便地加入空值逻辑，限制对属性的不合理操作</li>
-<li>便于修改，增强代码的可维护性</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/23/Day6/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1347,7 +1344,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
