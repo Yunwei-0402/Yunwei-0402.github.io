@@ -190,6 +190,88 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/Day13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Yunwei Xie">
+      <meta itemprop="description" content="A blog used to record my study process">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Yunwei's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/08/Day13/" class="post-title-link" itemprop="url">Day13 - 缓冲流，转换流，标准输入输出流，数据流，对象流，随机存取流</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-08 15:48:04 / Modified: 19:47:07" itemprop="dateCreated datePublished" datetime="2020-05-08T15:48:04+01:00">2020-05-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-SE/" itemprop="url" rel="index"><span itemprop="name">Java SE</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a>缓冲流</h4><p>FileInputStream, FileOutputStream, FileReader, FileWriter 这些都是计算机与硬盘之间发生的Io操作。基于硬盘的读写相对比较慢，这个操作的速度受到硬盘的读写速度的制约，为了能够提高读写速度，从一定程度上绕过硬盘的限制，java提供一种缓冲流来实现。</p>
+<p>缓冲流就是先把数据缓冲到内存里，在内存中去做io操作，基于内存的io操作大概能比基于硬盘的io操作快75000多倍。</p>
+<h5 id="缓冲字节流"><a href="#缓冲字节流" class="headerlink" title="缓冲字节流"></a>缓冲字节流</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 缓冲字节输入流</span></span><br><span class="line"><span class="comment">    * BufferedInputStream</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testBufferedInputStream</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">       <span class="comment">//文件字节输入流对象</span></span><br><span class="line">       FileInputStream fileInputStream = <span class="keyword">new</span> FileInputStream(<span class="string">"E:/Java/src/Day13/tt.txt"</span>);</span><br><span class="line">       <span class="comment">//把文件字节输入流对象放到缓冲字节输入流中</span></span><br><span class="line">       BufferedInputStream bufferedInputStream = <span class="keyword">new</span> BufferedInputStream(fileInputStream);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">100</span>];</span><br><span class="line">       <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">while</span>(( len = bufferedInputStream.read(b)) != -<span class="number">1</span>)&#123;</span><br><span class="line">           System.out.println(<span class="keyword">new</span> String(b,<span class="number">0</span>,len));</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//最晚开的流最早关，依次关</span></span><br><span class="line">       bufferedInputStream.close();</span><br><span class="line">       fileInputStream.close();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 缓冲字节输出流</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testBufferedOutputStream</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//文件字节输出流</span></span><br><span class="line">       FileOutputStream fileOutputStream = <span class="keyword">new</span> FileOutputStream(<span class="string">"E:/Java/src/Day13/tt1.txt"</span>);</span><br><span class="line">       <span class="comment">//把文件字节输出流对象放到缓冲字节输出流中</span></span><br><span class="line">       BufferedOutputStream bufferedOutputStream = <span class="keyword">new</span> BufferedOutputStream(fileOutputStream);</span><br><span class="line"></span><br><span class="line">       String str = <span class="string">"hello world!"</span>;</span><br><span class="line"></span><br><span class="line">       bufferedOutputStream.write(str.getBytes());</span><br><span class="line"></span><br><span class="line">       bufferedOutputStream.flush();</span><br><span class="line">       bufferedOutputStream.close();</span><br><span class="line">       fileOutputStream.close();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 缓冲流实现文件的复制</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copyFile</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">       BufferedInputStream bufferedInputStream = <span class="keyword">new</span> BufferedInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"E:/Java/src/Day13/tt1.txt"</span>));</span><br><span class="line">       BufferedOutputStream bufferedOutputStream = <span class="keyword">new</span> BufferedOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"E:/Java/src/Day13/tt2.txt"</span>));</span><br><span class="line">       <span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">100</span>];</span><br><span class="line">       <span class="comment">//设置一个每次读取到的数据的长度，直到read()方法执行到最后</span></span><br><span class="line">       <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">while</span>((len = bufferedInputStream.read(b)) != -<span class="number">1</span>)&#123;</span><br><span class="line">           bufferedOutputStream.write(b);</span><br><span class="line">       &#125;</span><br><span class="line">       bufferedOutputStream.flush();</span><br><span class="line">       bufferedOutputStream.close();</span><br><span class="line">       bufferedInputStream.close();</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="缓冲字符流"><a href="#缓冲字符流" class="headerlink" title="缓冲字符流"></a>缓冲字符流</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 缓冲字符输入流</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testBufferedReader</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    FileReader fileReader = <span class="keyword">new</span> FileReader(<span class="string">"E:/Java/src/Day13/tt.txt"</span>);</span><br><span class="line">    BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(fileReader);</span><br><span class="line">    <span class="keyword">char</span>[] c = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>((len = bufferedReader.read(c)) != -<span class="number">1</span>)&#123;</span><br><span class="line">        System.out.println(<span class="keyword">new</span> String(c,<span class="number">0</span>,len));</span><br><span class="line">    &#125;</span><br><span class="line">    bufferedReader.close();</span><br><span class="line">    fileReader.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 缓冲字符输出流</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testBufferedWriter</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    FileWriter fileWriter = <span class="keyword">new</span> FileWriter(<span class="string">"E:/Java/src/Day13/tt3.txt"</span>);</span><br><span class="line">    BufferedWriter bufferedWriter = <span class="keyword">new</span> BufferedWriter(fileWriter);</span><br><span class="line">    String str = <span class="string">"Hello world! Hello world!"</span>;</span><br><span class="line"></span><br><span class="line">    bufferedWriter.write(str);</span><br><span class="line">    bufferedWriter.flush();</span><br><span class="line">    bufferedWriter.close();</span><br><span class="line">    fileWriter.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 缓冲字符流复制文件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copyFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(<span class="string">"E:/Java/src/Day13/tt3.txt"</span>));</span><br><span class="line">    BufferedWriter bufferedWriter = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(<span class="string">"E:/Java/src/Day13/tt4.txt"</span>));</span><br><span class="line">    <span class="keyword">char</span>[] c = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>((len = bufferedReader.read(c)) != -<span class="number">1</span>)&#123;</span><br><span class="line">        bufferedWriter.write(c);</span><br><span class="line">    &#125;</span><br><span class="line">    bufferedWriter.flush();</span><br><span class="line">    bufferedWriter.close();</span><br><span class="line">    bufferedReader.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>缓冲流是把数据缓冲到内存中，使用flush()将会使内存中的数据立刻写出。</p>
+<h4 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h4><p>所有的文件都是有编码格式的，txt和java文件一般来讲有三种编码：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/08/Day13/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/Day12/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1171,105 +1253,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/Linear-Regression/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Yunwei Xie">
-      <meta itemprop="description" content="A blog used to record my study process">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to Yunwei's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/24/Linear-Regression/" class="post-title-link" itemprop="url">Linear Regression</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-24 20:46:39 / Modified: 22:03:24" itemprop="dateCreated datePublished" datetime="2020-04-24T20:46:39+01:00">2020-04-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-learning/" itemprop="url" rel="index"><span itemprop="name">Machine learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Type-of-Machine-learning"><a href="#Type-of-Machine-learning" class="headerlink" title="Type of Machine learning"></a>Type of Machine learning</h4><ul>
-<li><p>Supervised Learning</p>
-<p>Where there is an input X, and an output Y and the task is to learn the mapping from the input to the output.</p>
-<ul>
-<li>Classification: when Y is a categorical variable (e.g. span/not spam)</li>
-<li>Regression: when Y is a continuous variable.</li>
-</ul>
-</li>
-<li><p>Unsupervised Learning: there is only input X</p>
-<p>The aim is to find regularities/structure in the input space. One method is called clustering, where the aim is to find clusters or groupings of input.</p>
-</li>
-</ul>
-<h4 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h4><img src="https://s1.ax1x.com/2020/04/25/JrqIKO.png" alt="Linear Regression" style="zoom: 50%;">
-
-<h5 id="How-to-set-the-cost-function"><a href="#How-to-set-the-cost-function" class="headerlink" title="How to set the cost function?"></a>How to set the cost function?</h5><ul>
-<li><p>We use least squares estimation</p>
-</li>
-<li><img src="https://s1.ax1x.com/2020/04/25/Jrqbad.png" alt="Calculation" style="zoom:50%;">
-</li>
-<li><p>Find the values of θ0 and θ1 which have minimum cost </p>
-</li>
-</ul>
-<h5 id="Why-do-we-use-mean-the-square-error-as-our-cost-function"><a href="#Why-do-we-use-mean-the-square-error-as-our-cost-function" class="headerlink" title="Why do we use mean the square error as our cost function?"></a>Why do we use mean the square error as our cost function?</h5><p>We assume that the numeric output is the sum of a linear function of the input and a random noise and the random noise is zero mean Gaussian with constant variance</p>
-<p>Then we use maximum likelihood to estimate the parameter. The theta that maximize the LHS of the equation correspond to the value that minimize the MSE. That’s why we use MSE as the cost function.</p>
-<h5 id="Gradient-descent-for-linear-regression"><a href="#Gradient-descent-for-linear-regression" class="headerlink" title="Gradient descent for linear regression"></a>Gradient descent for linear regression</h5>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/24/Linear-Regression/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1341,7 +1324,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
