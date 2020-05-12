@@ -1224,4 +1224,81 @@
         <tag>Java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Day15</title>
+    <url>/2020/05/12/Day15/</url>
+    <content><![CDATA[<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>多线程：一个进程（一个程序运行时），可以分化为并行执行多个线程（多个子程序）</p>
+<p>Java的JVM允许程序运行多个线程，它通过java.lang.Thread类来实现</p>
+<p>Thread类的特性：</p>
+<ul>
+<li>每个线程都是通过某个特定Thread对象的run()方法来完成操作的，经常把run()方法的主体称为线程体。想要在开启的多线程中运行的代码逻辑就写到run()方法里。</li>
+<li>通过该Thread对象的start()方法来调用这个线程。</li>
+</ul>
+<h4 id="创建线程的两种方式"><a href="#创建线程的两种方式" class="headerlink" title="创建线程的两种方式"></a>创建线程的两种方式</h4><h5 id="继承Thread类"><a href="#继承Thread类" class="headerlink" title="继承Thread类"></a>继承Thread类</h5><ul>
+<li>定义子类继承Thread类</li>
+<li>子类中重写Thread类中的run方法</li>
+<li>创建Thread子类对象，即创建了线程对象</li>
+<li>调用线程对象start方法：启动线程，调用run方法</li>
+</ul>
+<h5 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h5><ul>
+<li>定义子类，实现Runnable接口</li>
+<li>子类中重写Runnable接口中的run方法</li>
+<li>通过Thread类含参构造器创建线程对象</li>
+<li>将Runnable接口的子类对象作为实际参数传递给Thread类的构造方法中</li>
+<li>调用Thread类的start方法：开启线程，调用Runnable子类接口的run方法</li>
+</ul>
+<h5 id="两种方式的区别和联系"><a href="#两种方式的区别和联系" class="headerlink" title="两种方式的区别和联系"></a>两种方式的区别和联系</h5><p>区别：</p>
+<p>继承Thread: 线程代码存放在Thread子类的run方法中 - 重写方法</p>
+<p>实现Runnable:线程代码存在接口的子类的run方法中 - 实现方法</p>
+<p>实现接口方法的好处：</p>
+<ul>
+<li><p>避免了单继承的局限性</p>
+</li>
+<li><p>多个线程可以共享一个接口实现类的对象，非常适合多个相同线程来处理同一份资源</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestRunable</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//new对象的时候起的线程名称会在这里出现</span></span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">" Runnable多线程运行的代码"</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">            count++;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" 这是Runnable多线程的逻辑代码："</span> + count);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时count的值会因为不同线程的创建不断叠加</p>
+</li>
+</ul>
+<p>一般使用实现接口的方法来实现接口</p>
+<h4 id="Thread类的方法"><a href="#Thread类的方法" class="headerlink" title="Thread类的方法"></a>Thread类的方法</h4><p>void start()：启动线程，并执行对象的run()方法</p>
+<p>run()：线程在被调度时执行的操作</p>
+<p>String getName()：返回线程的名称</p>
+<p>void setName(String name)：设置该线程的名称</p>
+<p>static currentThread()：返回当前线程</p>
+<p>static void yield()：线程让步</p>
+<ul>
+<li>暂停当前正在执行的线程，把执行机会让给优先级相同或更高的线程</li>
+<li>若队列中没有同优先级的线程，忽略此方法</li>
+</ul>
+<p>join()：当某个程序执行流中调用其他线程的join()方法时，调用线程将被阻塞，直到join()方法加入的join线程执行完为止</p>
+<ul>
+<li>低优先级的线程也可以获得执行</li>
+</ul>
+<p>static void sleep(long millis)：（指定时间：毫秒）</p>
+<ul>
+<li>令当前活动线程在指定时间段内放弃对CPU控制，使其他线程有机会被执行，时间到后重排队</li>
+<li>抛出InterruptedException异常</li>
+</ul>
+<p>stop()：强制线程生命期结束</p>
+<p>boolean isAlive()：返回boolean，判断线程是否还活着</p>
+<h5 id="线程的优先级控制"><a href="#线程的优先级控制" class="headerlink" title="线程的优先级控制"></a>线程的优先级控制</h5><p>MAX_PRIORITY(10)</p>
+<p>MAX_PRIORITY(1)</p>
+<p>MAX_PRIORITY(5)</p>
+<ul>
+<li>getPriority()：返回线程优先级</li>
+<li>setPriority(int newPriority)：改变线程的优先级</li>
+<li>线程创建时继承父线程的优先级</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Runnable run0 = <span class="keyword">new</span> TestRun();</span><br><span class="line">        Runnable run1 = <span class="keyword">new</span> TestRun();</span><br><span class="line"><span class="comment">//        Thread t0 = new Thread(run0,"t-0");</span></span><br><span class="line"><span class="comment">//        Thread t1 = new Thread(run1,"t-1");</span></span><br><span class="line">        Thread t0 = <span class="keyword">new</span> Thread(run0);</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread(run1);</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 设置线程名称</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="comment">//t0.setName("线程t0");</span></span><br><span class="line"></span><br><span class="line">        t0.start();</span><br><span class="line">        t1.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 如果在创建线程的时候没有指定名称，那么系统会分配默认名称</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        t0.getName();</span><br><span class="line">        t1.getName();</span><br><span class="line">        System.out.println(<span class="string">"--------1"</span>);</span><br><span class="line">        t1.stop();<span class="comment">//强制结束线程的生命周期</span></span><br><span class="line">        System.out.println(<span class="string">"--------2"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//相当于把t0的run方法插入到这个位置执行（同步执行），阻塞main()方法，先执行join进来的线程的代码</span></span><br><span class="line">            <span class="comment">//join的代码执行完毕后，继续执行之前main方法的代码</span></span><br><span class="line">            t0.join();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"--------3"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 线程的优先级：哪个线程有较大的概率被执行</span></span><br><span class="line"><span class="comment">         * 优先级用1-10表示，数字越大，优先级越大</span></span><br><span class="line"><span class="comment">         * 如果没有设置，默认的优先级是5</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//t0.setPriority(1);//设置线程优先级</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"t0的优先级是："</span> + t0.getPriority());<span class="comment">//获取线程优先级</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestRun</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//new对象的时候起的线程名称会在这里出现</span></span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">" Runnable多线程运行的代码"</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);<span class="comment">//当前睡眠1000毫秒</span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"><span class="comment">//            if(i % 2 == 0)&#123;</span></span><br><span class="line"><span class="comment">//                Thread.yield();//线程让步</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line">            count++;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" 这是Runnable多线程的逻辑代码："</span> + count);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Java SE</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
 </search>

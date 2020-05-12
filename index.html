@@ -190,6 +190,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/12/Day15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Yunwei Xie">
+      <meta itemprop="description" content="A blog used to record my study process">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Yunwei's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/12/Day15/" class="post-title-link" itemprop="url">Day15</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-12 15:26:27 / Modified: 20:04:06" itemprop="dateCreated datePublished" datetime="2020-05-12T15:26:27+01:00">2020-05-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-SE/" itemprop="url" rel="index"><span itemprop="name">Java SE</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>多线程：一个进程（一个程序运行时），可以分化为并行执行多个线程（多个子程序）</p>
+<p>Java的JVM允许程序运行多个线程，它通过java.lang.Thread类来实现</p>
+<p>Thread类的特性：</p>
+<ul>
+<li>每个线程都是通过某个特定Thread对象的run()方法来完成操作的，经常把run()方法的主体称为线程体。想要在开启的多线程中运行的代码逻辑就写到run()方法里。</li>
+<li>通过该Thread对象的start()方法来调用这个线程。</li>
+</ul>
+<h4 id="创建线程的两种方式"><a href="#创建线程的两种方式" class="headerlink" title="创建线程的两种方式"></a>创建线程的两种方式</h4><h5 id="继承Thread类"><a href="#继承Thread类" class="headerlink" title="继承Thread类"></a>继承Thread类</h5><ul>
+<li>定义子类继承Thread类</li>
+<li>子类中重写Thread类中的run方法</li>
+<li>创建Thread子类对象，即创建了线程对象</li>
+<li>调用线程对象start方法：启动线程，调用run方法</li>
+</ul>
+<h5 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h5><ul>
+<li>定义子类，实现Runnable接口</li>
+<li>子类中重写Runnable接口中的run方法</li>
+<li>通过Thread类含参构造器创建线程对象</li>
+<li>将Runnable接口的子类对象作为实际参数传递给Thread类的构造方法中</li>
+<li>调用Thread类的start方法：开启线程，调用Runnable子类接口的run方法</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/12/Day15/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/Day14/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1059,152 +1153,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/Feature-Extraction/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Yunwei Xie">
-      <meta itemprop="description" content="A blog used to record my study process">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to Yunwei's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/24/Feature-Extraction/" class="post-title-link" itemprop="url">Feature Extraction</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-24 22:42:25 / Modified: 23:05:05" itemprop="dateCreated datePublished" datetime="2020-04-24T22:42:25+01:00">2020-04-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-learning/" itemprop="url" rel="index"><span itemprop="name">Machine learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Feature-Choosing"><a href="#Feature-Choosing" class="headerlink" title="Feature Choosing"></a>Feature Choosing</h4><p> In a 2003 paper Introduction to Variable and Feature Selection, Guyon and Elisseeff classify three approaches to feature selection: </p>
-<ul>
-<li><p>Filters </p>
-<p>Select subsets of variables as pre-processing step before learning. </p>
-</li>
-<li><p>Wrappers </p>
-<p>Use learning system as black box to score subsets of variables as to their predictive power.</p>
-</li>
-<li><p>Embedded methods</p>
-<p>Feature selection is an embedded part of the learning algorithm. </p>
-</li>
-</ul>
-<h5 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h5><ul>
-<li>Rank features according to a metric or statistic </li>
-<li>If we look at all features independently:<ul>
-<li>Could miss important interactions </li>
-<li>Could have redundant features (But unless they are absolutely correlated then likely to still be useful)</li>
-</ul>
-</li>
-</ul>
-<h5 id="Wrappers"><a href="#Wrappers" class="headerlink" title="Wrappers"></a>Wrappers</h5><ul>
-<li>Use learning system as black box to score subsets of variables as to their predictive power. </li>
-<li>Selection algorithms <ul>
-<li>Forward selection <ul>
-<li>Add features one at a time choosing the one that gives best improvement. </li>
-<li>Stop when selection criterion fails to improve. </li>
-</ul>
-</li>
-<li>Backward elimination <ul>
-<li>Remove features one at a time choosing the one that gives best improvement </li>
-<li>Stop when selection criterion fails to improve. </li>
-</ul>
-</li>
-<li>Combined approach <ul>
-<li>Add a few, remove the worst, repeat. </li>
-<li>{A} {A,B} {A,B,C} {A,B,C,D} {A,C,D} {A,C,D,E} </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Need to divide training set into two </li>
-</ul>
-<h5 id="Embedded-selection"><a href="#Embedded-selection" class="headerlink" title="Embedded selection"></a>Embedded selection</h5><ul>
-<li>Learning algorithms explicitly select features <ul>
-<li>E.g. decision or regression tree </li>
-</ul>
-</li>
-<li>Feature Selection Criteria: <ul>
-<li>Entropy / Information gain </li>
-<li>Gini index </li>
-<li>Reduction in Variance/Standard Deviation </li>
-</ul>
-</li>
-<li>Decision Tree Algorithm<ul>
-<li>At root node determine the information gain for each feature </li>
-<li>Split the node according to the feature that gives the maximum information gain (given starting entropy for that node) </li>
-<li>Repeat process again for each new node until: <ul>
-<li>All entries in the node are the same class, or </li>
-<li>All features are used: take a majority vote </li>
-</ul>
-</li>
-<li>Final tree to often be pruned to avoid over-fitting </li>
-</ul>
-</li>
-<li>Bagging -   Bootstrap AGGregation </li>
-<li>Random Forest  - Very popular in medical image analysis and segmentation </li>
-</ul>
-
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/24/Feature-Extraction/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1272,7 +1224,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
